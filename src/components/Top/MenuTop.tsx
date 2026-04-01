@@ -1,0 +1,36 @@
+function MenuTop() {
+  return (
+    <div>
+      <div className="flex  w-full bg-[white] border-b-2 pt-1 pb-1 items-center shadow-lg">
+        <span className="flex flex-col pl-16">
+          <h5 className="text-[1.3rem] font-bold text-[#060685]">TEXAS</h5>
+          <h5 className="text-[1.2rem] mt-[-9px] ml-8 font-semibold text-[#060685]">
+            HOME
+          </h5>
+        </span>
+        <span className="block ml-8 lg:hidden">
+          <i className="fa fa-bars text-[1.3rem] text-[#060685]"></i>
+        </span>
+        <span className="ml-auto  hidden lg:flex">
+          <span>
+            <h5 className="text-[1rem] text-[#060685]">INVESTMENT PLAN</h5>
+          </span>
+          <span>
+            <h5 className="text-[1rem] text-[#060685] ml-10 mr-10">ABOUT</h5>
+          </span>
+          <span className="text-[1rem] text-[#060685]">
+            <h5>CONTACT US</h5>
+          </span>
+        </span>
+        <span className="ml-auto">
+          <i className="fa fa-search text-[1.2rem] text-[#060685]"></i>
+        </span>
+
+        <span className="pr-8 ml-5">
+          <i className="fa fa-user font-normal text-[1.2rem] text-[#060685]"></i>
+        </span>
+      </div>
+    </div>
+  );
+}
+export default MenuTop;
