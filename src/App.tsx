@@ -6,12 +6,13 @@ import SecondQuestion from "./components/Register/RegistrationQuestions/SecondQu
 import ThirdQuestion from "./components/Register/RegistrationQuestions/ThirdQuestion";
 import FouthQuestion from "./components/Register/RegistrationQuestions/FouthQuestion";
 import RegisterationCongrats from "./components/Register/RegisterationCongrats";
+import AuthHome from "./components/AuthHome/AuthHome";
 //
 
 function App() {
   return (
     <>
-      <RegisterPage />
+      <AuthHome />
     </>
   );
 }
