@@ -1,6 +1,6 @@
 function Comments() {
   return (
-    <div className=" mt-7 h-fit pt-1 pb-1 w-full relative appear-element">
+    <div className=" mt-16 h-fit pt-1 pb-1 w-full relative appear-element">
       <span className="flex h-full pl-8">
         <h5 className="text-[#0c0cbe] font-semibold text-[1rem]">
           WHAT OUR INVESTORS ARE SAYING
@@ -12,10 +12,10 @@ function Comments() {
           <i className="fa fa-comment-dots text-[1.5rem] font-normal text-[#060685]"></i>
           <span className="block text-gray-200 hover:text-gray-500  transition-all">
             <h5 className="mt-2 text-[1rem] font-semibold ">
-              When we opened our account with Percent, we didn't know how much
-              we would be investing on the platform. We have been very pleased
-              with the opportunities and returns offered and have increased our
-              investments on Percent this year.
+              When we opened our account with Texas homes, we didn't know how
+              much we would be investing on the platform. We have been very
+              pleased with the opportunities and returns offered and have
+              increased our investments on Texas homes this year.
             </h5>
             <h5 className="text-[1rem] font-semibold  mt-4">Tom L</h5>
             <h5 className="text-[1rem] font-semibold ">investor since 2018</h5>
@@ -25,7 +25,7 @@ function Comments() {
           <i className="fa fa-comment-dots  text-[1.5rem] font-normal text-[#060685]"></i>
           <span className="mt-2 block text-gray-200 hover:text-gray-500  transition-all">
             <h5 className="text-[1rem] font-semibold ">
-              Percent fits my investing strategy perfectly. Not only can I
+              Texas homes fits my investing strategy perfectly. Not only can I
               diversify my portfolio with a shorter duration alternative
               investment like private credit, I can further diversify across
               multiple asset classes.

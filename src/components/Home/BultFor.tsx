@@ -1,6 +1,6 @@
 function BultFor() {
   return (
-    <div className=" mt-7 h-fit pt-1 pb-4 w-full relative bg-[#f7f3f369] appear-element">
+    <div className=" mt-16 h-fit pt-1 pb-4 w-full relative bg-[#f7f3f369] appear-element">
       <span className="flex h-full pl-8 mt-4">
         <h5 className="text-[#0c0cbe] font-semibold text-[1rem]">
           BULT FOR MODERN INVESTORS
@@ -16,9 +16,9 @@ function BultFor() {
           real estate, simplifying investment, low risk and funds management.
         </h5>
       </span>
-      <div className="flex flex-wrap  pl-8 pr-8 w-full mt-8 appear-element-up">
+      <div className="flex flex-wrap  pl-8 pr-8 w-full mt-8 appear-element-up items-stretch">
         <span className="flex w-full gap-3 flex-wrap justify-around ">
-          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl">
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl  ">
             <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
               <i className="fa fa-chart-line text-[blue] text-xl"></i>
             </span>
@@ -33,9 +33,8 @@ function BultFor() {
               fluctuating-rate environment.
             </p>
           </span>
-
-          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl">
-            <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl  ">
+            <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md ">
               <i className="fa fa-filter text-[blue] text-xl"></i>
             </span>
             <h5 className="mt-4 text-[1.5rem] font-sans">
@@ -47,7 +46,7 @@ function BultFor() {
               investing, fees apply only to interest earned.
             </p>
           </span>
-          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl">
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl  ">
             <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
               <i className="fa fa-code-branch text-[blue] text-xl"></i>
             </span>
@@ -59,7 +58,7 @@ function BultFor() {
               diversification.
             </p>
           </span>
-          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl">
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl ">
             <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
               <i className="fa fa-eye text-[blue] text-xl"></i>
             </span>
@@ -71,6 +70,33 @@ function BultFor() {
               upfront. Access best low risk deals, and market data. Then, track
               performance and use surveillance reports to keep informed at every
               step.
+            </p>
+          </span>
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl ">
+            <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
+              <i className="fa fa-user-check text-[blue] text-xl"></i>
+            </span>
+            <h5 className="mt-4 text-[1.5rem] font-sans">
+              Expert support from professionals.
+            </h5>
+            <p className="mt-2 text-[1rem] font-sans font-normal">
+              Our knowledgeable Investor Relations team is available to answer
+              your questions - just call or email us. Investors tell us that our
+              white glove service sets Texas homes apart from other online
+              investment platforms.
+            </p>
+          </span>
+          <span className="flex flex-col bg-[white] w-fit max-w-[35rem] min-h-fit max-h-80 pb-9 pt-9  p-7 rounded-xl ">
+            <span className="w-14 h-14 bg-[#7373f51f] flex justify-center items-center rounded-md">
+              <i className="fa fa-share text-[blue] text-xl"></i>
+            </span>
+            <h5 className="mt-4 text-[1.5rem] font-sans">
+              A recurring income stream
+            </h5>
+            <p className="mt-2 text-[1rem] font-sans font-normal">
+              Deals on House's marketplace generally offer monthly income
+              potential. These investments generate passive income throughout
+              the lifetime of the deal.
             </p>
           </span>
         </span>

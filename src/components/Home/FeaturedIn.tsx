@@ -1,6 +1,6 @@
 function FeaturedIn() {
   return (
-    <div className="w-full mt-16 pl-8 pr-8 appear-element overflow-hidden whitespace-nowrap">
+    <div className="w-full mt-20 mb-20 pl-8 pr-8 appear-element overflow-hidden whitespace-nowrap">
       <span className="flex h-full  mt-4">
         <h5 className="text-[#0c0cbe] font-semibold text-[1rem]">
           FEATURED IN

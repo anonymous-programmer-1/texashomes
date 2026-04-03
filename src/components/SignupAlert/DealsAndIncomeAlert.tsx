@@ -1,6 +1,6 @@
 function DealsAndIncomeAlert() {
   return (
-    <div className="w-full pl-2 pr-2 mt-12 appear-element">
+    <div className="w-full pl-2 pr-2 mt-16 mb-16 appear-element">
       <div className="flex flex-col w-full h-fit  pt-8 pb-8 pl-12 pr-12  rounded-2xl  bg-[#060685]">
         <h5 className="lg:text-[3rem] text-[2rem] text-gray-100 font-semibold font-sans ">
           Make your first investment and get up to $500.

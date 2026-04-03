@@ -1,6 +1,6 @@
 function WhyAbout() {
   return (
-    <div className=" mt-7 h-fit pt-1 pb-1 w-full relative mb-20 appear-element">
+    <div className=" mt-20 h-fit pt-1 pb-1 w-full relative mb-20 appear-element">
       <span className="flex flex-col pl-8 mt-4 pr-8">
         <h5 className="lg:text-[2.5rem] text-[2rem] font-serif  font-normal">
           Texas Homes is the leading platform focused on bringing private credit

@@ -11,7 +11,7 @@ import RegisterationCongrats from "./components/Register/RegisterationCongrats";
 function App() {
   return (
     <>
-      <RegisterationCongrats />
+      <Home />
     </>
   );
 }

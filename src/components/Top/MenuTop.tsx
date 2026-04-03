@@ -22,10 +22,9 @@ function MenuTop() {
             <h5>CONTACT US</h5>
           </span>
         </span>
-        <span className="ml-20">
+        <span className=" ml-auto">
           <i className="fa fa-search text-[1.2rem] text-[#060685]"></i>
         </span>
-
         <span className="pr-8 ml-5">
           <i className="fa fa-user font-normal text-[1.2rem] text-[#060685]"></i>
         </span>
