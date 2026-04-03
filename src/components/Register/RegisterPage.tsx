@@ -81,6 +81,14 @@ function RegisterPage() {
               SIGN UP WITH GOOGLE
             </h5>
           </span>
+          <span className="flex justify-center w-full mt-2">
+            <h5 className=" text-gray-300">
+              By continuing, you agree to the{" "}
+              <strong className="ml-1 mr-1 text-[#4b4bdd]">Terms of Use</strong>{" "}
+              and
+              <strong className="ml-1  text-[#4b4bdd]">Privacy Policy</strong>
+            </h5>
+          </span>
         </div>
       </div>
     </div>
