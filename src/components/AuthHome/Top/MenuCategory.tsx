@@ -1,6 +1,6 @@
 function MenuCategory() {
   return (
-    <div className="w-full min-h-14 max-h-fit pb-4 bg-[#090913e1]">
+    <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
         <span className="flex flex-col gap-0.5">
           <h5 className="text-gray-400">Deals/House</h5>

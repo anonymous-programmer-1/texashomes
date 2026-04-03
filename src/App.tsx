@@ -7,6 +7,9 @@ import ThirdQuestion from "./components/Register/RegistrationQuestions/ThirdQues
 import FouthQuestion from "./components/Register/RegistrationQuestions/FouthQuestion";
 import RegisterationCongrats from "./components/Register/RegisterationCongrats";
 import AuthHome from "./components/AuthHome/AuthHome";
+import AboutItemCard from "./components/AuthHome/ItemsCardList/AbouItemCard";
+//import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 //
 
 function App() {

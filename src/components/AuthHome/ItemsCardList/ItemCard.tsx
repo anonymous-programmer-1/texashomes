@@ -1,7 +1,7 @@
 import productImage from "/images/house0.jpg";
 function ItemCard() {
   return (
-    <span className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[22rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow ">
+    <span className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[23rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow ">
       <span className="flex absolute top-0 mt-[-0.5px] gap-2 ml-2">
         <span className="w-fit h-fit p-1 pl-2 pr-2 bg-[#060685] rounded-b-md">
           <h5 className="text-gray-200 font-semibold">FUNDING</h5>
@@ -10,7 +10,7 @@ function ItemCard() {
           <h5 className="text-gray-200 font-semibold">$500 MINIMUM!</h5>
         </span>
       </span>
-      <span className="w-full h-[15rem]">
+      <span className="w-full h-[12rem]">
         <img className="w-full h-full rounded-md" src={productImage}></img>
       </span>
       <span className="text-gray-300 font-semibold text-[0.9rem]">
@@ -34,9 +34,9 @@ function ItemCard() {
           </span>
         </span>
       </span>
-      <span className="flex flex-col w-full h-fit p-2 gap-2 bg-[#06060cc5] rounded-md">
+      <span className="flex flex-col w-full h-fit p-2 gap-1 bg-[#06060cc5] rounded-md">
         <span className="flex p-2 text-gray-300 font-semibold border-b-[1px] border-gray-400">
-          <h5>House Price</h5>
+          <h5>PROPERTY PRICE</h5>
           <h5 className="ml-auto">$424,990</h5>
         </span>
         <span className="flex p-2 text-gray-300 font-semibold border-b-[1px] border-gray-400">
@@ -53,7 +53,7 @@ function ItemCard() {
         </span>
         <span className="flex p-2 text-gray-300 font-semibold border-b-[1px] border-gray-400">
           <h5>INVESTMENT RATE</h5>
-          <h5 className="ml-auto">[12.00 - 14.00%]%</h5>
+          <h5 className="ml-auto">[12.00 - 14.00]%</h5>
         </span>
         <span className="flex p-2 text-gray-300 font-semibold ">
           <h5>INVESTMENT TERM</h5>

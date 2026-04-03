@@ -1,6 +1,6 @@
 function MenuCategory() {
   return (
-    <div className="w-full  bg-white sticky top-0   z-10  ">
+    <div className="w-full  bg-white   ">
       <div className="flex pl-8  gap-4 flex-wrap pt-5  pb-5">
         <span className="flex w-36 border-2 h-9 items-center pl-2 pr-2">
           <h5 className="text-[1rem] mr-auto font-serif text-gray-500">

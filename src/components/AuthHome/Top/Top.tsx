@@ -3,23 +3,24 @@ import MenuCategory from "./MenuCategory";
 function Top() {
   return (
     <>
-      <div className="bg-[#0d0d13]">
-        <div className="w-full flex lg:pl-10 pl-5">
+      <div className="bg-[#0d0d13] sticky top-0 z-10">
+        <div className="w-full flex lg:pl-10 pl-5 ">
           <span className="w-24 h-20 rounded-full ">
             <img className="w-full h-full " alt="logo" src={logodark}></img>
           </span>
-          <div className="items-center gap-10 ml-16 hidden lg:flex">
+          <div className="items-center gap-7 ml-16 hidden lg:flex">
             <span className=" text-gray-400 font-semibold">
               <h5>DEALS</h5>
             </span>
             <span className=" text-gray-400 font-semibold">
               <h5>MANAGERS</h5>
             </span>
-            <span className=" text-gray-400 font-semibold">
-              <h5>DASHBORD</h5>
-            </span>
+
             <span className=" text-gray-400 font-semibold">
               <h5>PORTFOLIO</h5>
+            </span>
+            <span className=" text-gray-400 font-semibold">
+              <h5>COMPANY</h5>
             </span>
           </div>
           <span className="flex items-center  text-gray-400 text-[1rem] ml-4 lg:hidden">
@@ -42,16 +43,6 @@ function Top() {
           </span>
         </div>
       </div>
-      <div className="w-full flex h-14 bg-[#090913e1] items-center">
-        <span className="lg:pl-10 pl-5 text-gray-200 text-[1.5rem]">
-          <h5>Deals</h5>
-        </span>
-        <span className="w-fit h-fit bg-[#4b4bdd] p-1 pl-2 pr-2 font-semibold text-gray-100 rounded-md ml-auto mr-5">
-          <h5 className="hidden lg:block">ADD/WITHDRAW FUNDS</h5>
-          <h5 className="lg:hidden block">ADD/WITHDRAW</h5>
-        </span>
-      </div>
-      <MenuCategory />
     </>
   );
 }
