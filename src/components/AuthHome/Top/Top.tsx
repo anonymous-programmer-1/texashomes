@@ -1,5 +1,5 @@
 import logodark from "/images/logo/logodark.png";
-import MenuCategory from "./MenuCategory";
+
 function Top() {
   return (
     <>
