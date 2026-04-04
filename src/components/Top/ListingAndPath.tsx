@@ -26,10 +26,6 @@ function ListAndPath() {
           New Investor Bonus: Earn up to $500 after making your first
           investment*
         </h5>
-        <h5 className="text-[1rem] text-[#060685] pt-2">
-          <strong>Home</strong>
-          {">"} Listing {">"} Califonia
-        </h5>
       </span>
     </div>
   );

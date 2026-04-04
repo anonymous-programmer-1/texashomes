@@ -1,5 +1,11 @@
 import Template from "../QuestionTemplate/Template";
+import { useNavigate } from "react-router-dom";
 function FirstQuestion() {
+  const urlNavigator = useNavigate();
+  function userQuestion() {
+    const url = "/about/user/potflio/s/q";
+    urlNavigator(url, { replace: false });
+  }
   const subTopic = (
     <span className="flex flex-col pb-9">
       <h5 className="font-normal text-[1.3rem] text-gray-100 mt-5">
@@ -42,7 +48,10 @@ function FirstQuestion() {
           </span>
         </span>
       </span>
-      <span className="w-full h-9 flex bg-[#4b4bdd] justify-center items-center rounded-md">
+      <span
+        className="w-full h-9 flex bg-[#4b4bdd] justify-center items-center rounded-md"
+        onClick={userQuestion}
+      >
         <h5 className="text-[1rem] font-bold text-gray-100">NEXT</h5>
       </span>
       <span className="block pb-10"></span>

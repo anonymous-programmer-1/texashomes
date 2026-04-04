@@ -1,6 +1,12 @@
 import congratsImg from "/images/logo/congrats.png";
 import logodark from "/images/logo/logodark.png";
+import { useNavigate } from "react-router-dom";
 function RegisterationCongrats() {
+  const urlNavigator = useNavigate();
+  function registed() {
+    const url = "/auth/home";
+    urlNavigator(url, { replace: true });
+  }
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">
       <div className="flex flex-wrap w-full max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 gap-8">
@@ -35,7 +41,10 @@ function RegisterationCongrats() {
             <img className="w-full h-full  rounded-xl" src={congratsImg}></img>
           </span>
           <span className="flex justify-center mt-4">
-            <span className="w-fit pl-4 pr-4 pt-1 pb-1 h-fit bg-[#060685] rounded-md">
+            <span
+              className="w-fit pl-4 pr-4 pt-1 pb-1 h-fit bg-[#060685] rounded-md"
+              onClick={registed}
+            >
               <h5 className="font-bold text-[1rem] text-gray-100">EXPLORE</h5>
             </span>
           </span>

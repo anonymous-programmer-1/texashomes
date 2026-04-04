@@ -1,7 +1,16 @@
 import productImage from "/images/house0.jpg";
+import { useNavigate } from "react-router-dom";
 function ItemCard() {
+  const urlNavigator = useNavigate();
+  function moreInfo() {
+    const url = "/proparty/info";
+    urlNavigator(url, { replace: false });
+  }
   return (
-    <span className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[23rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow ">
+    <span
+      className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[23rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow "
+      onClick={moreInfo}
+    >
       <span className="flex absolute top-0 mt-[-0.5px] gap-2 ml-2">
         <span className="w-fit h-fit p-1 pl-2 pr-2 bg-[#060685] rounded-b-md">
           <h5 className="text-gray-200 font-semibold">FUNDING</h5>

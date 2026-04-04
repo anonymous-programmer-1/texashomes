@@ -1,5 +1,11 @@
 import imageLogo from "/images/logo/logo.jpg";
+import { useNavigate } from "react-router-dom";
 function MenuTop() {
+  const urlNavigator = useNavigate();
+  function signIn() {
+    const url = "signin";
+    urlNavigator(url, { replace: false });
+  }
   return (
     <div className=" sticky top-0   z-10">
       <div className="flex  w-full bg-[white] border-b-2 pt-1 pb-1 items-center shadow-lg ">
@@ -26,7 +32,10 @@ function MenuTop() {
           <i className="fa fa-search text-[1.2rem] text-[#060685]"></i>
         </span>
         <span className="pr-8 ml-5">
-          <i className="fa fa-user font-normal text-[1.2rem] text-[#060685]"></i>
+          <i
+            className="fa fa-user font-normal text-[1.2rem] text-[#060685]"
+            onClick={signIn}
+          ></i>
         </span>
       </div>
     </div>

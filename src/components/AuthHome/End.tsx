@@ -1,6 +1,6 @@
 function End() {
   return (
-    <div className="flex flex-col gap-2 p-5 ">
+    <div className="flex flex-col gap-2 p-5 bg-[#171718]">
       <span className="flex text-gray-300">
         <h5>
           The information contained on this website is for informational

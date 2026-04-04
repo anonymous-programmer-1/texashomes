@@ -1,5 +1,11 @@
 import logodark from "/images/logo/logodark.png";
+import { useNavigate } from "react-router-dom";
 function RegisterPage() {
+  const urlNavigator = useNavigate();
+  function userQuestion() {
+    const url = "/about/user/potflio/f/q";
+    urlNavigator(url, { replace: true });
+  }
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">
       <div className="flex flex-wrap w-[180%] max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 gap-8">
@@ -65,7 +71,10 @@ function RegisterPage() {
               placeholder="*********"
             ></input>
           </span>
-          <span className="w-full h-9 flex bg-[#4b4bdd] justify-center items-center mt-4 rounded-md">
+          <span
+            className="w-full h-9 flex bg-[#4b4bdd] justify-center items-center mt-4 rounded-md"
+            onClick={userQuestion}
+          >
             <h5 className="text-[1rem] font-bold text-gray-100">SIGN UP</h5>
           </span>
           <span className="flex justify-center mt-6">
