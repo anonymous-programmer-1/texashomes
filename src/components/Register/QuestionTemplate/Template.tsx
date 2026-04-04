@@ -1,7 +1,14 @@
+import type { ReactNode } from "react";
 import LoadingBar from "./LoadingBar";
 import logodark from "/images/logo/logodark.png";
 
-function Template({ rightContact, leftContact }) {
+function Template({
+  rightContact,
+  leftContact,
+}: {
+  rightContact: ReactNode;
+  leftContact: ReactNode;
+}) {
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">
       <div className="flex flex-wrap w-[180%] max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 gap-8">
