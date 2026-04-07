@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { userAppContext } from "../../ContextApi/UserContext";
 type RegisterationDataType = {
   firstname: string;
@@ -20,16 +21,17 @@ type UserDataType = {
   chats: object[];
 };
 
-type UserContextType = {
+type userContextType = {
   registerationData: RegisterationDataType;
-  setRegisterationData: void;
-  setUserData: void;
+  setRegisterationData: Dispatch<SetStateAction<RegisterationDataType>>;
+  setUserData: Dispatch<SetStateAction<UserDataType>>;
   userData: UserDataType;
   questionPage: number;
-  setQuestionPage: void;
+  setQuestionPage: Dispatch<SetStateAction<number>>;
 };
 function LoadingBar() {
-  const userDetails: userContextType = userAppContext();
+  const userDetails: userContextType | null = userAppContext();
+  if (!userDetails) return null;
   const { questionPage } = userDetails;
   const barPacent = (questionPage: number) => {
     let pacent = null;

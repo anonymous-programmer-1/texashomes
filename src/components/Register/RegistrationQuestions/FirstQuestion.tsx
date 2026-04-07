@@ -6,13 +6,21 @@ type QuestionProp = {
 
 function FirstQuestion(prop: QuestionProp) {
   const setQuestionPage = prop.setPageFunc;
-  const firstOption = useRef(null);
-  const firstOptionIcon = useRef(null);
-  const secondOption = useRef(null);
-  const secondOptionIcon = useRef(null);
+  const firstOption = useRef<HTMLSpanElement | null>(null);
+  const firstOptionIcon = useRef<HTMLElement | null>(null);
+  const secondOption = useRef<HTMLSpanElement | null>(null);
+  const secondOptionIcon = useRef<HTMLElement | null>(null);
   const [nextPage, setNextPage] = useState(false);
 
   function option(value: number) {
+    if (
+      !firstOption.current ||
+      !firstOptionIcon.current ||
+      !secondOption.current ||
+      !secondOptionIcon.current
+    )
+      return;
+
     switch (value) {
       case 1:
         secondOption.current.style.borderColor = "#999898";

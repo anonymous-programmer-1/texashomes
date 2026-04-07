@@ -1,6 +1,6 @@
 import Template from "../QuestionTemplate/Template";
 import { useNavigate } from "react-router-dom";
-import type { Dispatch, RefObject, SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useRef, useState } from "react";
 type QuestionProp = {
   setPageFunc: Dispatch<SetStateAction<number>>;
@@ -8,49 +8,65 @@ type QuestionProp = {
 function FouthQuestion(prop: QuestionProp) {
   const setQuestionPage = prop.setPageFunc;
   const urlNavigator = useNavigate();
-  const optionOneBox = useRef<RefObject<HTMLSpanElement> | null>(null);
-  const optionOneIcon = useRef<RefObject<HTMLElement> | null>(null);
-  const optionTwoBox = useRef<RefObject<HTMLSpanElement> | null>(null);
-  const optionTwoIcon = useRef<RefObject<HTMLElement> | null>(null);
-  const optionThreeBox = useRef<RefObject<HTMLSpanElement> | null>(null);
-  const optionThreeIcon = useRef<RefObject<HTMLElement> | null>(null);
-  const optionFourBox = useRef<RefObject<HTMLSpanElement> | null>(null);
-  const optionFourIcon = useRef<RefObject<HTMLElement> | null>(null);
+  const optionOneBox = useRef<HTMLSpanElement>(null);
+  const optionOneIcon = useRef<HTMLElement>(null);
+  const optionTwoBox = useRef<HTMLSpanElement>(null);
+  const optionTwoIcon = useRef<HTMLElement>(null);
+  const optionThreeBox = useRef<HTMLSpanElement>(null);
+  const optionThreeIcon = useRef<HTMLElement>(null);
+  const optionFourBox = useRef<HTMLSpanElement>(null);
+  const optionFourIcon = useRef<HTMLElement>(null);
   const [nextPage, setNextPage] = useState<boolean>(false);
   function optionOne(control: boolean) {
+    const box = optionOneBox.current;
+    const icon = optionOneIcon.current;
+    if (!box || !icon) return;
+
     if (control) {
-      optionOneBox.current.style.borderColor = "#070797";
-      optionOneIcon.current.style.color = "#070797";
+      box.style.borderColor = "#070797";
+      icon.style.color = "#070797";
     } else {
-      optionOneBox.current.style.borderColor = "#999898";
-      optionOneIcon.current.style.color = "#999898";
+      box.style.borderColor = "#999898";
+      icon.style.color = "#999898";
     }
   }
   function optionTwo(control: boolean) {
+    const box = optionTwoBox.current;
+    const icon = optionTwoIcon.current;
+    if (!box || !icon) return;
+
     if (control) {
-      optionTwoBox.current.style.borderColor = "#070797";
-      optionTwoIcon.current.style.color = "#070797";
+      box.style.borderColor = "#070797";
+      icon.style.color = "#070797";
     } else {
-      optionTwoBox.current.style.borderColor = "#999898";
-      optionTwoIcon.current.style.color = "#999898";
+      box.style.borderColor = "#999898";
+      icon.style.color = "#999898";
     }
   }
   function optionThree(control: boolean) {
+    const box = optionThreeBox.current;
+    const icon = optionThreeIcon.current;
+    if (!box || !icon) return;
+
     if (control) {
-      optionThreeBox.current.style.borderColor = "#070797";
-      optionThreeIcon.current.style.color = "#070797";
+      box.style.borderColor = "#070797";
+      icon.style.color = "#070797";
     } else {
-      optionThreeBox.current.style.borderColor = "#999898";
-      optionThreeIcon.current.style.color = "#999898";
+      box.style.borderColor = "#999898";
+      icon.style.color = "#999898";
     }
   }
   function optionFour(control: boolean) {
+    const box = optionFourBox.current;
+    const icon = optionFourIcon.current;
+    if (!box || !icon) return;
+
     if (control) {
-      optionFourBox.current.style.borderColor = "#070797";
-      optionFourIcon.current.style.color = "#070797";
+      box.style.borderColor = "#070797";
+      icon.style.color = "#070797";
     } else {
-      optionFourBox.current.style.borderColor = "#999898";
-      optionFourIcon.current.style.color = "#999898";
+      box.style.borderColor = "#999898";
+      icon.style.color = "#999898";
     }
   }
   function handleClick(value: number) {

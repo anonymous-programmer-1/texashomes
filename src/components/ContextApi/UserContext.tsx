@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, ReactNode } from "react";
 
 type UserDataType = {
   firstname: string;
@@ -20,11 +20,39 @@ type RegisterationDataType = {
   email: string;
   password: string;
 };
-const UserContext = createContext(null);
-export const UserContextProvider = ({ children }) => {
+interface UserContextType {
+  registerationData: RegisterationDataType;
+  setRegisterationData: React.Dispatch<
+    React.SetStateAction<RegisterationDataType>
+  >;
+  userData: UserDataType;
+  setUserData: React.Dispatch<React.SetStateAction<UserDataType>>;
+  questionPage: number;
+  setQuestionPage: React.Dispatch<React.SetStateAction<number>>;
+}
+const UserContext = createContext<UserContextType | null>(null);
+export const UserContextProvider = ({ children }: { children: ReactNode }) => {
   const [registerationData, setRegisterationData] =
-    useState<RegisterationDataType>();
-  const [userData, setUserData] = useState<UserDataType>();
+    useState<RegisterationDataType>({
+      firstname: "",
+      lastname: "",
+      email: "",
+      password: "",
+    });
+  const [userData, setUserData] = useState<UserDataType>({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    portfolio: {
+      amount: "",
+      friends: [],
+      wallet: "",
+      transactions: [],
+      totalReturnsPi: "",
+    },
+    chats: [],
+  });
   const [questionPage, setQuestionPage] = useState<number>(1);
   return (
     <UserContext.Provider

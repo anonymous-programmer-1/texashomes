@@ -1,20 +1,9 @@
 import logodark from "/images/logo/logodark.png";
 import { useNavigate } from "react-router-dom";
-import {
-  useRef,
-  type SetStateAction,
-  type Dispatch,
-  type RefObject,
-} from "react";
+import { useRef, type RefObject } from "react";
 import { userAppContext } from "../ContextApi/UserContext";
 import LoadingRing from "../Loading animation/loadingRing";
 //*
-type RegisterationDataType = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-};
 type UserDataType = {
   firstname: string;
   lastname: string;
@@ -29,27 +18,19 @@ type UserDataType = {
   };
   chats: object[];
 };
-
-type userContextType = {
-  registerationData: RegisterationDataType;
-  setRegisterationData: Dispatch<SetStateAction<RegisterationDataType>>;
-  setUserData: Dispatch<SetStateAction<UserDataType>>;
-  userData: UserDataType;
-  questionPage: number;
-  setQuestionPage: Dispatch<SetStateAction<number>>;
-};
 function RegisterPage() {
   const urlNavigator = useNavigate();
-  const firstName = useRef(null);
-  const lastName = useRef(null);
-  const email = useRef(null);
-  const emailText = useRef(null);
-  const password = useRef(null);
-  const passwordText = useRef(null);
-  const comfirmPassword = useRef(null);
-  const comfirmPasswordText = useRef(null);
-  const loadingAnimation = useRef(null);
-  const userDetails: userContextType = userAppContext();
+  const firstName = useRef<HTMLInputElement | null>(null);
+  const lastName = useRef<HTMLInputElement | null>(null);
+  const email = useRef<HTMLInputElement | null>(null);
+  const emailText = useRef<HTMLHeadingElement | null>(null);
+  const password = useRef<HTMLInputElement | null>(null);
+  const passwordText = useRef<HTMLHeadingElement | null>(null);
+  const comfirmPassword = useRef<HTMLInputElement | null>(null);
+  const comfirmPasswordText = useRef<HTMLHeadingElement | null>(null);
+  const loadingAnimation = useRef<HTMLSpanElement>(null);
+  const userDetails = userAppContext();
+  if (!userDetails) return null;
   const { userData, setUserData } = userDetails;
   function saveRegistrationDetails(data: UserDataType) {
     setUserData(data);
@@ -57,16 +38,33 @@ function RegisterPage() {
     urlNavigator(url, { replace: false });
   }
   function ValidateInput(
-    firstName: RefObject<HTMLInputElement>,
-    lastName: RefObject<HTMLInputElement>,
-    email: RefObject<HTMLInputElement>,
-    emailText: RefObject<HTMLInputElement>,
-    password: RefObject<HTMLInputElement>,
-    passwordText: RefObject<HTMLInputElement>,
-    comfirmPassword: RefObject<HTMLInputElement>,
-    comfirmPasswordText: RefObject<HTMLInputElement>,
-    callBack: void,
+    firstName: RefObject<HTMLInputElement | null>,
+    lastName: RefObject<HTMLInputElement | null>,
+    email: RefObject<HTMLInputElement | null>,
+    emailText: RefObject<HTMLHeadingElement | null>,
+    password: RefObject<HTMLInputElement | null>,
+    passwordText: RefObject<HTMLHeadingElement | null>,
+    comfirmPassword: RefObject<HTMLInputElement | null>,
+    comfirmPasswordText: RefObject<HTMLHeadingElement | null>,
+    callBack: (
+      firstName: RefObject<HTMLInputElement | null>,
+      lastName: RefObject<HTMLInputElement | null>,
+      email: RefObject<HTMLInputElement | null>,
+      password: RefObject<HTMLInputElement | null>,
+    ) => void,
   ) {
+    if (
+      !firstName.current ||
+      !lastName.current ||
+      !email.current ||
+      !emailText.current ||
+      !password.current ||
+      !passwordText.current ||
+      !comfirmPassword.current ||
+      !comfirmPasswordText.current
+    ) {
+      return;
+    }
     if (firstName.current.value.trim() === "") {
       return (firstName.current.style.borderColor = "#b11515");
     } else {
@@ -120,11 +118,19 @@ function RegisterPage() {
     }
   }
   async function registerUser(
-    firstName: RefObject<HTMLInputElement>,
-    lastName: RefObject<HTMLInputElement>,
-    email: RefObject<HTMLInputElement>,
-    password: RefObject<HTMLInputElement>,
+    firstName: RefObject<HTMLInputElement | null>,
+    lastName: RefObject<HTMLInputElement | null>,
+    email: RefObject<HTMLInputElement | null>,
+    password: RefObject<HTMLInputElement | null>,
   ) {
+    if (
+      !firstName.current ||
+      !lastName.current ||
+      !email.current ||
+      !password.current
+    ) {
+      return;
+    }
     try {
       const registerationData = {
         firstname: firstName.current.value,
@@ -165,10 +171,14 @@ function RegisterPage() {
   }
   function renderLoading(
     swicth: boolean,
-    loadingAnimation: RefObject<HTMLDivElement>,
+    loadingAnimation: RefObject<HTMLSpanElement | null>,
   ) {
-    if (swicth) return (loadingAnimation.current.style.display = "block");
-    return (loadingAnimation.current.style.display = "none");
+    if (!loadingAnimation.current) return;
+    if (swicth) {
+      loadingAnimation.current.style.display = "block";
+      return;
+    }
+    loadingAnimation.current.style.display = "none";
   }
   console.log(userData);
   return (

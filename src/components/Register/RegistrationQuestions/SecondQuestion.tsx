@@ -7,8 +7,9 @@ type QuestionProp = {
 };
 function SecondQuestion(prop: QuestionProp) {
   const setQuestionPage = prop.setPageFunc;
-  const numberInput = useRef(null);
-  function validateInput(input: RefObject<HTMLInputElement>) {
+  const numberInput = useRef<HTMLInputElement>(null);
+  function validateInput(input: RefObject<HTMLInputElement | null>) {
+    if (!input.current) return;
     const number = input.current.value;
     input.current.style.color = "#ccc9c9";
     if (number.trim().split("").length >= 10) {
