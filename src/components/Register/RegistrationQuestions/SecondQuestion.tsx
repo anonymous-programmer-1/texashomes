@@ -12,7 +12,7 @@ function SecondQuestion(prop: QuestionProp) {
     const number = input.current.value;
     input.current.style.color = "#ccc9c9";
     if (number.trim().split("").length >= 10) {
-      setQuestionPage((prevCount) => (prevCount = 3));
+      setQuestionPage((prevPage) => (prevPage = prevPage + 1));
     } else {
       input.current.style.borderColor = "#b11515";
     }
@@ -20,7 +20,15 @@ function SecondQuestion(prop: QuestionProp) {
   function nextQuestion() {
     validateInput(numberInput);
   }
-
+  function skipOne() {
+    setQuestionPage((prevPage) => (prevPage = prevPage + 1));
+  }
+  function questionStepBack() {
+    setQuestionPage((prevPage) => {
+      if (prevPage === 1) return 1;
+      return (prevPage = prevPage - 1);
+    });
+  }
   //*
   const subTopic = (
     <span className="flex flex-col pb-9">
@@ -71,11 +79,21 @@ function SecondQuestion(prop: QuestionProp) {
       </span>
       <div className="flex gap-3 justify-center mt-4">
         <span>
-          <h5 className="font-bold text-[1rem] text-[#060685]">GO BACK</h5>
+          <h5
+            className="font-bold text-[1rem] text-[#060685]"
+            onClick={questionStepBack}
+          >
+            GO BACK
+          </h5>
         </span>
         <span className="w-[2px] h-6 bg-gray-300"></span>
         <span>
-          <h5 className="font-bold text-[1rem] text-[#060685]">SKIP</h5>
+          <h5
+            className="font-bold text-[1rem] text-[#060685]"
+            onClick={skipOne}
+          >
+            SKIP
+          </h5>
         </span>
       </div>
       <span className="block pb-10"></span>

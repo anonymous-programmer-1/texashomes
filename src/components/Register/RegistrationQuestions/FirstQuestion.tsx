@@ -32,8 +32,9 @@ function FirstQuestion(prop: QuestionProp) {
   }
   function nextQuestion() {
     if (!nextPage) return;
-    setQuestionPage(2);
+    setQuestionPage((prevPage) => (prevPage = prevPage + 1));
   }
+
   const subTopic = (
     <span className="flex flex-col pb-9">
       <h5 className="font-normal text-[1.3rem] text-gray-100 mt-5">
