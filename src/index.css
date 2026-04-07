@@ -51,3 +51,19 @@ body {
   margin: 0;
   scroll-behavior: smooth;
 }
+.loading-animation-right {
+  animation: loading-animation-right 1.5s linear infinite;
+}
+.loading-animation-left {
+  animation: loading-animation-left 1.5s linear infinite;
+}
+@keyframes loading-animation-right {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes loading-animation-left {
+  to {
+    transform: rotate(-360deg);
+  }
+}

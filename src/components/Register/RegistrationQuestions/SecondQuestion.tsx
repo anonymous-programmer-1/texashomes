@@ -1,11 +1,27 @@
+import type { Dispatch, RefObject, SetStateAction } from "react";
+import { useRef } from "react";
 import Template from "../QuestionTemplate/Template";
-import { useNavigate } from "react-router-dom";
-function SecondQuestion() {
-  const urlNavigator = useNavigate();
-  function userQuestion() {
-    const url = "/about/user/potflio/t/q";
-    urlNavigator(url, { replace: false });
+
+type QuestionProp = {
+  setPageFunc: Dispatch<SetStateAction<number>>;
+};
+function SecondQuestion(prop: QuestionProp) {
+  const setQuestionPage = prop.setPageFunc;
+  const numberInput = useRef(null);
+  function validateInput(input: RefObject<HTMLInputElement>) {
+    const number = input.current.value;
+    input.current.style.color = "#ccc9c9";
+    if (number.trim().split("").length >= 10) {
+      setQuestionPage((prevCount) => (prevCount = 3));
+    } else {
+      input.current.style.borderColor = "#b11515";
+    }
   }
+  function nextQuestion() {
+    validateInput(numberInput);
+  }
+
+  //*
   const subTopic = (
     <span className="flex flex-col pb-9">
       <h5 className="font-normal text-[1.3rem] text-gray-100 mt-5">
@@ -28,7 +44,8 @@ function SecondQuestion() {
               <i className="fas fa-angle-down text-[1rem] text-gray-100"></i>
             </span>
             <input
-              className="w-full h-full border-[0.3px] border-gray-400 rounded-md bg-transparent pl-3 "
+              className="w-full h-full border-[0.3px] border-gray-400 rounded-md bg-transparent pl-3 text-gray-200"
+              ref={numberInput}
               placeholder="(555) 555-5555"
             ></input>
           </span>
@@ -37,7 +54,7 @@ function SecondQuestion() {
       <div className="flex mt-8 gap-2 ">
         <input
           className="w-5 h-5 self-center bg-transparent border-[0.3px] border-gray-400 rounded-md"
-          type="check-box"
+          type=""
         ></input>
         <span>
           <h5 className="text-gray-200 font-sans  font-semibold">
@@ -47,8 +64,8 @@ function SecondQuestion() {
         </span>
       </div>
       <span
-        className="w-full h-9 flex bg-[#333333b7] justify-center items-center rounded-md"
-        onClick={userQuestion}
+        className="w-full h-9 flex bg-[#333333b7] justify-center items-center rounded-md "
+        onClick={nextQuestion}
       >
         <h5 className="text-[1rem] font-bold text-gray-100">NEXT</h5>
       </span>

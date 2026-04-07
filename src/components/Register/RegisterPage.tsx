@@ -1,11 +1,176 @@
 import logodark from "/images/logo/logodark.png";
 import { useNavigate } from "react-router-dom";
+import {
+  useRef,
+  type SetStateAction,
+  type Dispatch,
+  type RefObject,
+} from "react";
+import { userAppContext } from "../ContextApi/UserContext";
+import LoadingRing from "../Loading animation/loadingRing";
+//*
+type RegisterationDataType = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+};
+type UserDataType = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  portfolio: {
+    amount: string;
+    friends: object[];
+    wallet: string;
+    transactions: object[];
+    totalReturnsPi: string;
+  };
+  chats: object[];
+};
+
+type userContextType = {
+  registerationData: RegisterationDataType;
+  setRegisterationData: Dispatch<SetStateAction<RegisterationDataType>>;
+  setUserData: Dispatch<SetStateAction<UserDataType>>;
+  userData: UserDataType;
+  questionPage: number;
+  setQuestionPage: Dispatch<SetStateAction<number>>;
+};
 function RegisterPage() {
   const urlNavigator = useNavigate();
-  function userQuestion() {
-    const url = "/about/user/potflio/f/q";
-    urlNavigator(url, { replace: true });
+  const firstName = useRef(null);
+  const lastName = useRef(null);
+  const email = useRef(null);
+  const emailText = useRef(null);
+  const password = useRef(null);
+  const passwordText = useRef(null);
+  const comfirmPassword = useRef(null);
+  const comfirmPasswordText = useRef(null);
+  const loadingAnimation = useRef(null);
+  const userDetails: userContextType = userAppContext();
+  const { userData, setUserData } = userDetails;
+  function saveRegistrationDetails(data: UserDataType) {
+    setUserData(data);
+    const url = "/about/user/potflio/q";
+    urlNavigator(url, { replace: false });
   }
+  function ValidateInput(
+    firstName: RefObject<HTMLInputElement>,
+    lastName: RefObject<HTMLInputElement>,
+    email: RefObject<HTMLInputElement>,
+    emailText: RefObject<HTMLInputElement>,
+    password: RefObject<HTMLInputElement>,
+    passwordText: RefObject<HTMLInputElement>,
+    comfirmPassword: RefObject<HTMLInputElement>,
+    comfirmPasswordText: RefObject<HTMLInputElement>,
+    callBack: void,
+  ) {
+    if (firstName.current.value.trim() === "") {
+      return (firstName.current.style.borderColor = "#b11515");
+    } else {
+      firstName.current.style.borderColor = "#ccc9c9";
+    }
+    if (lastName.current.value.trim() === "") {
+      return (lastName.current.style.borderColor = "#b11515");
+    } else {
+      lastName.current.style.borderColor = "#ccc9c9";
+    }
+    if (email.current.value.trim() === "") {
+      return (email.current.style.borderColor = "#b11515");
+    } else {
+      email.current.style.borderColor = "#ccc9c9";
+      emailText.current.textContent = "Email";
+      emailText.current.style.color = "#a7a6a6";
+      if (!email.current.value.includes("@")) {
+        emailText.current.textContent = "Enter a valid email";
+        emailText.current.style.color = "#d31414";
+        return;
+      }
+      if (password.current.value.trim() === "") {
+        return (password.current.style.borderColor = "#b11515");
+      } else {
+        password.current.style.borderColor = "#ccc9c9";
+      }
+      if (comfirmPassword.current.value !== password.current.value) {
+        passwordText.current.textContent = "Password didn't macth";
+        passwordText.current.style.color = "#d31414";
+        comfirmPasswordText.current.textContent = "Password didn't macth";
+        comfirmPasswordText.current.style.color = "#d31414";
+        return;
+      } else {
+        comfirmPassword.current.style.borderColor = "#ccc9c9";
+        password.current.style.borderColor = "#ccc9c9";
+        passwordText.current.textContent = "Password ";
+        passwordText.current.style.color = "#ccc9c9";
+        comfirmPasswordText.current.textContent = "Comfirm Password";
+        comfirmPasswordText.current.style.color = "#ccc9c9";
+      }
+      if (comfirmPassword.current.value.trim() === "") {
+        return (comfirmPassword.current.style.borderColor = "#b11515");
+      } else {
+        comfirmPassword.current.style.borderColor = "#ccc9c9";
+      }
+      renderLoading(true, loadingAnimation);
+      //!
+      setTimeout(() => {
+        callBack(firstName, lastName, email, password);
+      }, 1000);
+    }
+  }
+  async function registerUser(
+    firstName: RefObject<HTMLInputElement>,
+    lastName: RefObject<HTMLInputElement>,
+    email: RefObject<HTMLInputElement>,
+    password: RefObject<HTMLInputElement>,
+  ) {
+    try {
+      const registerationData = {
+        firstname: firstName.current.value,
+        lastname: lastName.current.value,
+        email: email.current.value,
+        password: password.current.value,
+      };
+      const serverUrl = "http://localhost:3000/user/register";
+      const sendData = await fetch(serverUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(registerationData),
+      });
+      const responds = await sendData.json();
+      renderLoading(false, loadingAnimation);
+      if (responds.status === 201) {
+        saveRegistrationDetails(responds.data);
+      }
+      alert(responds.massage);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  function signUp() {
+    ValidateInput(
+      firstName,
+      lastName,
+      email,
+      emailText,
+      password,
+      passwordText,
+      comfirmPassword,
+      comfirmPasswordText,
+      registerUser,
+    );
+  }
+  function renderLoading(
+    swicth: boolean,
+    loadingAnimation: RefObject<HTMLDivElement>,
+  ) {
+    if (swicth) return (loadingAnimation.current.style.display = "block");
+    return (loadingAnimation.current.style.display = "none");
+  }
+  console.log(userData);
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">
       <div className="flex flex-wrap w-[180%] max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 gap-8">
@@ -33,29 +198,37 @@ function RegisterPage() {
           <span className="flex flex-col">
             <h5 className="text-gray-400 font-sans">First Name</h5>
             <input
-              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1"
+              className="bg-transparent pl-2 border-[0.5px] border-[#ccc9c9]  rounded-md mt-1 text-gray-100"
               placeholder="john"
+              ref={firstName}
             ></input>
           </span>
           <span className="flex flex-col">
-            <h5 className="text-gray-400 font-sans mt-1.5">Last Name</h5>
+            <h5 className="text-gray-400 font-sans mt-1.5 ">Last Name</h5>
             <input
-              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1"
+              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1 text-gray-100 "
               placeholder="Dep"
+              ref={lastName}
             ></input>
           </span>
           <span className="flex flex-col">
-            <h5 className="text-gray-400 font-sans mt-1.5">Email</h5>
+            <h5 className="text-gray-400 font-sans mt-1.5" ref={emailText}>
+              Email
+            </h5>
             <input
-              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1"
+              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1 text-gray-100"
               placeholder="johndeo@gmail.com"
+              ref={email}
             ></input>
           </span>
           <span className="flex flex-col">
-            <h5 className="text-gray-400 font-sans mt-1.5">Password</h5>
+            <h5 className="text-gray-400 font-sans mt-1.5" ref={passwordText}>
+              Password
+            </h5>
             <input
-              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1"
+              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1 text-gray-100"
               placeholder="*********"
+              ref={password}
             ></input>
           </span>
           <span>
@@ -65,15 +238,21 @@ function RegisterPage() {
             </h5>
           </span>
           <span className="flex flex-col">
-            <h5 className="text-gray-400 font-sans mt-1.5">Confirm Password</h5>
+            <h5
+              className="text-gray-400 font-sans mt-1.5"
+              ref={comfirmPasswordText}
+            >
+              Confirm Password
+            </h5>
             <input
-              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1"
+              className="bg-transparent pl-2 border-[0.5px] rounded-md mt-1 text-gray-100"
               placeholder="*********"
+              ref={comfirmPassword}
             ></input>
           </span>
           <span
             className="w-full h-9 flex bg-[#4b4bdd] justify-center items-center mt-4 rounded-md"
-            onClick={userQuestion}
+            onClick={signUp}
           >
             <h5 className="text-[1rem] font-bold text-gray-100">SIGN UP</h5>
           </span>
@@ -99,6 +278,11 @@ function RegisterPage() {
             </h5>
           </span>
         </div>
+      </div>
+      <div className="fixed z-50 top-0 ">
+        <span className="hidden " ref={loadingAnimation}>
+          <LoadingRing />
+        </span>
       </div>
     </div>
   );
