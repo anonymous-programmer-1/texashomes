@@ -1,5 +1,40 @@
 import ItemCard from "../Card/ItemCard";
+import { useEffect, useState } from "react";
+type ProductsData = {
+  name: string;
+  price: string;
+  manager: string;
+  minimumOrder: string;
+  fundingEnd: string;
+  investors: string;
+  investmentRate: string;
+  fundingParcent: string;
+  returnPrice: string;
+  investmentTerm: string;
+  imageUrl: string[];
+};
+
 function ItemsList() {
+  const [deals, setDeals] = useState<ProductsData[]>();
+  useEffect(() => {
+    async function getProducts() {
+      const url = "http://localhost:3000/house/deals";
+      try {
+        const data = await fetch(url, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        const responds = await data.json();
+        const products: ProductsData[] = responds.data;
+        setDeals((prevDeals) => (prevDeals = products));
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    getProducts();
+  }, []);
   return (
     <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
       <span className="">
@@ -7,9 +42,11 @@ function ItemsList() {
       </span>
       <div className="ml-[-2rem] pl-[10%] pr-[10%] mt-7">
         <div className="flex flex-wrap gap-4">
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
+          {deals &&
+            deals.map((e, i) => {
+              if (i > 2) return;
+              return <ItemCard data={e} key={i} />;
+            })}
         </div>
       </div>
     </div>
