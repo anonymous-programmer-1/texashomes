@@ -13,8 +13,12 @@ type ProductsData = {
   investmentTerm: string;
   imageUrl: string[];
 };
+type Pass = {
+  pass: boolean;
+};
 
-function ItemsList() {
+function ItemsList(props: Pass) {
+  const pass = props.pass;
   const [deals, setDeals] = useState<ProductsData[]>();
   useEffect(() => {
     async function getProducts() {
@@ -35,6 +39,7 @@ function ItemsList() {
     }
     getProducts();
   }, []);
+  console.log(pass);
   return (
     <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
       <span className="">
@@ -44,8 +49,13 @@ function ItemsList() {
         <div className="flex flex-wrap gap-4">
           {deals &&
             deals.map((e, i) => {
-              if (i > 2) return;
-              return <ItemCard data={e} key={i} />;
+              if (pass && i < 3) {
+                return <ItemCard data={e} key={i} />;
+              }
+              if (!pass && i > 3) {
+                if (i > 6) return;
+                return <ItemCard data={e} key={i} />;
+              }
             })}
         </div>
       </div>

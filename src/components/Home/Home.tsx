@@ -15,11 +15,11 @@ function Home() {
       <Top />
       <ListAndPath />
       <MenuCategory />
-      <ItemsList />
+      <ItemsList pass={true} />
       <BultFor />
       <FeaturedIn />
       <SignUpAlert1 />
-      <ItemsList />
+      <ItemsList pass={false} />
       <Comments />
       <DealsAndIncomeAlert />
       <WhyAbout />
