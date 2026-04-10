@@ -37,7 +37,7 @@ function ItemCards() {
     getProducts();
   }, []);
   return (
-    <div className="w-full flex flex-wrap justify-around h-fit">
+    <div className="flex flex-wrap gap-2 p-4 justify-around  bg-[#171718]">
       {deals &&
         deals.map((e, i) => {
           return <ItemCard data={e} key={i} />;
