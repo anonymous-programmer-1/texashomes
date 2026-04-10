@@ -39,7 +39,6 @@ function ItemsList(props: Pass) {
     }
     getProducts();
   }, []);
-  console.log(pass);
   return (
     <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
       <span className="">

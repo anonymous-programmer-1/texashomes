@@ -10,7 +10,7 @@ function Comments() {
       <div className="mt-7 flex flex-wrap gap-4 w-full  justify-around ">
         <span className="max-w-[300px] flex flex-grow flex-col gap-1 items-stretch bg-[#fffdfd] pt-10 pb-10 pl-10 pr-10 rounded-md hover:shadow-xl hover:-translate-y-1 transition-all text-gray-200 hover:text-gray-500 ">
           <i className="fa fa-comment-dots text-[1.5rem] font-normal text-[#060685]"></i>
-          <span className="block text-gray-200 hover:text-gray-500  transition-all">
+          <span className="block text-gray-400 lg:text-gray-200 hover:text-gray-500  transition-all">
             <h5 className="mt-2 text-[1rem] font-semibold ">
               When we opened our account with Texas homes, we didn't know how
               much we would be investing on the platform. We have been very
@@ -23,7 +23,7 @@ function Comments() {
         </span>
         <span className="max-w-[300px] flex flex-grow flex-col gap-1 items-stretch bg-[#fcfafa] pt-10 pb-10 pl-10 pr-10 rounded-md hover:shadow-xl hover:-translate-y-1 transition-all">
           <i className="fa fa-comment-dots  text-[1.5rem] font-normal text-[#060685]"></i>
-          <span className="mt-2 block text-gray-200 hover:text-gray-500  transition-all">
+          <span className="mt-2 block text-gray-400 lg:text-gray-200 hover:text-gray-500  transition-all">
             <h5 className="text-[1rem] font-semibold ">
               Texas homes fits my investing strategy perfectly. Not only can I
               diversify my portfolio with a shorter duration alternative
@@ -36,7 +36,7 @@ function Comments() {
         </span>
         <span className="max-w-[300px] flex flex-grow flex-col gap-1 items-stretch bg-[#fcfafa] pt-10 pb-10 pl-10 pr-10 rounded-md hover:shadow-xl hover:-translate-y-1 transition-all">
           <i className="fa fa-comment-dots  text-[1.5rem] font-normal text-[#060685]"></i>
-          <span className="mt-2 block text-gray-200 hover:text-gray-500  transition-all">
+          <span className="mt-2 block text-gray-400 lg:text-gray-200 hover:text-gray-500  transition-all">
             <h5 className="text-[1rem] font-semibold ">
               They are one of the only platforms l've dealt with that have real
               people on the other end of their customer service line. Talking to

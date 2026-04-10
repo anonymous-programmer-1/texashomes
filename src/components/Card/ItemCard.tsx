@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 type ProductsData = {
   data: {
     name: string;
@@ -15,6 +16,7 @@ type ProductsData = {
   };
 };
 function ItemCard(props: ProductsData) {
+  const urlNavigator = useNavigate();
   const deals = props.data;
   const [imageCount, setImageCount] = useState(0);
   function imageLeft() {
@@ -25,6 +27,10 @@ function ItemCard(props: ProductsData) {
     const length = deals.imageUrl.length;
     if (length === imageCount + 1) return;
     setImageCount((prevCount) => (prevCount += 1));
+  }
+  function signIn() {
+    const url = "/signin";
+    urlNavigator(url, { replace: false });
   }
   return (
     <div className="w-[400px] h-fit flex flex-col bg-white  rounded-md items-stretch flex-grow hover:shadow-lg hover:-translate-y-1 transition-all">
@@ -113,7 +119,10 @@ function ItemCard(props: ProductsData) {
           </a>
         </span>
       </div>
-      <span className="mt-2 w-full flex justify-center items-center bg-[#060685] hover:bg-[#0e0edf]  transition-all h-12 rounded-br-md rounded-bl-md">
+      <span
+        className="mt-2 w-full flex justify-center items-center bg-[#060685] hover:bg-[#0e0edf]  transition-all h-12 rounded-br-md rounded-bl-md"
+        onClick={signIn}
+      >
         <h5 className="font-bold text-gray-100 text-[1.3rem]">Invest Now</h5>
       </span>
     </div>

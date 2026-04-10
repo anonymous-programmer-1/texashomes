@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 function MenuTop() {
   const urlNavigator = useNavigate();
   function signIn() {
-    const url = "signin";
+    const url = "/signin";
     urlNavigator(url, { replace: false });
   }
   return (
