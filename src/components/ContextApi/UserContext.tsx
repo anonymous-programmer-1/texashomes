@@ -20,6 +20,19 @@ type RegisterationDataType = {
   email: string;
   password: string;
 };
+type ProductsData = {
+  name: string;
+  price: string;
+  manager: string;
+  minimumOrder: string;
+  fundingEnd: string;
+  investors: string;
+  investmentRate: string;
+  fundingParcent: string;
+  returnPrice: string;
+  investmentTerm: string;
+  imageUrl: string[];
+};
 interface UserContextType {
   registerationData: RegisterationDataType;
   setRegisterationData: React.Dispatch<
@@ -29,6 +42,10 @@ interface UserContextType {
   setUserData: React.Dispatch<React.SetStateAction<UserDataType>>;
   questionPage: number;
   setQuestionPage: React.Dispatch<React.SetStateAction<number>>;
+  productData: ProductsData[];
+  setProductData: React.Dispatch<React.SetStateAction<ProductsData[]>>;
+  singleProductData: ProductsData;
+  setSingleProductData: React.Dispatch<React.SetStateAction<ProductsData>>;
 }
 const UserContext = createContext<UserContextType | null>(null);
 export const UserContextProvider = ({ children }: { children: ReactNode }) => {
@@ -53,6 +70,34 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     },
     chats: [],
   });
+  const [productData, setProductData] = useState<ProductsData[]>([
+    {
+      name: "",
+      price: "",
+      manager: "",
+      minimumOrder: "",
+      fundingEnd: "",
+      investors: "",
+      investmentRate: "",
+      fundingParcent: "",
+      returnPrice: "",
+      investmentTerm: "",
+      imageUrl: [],
+    },
+  ]);
+  const [singleProductData, setSingleProductData] = useState<ProductsData>({
+    name: "",
+    price: "",
+    manager: "",
+    minimumOrder: "",
+    fundingEnd: "",
+    investors: "",
+    investmentRate: "",
+    fundingParcent: "",
+    returnPrice: "",
+    investmentTerm: "",
+    imageUrl: [],
+  });
   const [questionPage, setQuestionPage] = useState<number>(1);
   return (
     <UserContext.Provider
@@ -63,6 +108,10 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
         setUserData,
         questionPage,
         setQuestionPage,
+        productData,
+        setProductData,
+        singleProductData,
+        setSingleProductData,
       }}
     >
       {children}
