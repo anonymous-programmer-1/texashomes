@@ -1,29 +1,7 @@
 import ItemCard from "../Card/ItemCard";
 import { useEffect, useState } from "react";
 import { userAppContext } from "../ContextApi/UserContext";
-type Pass = {
-  pass: boolean;
-};
-type UserDataType = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-  portfolio: {
-    amount: string;
-    friends: object[];
-    wallet: string;
-    transactions: object[];
-    totalReturnsPi: string;
-  };
-  chats: object[];
-};
-type RegisterationDataType = {
-  firstname: string;
-  lastname: string;
-  email: string;
-  password: string;
-};
+
 type ProductsData = {
   name: string;
   price: string;
@@ -37,31 +15,19 @@ type ProductsData = {
   investmentTerm: string;
   imageUrl: string[];
 };
-interface UserContextType {
-  registerationData: RegisterationDataType;
-  setRegisterationData: React.Dispatch<
-    React.SetStateAction<RegisterationDataType>
-  >;
-  userData: UserDataType;
-  setUserData: React.Dispatch<React.SetStateAction<UserDataType>>;
-  questionPage: number;
-  setQuestionPage: React.Dispatch<React.SetStateAction<number>>;
-  productData: ProductsData[];
-  setProductData: React.Dispatch<React.SetStateAction<ProductsData[]>>;
-  singleProductData: ProductsData;
-  setSingleProductData: React.Dispatch<React.SetStateAction<ProductsData>>;
-  isLoading: boolean;
-  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
+type Pass = {
+  pass: boolean;
+};
 function ItemsList(props: Pass) {
   const pass = props.pass;
   const [deals, setDeals] = useState<ProductsData[]>();
-  const userDetails: UserContextType = userAppContext();
+  const userDetails = userAppContext();
+  if (!userDetails) return null;
   const { setProductData, productData, isLoading, setIsLoading } = userDetails;
 
   useEffect(() => {
     async function getProducts() {
-      const url = "http://localhost:3000/house/deals";
+      const url = "https://texashomes-backend-3.onrender.com/house/deals";
       try {
         const data = await fetch(url, {
           headers: {

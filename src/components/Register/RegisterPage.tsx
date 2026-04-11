@@ -138,7 +138,8 @@ function RegisterPage() {
         email: email.current.value,
         password: password.current.value,
       };
-      const serverUrl = "http://localhost:3000/user/register";
+      const serverUrl =
+        "https://texashomes-backend-3.onrender.com/user/register";
       const sendData = await fetch(serverUrl, {
         method: "POST",
         headers: {

@@ -19,7 +19,7 @@ function ItemCards() {
 
   useEffect(() => {
     async function getProducts() {
-      const url = "http://localhost:3000/house/deals";
+      const url = "https://texashomes-backend-3.onrender.com/house/deals";
       try {
         const data = await fetch(url, {
           headers: {
@@ -29,7 +29,7 @@ function ItemCards() {
 
         const responds = await data.json();
         const products: ProductsData[] = responds.data;
-        setDeals((prevDeals) => (prevDeals = products));
+        setDeals(products);
       } catch (error) {
         console.log(error);
       }
