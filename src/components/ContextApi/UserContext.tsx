@@ -46,6 +46,8 @@ interface UserContextType {
   setProductData: React.Dispatch<React.SetStateAction<ProductsData[]>>;
   singleProductData: ProductsData;
   setSingleProductData: React.Dispatch<React.SetStateAction<ProductsData>>;
+  isLoading: boolean;
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const UserContext = createContext<UserContextType | null>(null);
 export const UserContextProvider = ({ children }: { children: ReactNode }) => {
@@ -98,6 +100,7 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     investmentTerm: "",
     imageUrl: [],
   });
+  const [isLoading, setIsLoading] = useState(false);
   const [questionPage, setQuestionPage] = useState<number>(1);
   return (
     <UserContext.Provider
@@ -112,6 +115,8 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
         setProductData,
         singleProductData,
         setSingleProductData,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
