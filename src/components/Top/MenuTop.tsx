@@ -1,10 +1,16 @@
 import imageLogo from "/images/logo/logo.jpg";
 import { useNavigate } from "react-router-dom";
+import { lazy, useState } from "react";
+const Menu = lazy(() => import("../Home/Menu"));
 function MenuTop() {
   const urlNavigator = useNavigate();
   function signIn() {
     const url = "/signin";
     urlNavigator(url, { replace: false });
+  }
+  const [menuVisible, setMenuVisible] = useState<boolean>(false);
+  function sideMenu() {
+    setMenuVisible(!menuVisible);
   }
   return (
     <div className=" sticky top-0   z-10">
@@ -15,7 +21,10 @@ function MenuTop() {
           </span>
         </div>
         <span className="block ml-8 lg:hidden">
-          <i className="fa fa-bars text-[1.3rem] text-[#060685]"></i>
+          <i
+            className="fa fa-bars text-[1.3rem] text-[#060685]"
+            onClick={sideMenu}
+          ></i>
         </span>
         <span className="ml-auto  hidden lg:flex">
           <span>
@@ -38,6 +47,7 @@ function MenuTop() {
           ></i>
         </span>
       </div>
+      {menuVisible && <Menu control={sideMenu} />}
     </div>
   );
 }

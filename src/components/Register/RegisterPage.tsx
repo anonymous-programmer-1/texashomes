@@ -1,8 +1,8 @@
 import logodark from "/images/logo/logodark.png";
 import { useNavigate } from "react-router-dom";
-import { useRef, type RefObject } from "react";
+import { useRef, lazy, type RefObject } from "react";
 import { userAppContext } from "../ContextApi/UserContext";
-import LoadingRing from "../Loading animation/loadingRing";
+const LoadingRing = lazy(() => import("../Loading animation/loadingRing"));
 //*
 type UserDataType = {
   firstname: string;
@@ -202,7 +202,9 @@ function RegisterPage() {
             <h5 className="text-gray-100 font-sans mr-1">
               Already have an account?
             </h5>
-            <a className="text-[#4b4bdd] font-sans">Sign in</a>
+            <a className="text-[#4b4bdd] font-sans" href="login">
+              Sign in
+            </a>
           </span>
         </div>
         <div className="inline-flex flex-col w-full lg:w-[40%]">

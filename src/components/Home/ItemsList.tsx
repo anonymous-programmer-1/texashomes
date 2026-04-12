@@ -27,7 +27,8 @@ function ItemsList(props: Pass) {
 
   useEffect(() => {
     async function getProducts() {
-      const url = "https://texashomes-backend-3.onrender.com/house/deals";
+      //!https://texashomes-backend-3.onrender.com
+      const url = "http://localhost:1000/house/deals";
       try {
         const data = await fetch(url, {
           headers: {

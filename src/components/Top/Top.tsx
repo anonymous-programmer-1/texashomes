@@ -11,7 +11,7 @@ function Top() {
             </h5>
           </span>
           <span className="flex justify-center">
-            <a className="text-[1rem] text-gray-100" href="/">
+            <a className="text-[1rem] text-gray-100" href="signin">
               Check it out
             </a>
           </span>
