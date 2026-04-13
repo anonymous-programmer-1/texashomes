@@ -34,21 +34,6 @@ function ItemCards() {
 
         const responds = await data.json();
         const products: ProductsData[] = responds.data;
-        //
-        const shuffleArray = (array: ProductsData[]) => {
-          const shuffled = [...array];
-          let currentIndex = shuffled.length,
-            randomIndex;
-          while (currentIndex !== 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex--;
-            [shuffled[currentIndex], shuffled[randomIndex]] = [
-              shuffled[randomIndex],
-              shuffled[currentIndex],
-            ];
-          }
-          return shuffled;
-        };
         //const shuffledData = shuffleArray(products);
         setDeals(products);
         setIsLoaded(true);
