@@ -49,8 +49,8 @@ function ItemCards() {
           }
           return shuffled;
         };
-        const shuffledData = shuffleArray(products);
-        setDeals(shuffledData);
+        //const shuffledData = shuffleArray(products);
+        setDeals(products);
         setIsLoaded(true);
       } catch (error) {
         console.log(error);
