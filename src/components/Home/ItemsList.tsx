@@ -1,5 +1,5 @@
-import ItemCard from "../Card/ItemCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy } from "react";
+const ItemCard = lazy(() => import("../Card/ItemCard"));
 import { userAppContext } from "../ContextApi/UserContext";
 
 type ProductsData = {
@@ -23,7 +23,7 @@ function ItemsList(props: Pass) {
   const [deals, setDeals] = useState<ProductsData[]>();
   const userDetails = userAppContext();
   if (!userDetails) return null;
-  const { setProductData, productData, isLoading, setIsLoading } = userDetails;
+  const { setProductData, setIsLoading } = userDetails;
 
   useEffect(() => {
     async function getProducts() {
@@ -37,10 +37,25 @@ function ItemsList(props: Pass) {
         });
 
         const responds = await data.json();
-        console.log(responds);
         if (responds.status !== 200) return;
         const products: ProductsData[] = responds.data;
-        setDeals(products);
+        //
+        const shuffleArray = (array: ProductsData[]) => {
+          const shuffled = [...array];
+          let currentIndex = shuffled.length,
+            randomIndex;
+          while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [shuffled[currentIndex], shuffled[randomIndex]] = [
+              shuffled[randomIndex],
+              shuffled[currentIndex],
+            ];
+          }
+          return shuffled;
+        };
+        const shuffledData = shuffleArray(products);
+        setDeals(shuffledData);
         setProductData(products);
         setIsLoading(true);
       } catch (error) {
@@ -49,8 +64,6 @@ function ItemsList(props: Pass) {
     }
     getProducts();
   }, []);
-  console.log(productData);
-  console.log(isLoading);
   return (
     <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
       <span className="">

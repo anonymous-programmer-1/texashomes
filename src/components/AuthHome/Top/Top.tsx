@@ -1,6 +1,14 @@
 import logodark from "/images/logo/logodark.png";
-
+import { userAppContext } from "../../ContextApi/UserContext";
 function Top() {
+  const userDetails = userAppContext();
+  if (!userDetails) return;
+  const { userData } = userDetails;
+  const userName = {
+    firstName: userData.firstname,
+    lastName: userData.lastname,
+  };
+  const formatedLastName = `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
   return (
     <>
       <div className="bg-[#0d0d13] sticky top-0 z-10">
@@ -35,8 +43,10 @@ function Top() {
           <span className="flex items-center ml-[25px] pr-5">
             <span className="flex text-gray-400 gap-1.5">
               <i className="fa fa-user font-light mt-[5px] text-[1.3rem]"></i>
-              <h5 className="font-bold lg:block hidden">anonymous</h5>
-              <h5 className="font-bold lg:block hidden">p/r</h5>
+              <h5 className="font-bold lg:block hidden">
+                {userName.firstName}
+              </h5>
+              <h5 className="font-bold lg:block hidden">{formatedLastName}</h5>
               <i className="fas fa-angle-down mt-[5px] lg:block hidden"></i>
               <i></i>
             </span>

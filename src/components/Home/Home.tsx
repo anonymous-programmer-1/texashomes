@@ -44,10 +44,10 @@ function Home() {
             <span>
               <LoadingRing />
             </span>
+            <span className="home-loading absolute">
+              <ItemsList pass={true} />
+            </span>
           </div>
-          <span className="home-loading absolute">
-            <ItemsList pass={true} />
-          </span>
         </>
       )}
     </>

@@ -123,7 +123,7 @@ function ItemCard(props: ProductsData) {
         className="mt-2 w-full flex justify-center items-center bg-[#060685] hover:bg-[#0e0edf]  transition-all h-12 rounded-br-md rounded-bl-md"
         onClick={signIn}
       >
-        <h5 className="font-bold text-gray-100 text-[1.3rem]">Invest Now</h5>
+        <h5 className="font-bold text-gray-100 text-[1.3rem]">View Deal</h5>
       </span>
     </div>
   );

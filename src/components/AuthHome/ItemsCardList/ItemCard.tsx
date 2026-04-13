@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { userAppContext } from "../../ContextApi/UserContext";
 type ProductsData = {
   data: {
     name: string;
@@ -18,17 +19,24 @@ type ProductsData = {
 
 function ItemCard(prop: ProductsData) {
   const urlNavigator = useNavigate();
+  const userDetails = userAppContext();
   const deals = prop.data;
+  const [isMinimum, setIsMinimum] = useState(false);
+  useEffect(() => {
+    if (!deals) return;
+    (() => {
+      if (Number(deals.minimumOrder) <= 500) {
+        (() => setIsMinimum(true))();
+      }
+    })();
+  }, [deals]);
+  if (!userDetails) return;
+  const { setSingleProductData } = userDetails;
   function moreInfo() {
+    setSingleProductData(deals);
     const url = "/proparty/info";
     urlNavigator(url, { replace: false });
   }
-  const [isMinimum, setIsMinimum] = useState(false);
-  useEffect(() => {
-    if (Number(deals.minimumOrder) === 500) {
-      (() => setIsMinimum(true))();
-    }
-  }, [deals]);
   return (
     <span
       className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[23rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow "
@@ -40,7 +48,9 @@ function ItemCard(prop: ProductsData) {
         </span>
         {isMinimum && (
           <span className="w-fit h-fit p-1 pl-2 pr-2 bg-[#4545dfe7] rounded-b-md">
-            <h5 className="text-gray-200 font-semibold">$500 MINIMUM!</h5>
+            <h5 className="text-gray-200 font-semibold">
+              ${deals.minimumOrder} MINIMUM!
+            </h5>
           </span>
         )}
       </span>
