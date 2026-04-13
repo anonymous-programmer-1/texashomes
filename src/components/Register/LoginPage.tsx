@@ -23,8 +23,8 @@ function LoginPage() {
       const data = {
         email: email.current.value,
         password: password.current.value,
-      };
-      const url = "http://localhost:1000/user/login";
+      }; //!http://localhost:1000/user/login
+      const url = " https://texashomes-backend-3.onrender.com/user/login";
       const validateUserSignin = await fetch(url, {
         method: "POST",
         headers: {

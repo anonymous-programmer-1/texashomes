@@ -23,8 +23,8 @@ function ItemCards() {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   useEffect(() => {
     async function getProducts() {
-      //!
-      const url = "http://localhost:1000/house/deals";
+      //!https://texashomes-backend-3.onrender.com/house/deals
+      const url = "https://texashomes-backend-3.onrender.com/house/deals";
       try {
         const data = await fetch(url, {
           headers: {
