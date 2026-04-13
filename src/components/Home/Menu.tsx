@@ -1,5 +1,8 @@
 import { useNavigate } from "react-router-dom";
-function Menu(props) {
+type MenuProps = {
+  control: () => void;
+};
+function Menu(props: MenuProps) {
   const control = props.control;
   const urlNavigator = useNavigate();
   function signIn() {
