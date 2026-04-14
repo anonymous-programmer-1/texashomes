@@ -16,10 +16,10 @@ function ItemNameAndInvest() {
         <span className="lg:pl-10 pl-5 text-gray-200 lg:text-[1.5rem] text-[1.1rem]">
           <h5>{singleProductData.name}</h5>
         </span>
-        <span className="w-fit h-fit flex bg-[#4b4bdd] p-2 font-semibold text-gray-100 rounded-full ml-auto mr-5 mt-1 lg:mt-0">
+        <span className="w-fit h-fit flex bg-[#4b4bdd] p-2 font-semibold text-gray-100 rounded-full ml-auto mr-5 mt-1 lg:mt-0 overflow-hidden">
           <i className="fas fa-circle-check mr-0.5 mt-0.5 text-[1.2rem] font-normal"></i>
-          <h5 className="hidden lg:block">INVEST IN THIS DEAL</h5>
-          <h5 className="lg:hidden block text-[1.1rem]">INVEST IN THIS DEAL</h5>
+          <h5 className="hidden lg:block ">INVEST IN THIS DEAL</h5>
+          <h5 className="lg:hidden block text-[16px]">INVEST IN THIS DEAL</h5>
         </span>
       </div>
     </>

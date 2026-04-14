@@ -39,7 +39,7 @@ function ItemCard(prop: ProductsData) {
   }
   return (
     <span
-      className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[23rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow "
+      className="mt-2 flex flex-col gap-2 p-4 border-[1px] border-gray-400 bg-[#0a0a14ee] w-fit max-w-[22rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow "
       onClick={moreInfo}
     >
       <span className="flex absolute top-0 mt-[-0.5px] gap-2 ml-2">
@@ -54,7 +54,7 @@ function ItemCard(prop: ProductsData) {
           </span>
         )}
       </span>
-      <span className="w-full h-[12rem]">
+      <span className="w-full h-[10rem]">
         <img className="w-full h-full rounded-md" src={deals.imageUrl[0]}></img>
       </span>
       <span className="text-gray-300 font-semibold text-[0.9rem]">

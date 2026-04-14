@@ -24,7 +24,7 @@ function ItemCards() {
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com/house/deals
-      const url = "https://texashomes-backend-3.onrender.com/house/deals";
+      const url = "http://localhost:1000/house/deals";
       try {
         const data = await fetch(url, {
           headers: {
