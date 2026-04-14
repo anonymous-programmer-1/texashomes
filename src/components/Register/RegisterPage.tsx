@@ -38,6 +38,10 @@ function RegisterPage() {
     const url = "/about/user/portfolio/";
     urlNavigator(url, { replace: false });
   }
+  function login() {
+    const url = "/login";
+    urlNavigator(url, { replace: false });
+  }
   function ValidateInput(
     firstName: RefObject<HTMLInputElement | null>,
     lastName: RefObject<HTMLInputElement | null>,
@@ -202,7 +206,7 @@ function RegisterPage() {
             <h5 className="text-gray-100 font-sans mr-1">
               Already have an account?
             </h5>
-            <a className="text-[#4b4bdd] font-sans" href="login">
+            <a className="text-[#4b4bdd] font-sans" onClick={login}>
               Sign in
             </a>
           </span>

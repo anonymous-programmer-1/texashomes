@@ -14,6 +14,10 @@ function LoginPage() {
   const useDeatails = userAppContext();
   if (!useDeatails) return;
   const { setUserData } = useDeatails;
+  function signin() {
+    const url = "/signin";
+    urlNavigator(url, { replace: false });
+  }
   async function sigIn(
     email: RefObject<HTMLInputElement | null>,
     password: RefObject<HTMLInputElement | null>,
@@ -94,7 +98,7 @@ function LoginPage() {
             <h5 className="text-gray-100 font-sans mr-1">
               Don't have an account?
             </h5>
-            <a className="text-[#4b4bdd] font-sans" href="signin">
+            <a className="text-[#4b4bdd] font-sans" onClick={signin}>
               Sign up
             </a>
           </span>
