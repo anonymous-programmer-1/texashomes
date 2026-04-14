@@ -14,7 +14,8 @@ const AboutItemCard = lazy(
   () => import("./components/AuthHome/ItemsCardList/AboutItem/AbouItemCard"),
 );
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+const test = import.meta.env.VITE_test;
+console.log(test);
 //
 
 function App() {

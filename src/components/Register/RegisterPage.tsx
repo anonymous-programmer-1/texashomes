@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef, lazy, type RefObject } from "react";
 import { userAppContext } from "../ContextApi/UserContext";
 const LoadingRing = lazy(() => import("../Loading animation/loadingRing"));
+const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 //*
 type UserDataType = {
   firstname: string;
@@ -34,7 +35,7 @@ function RegisterPage() {
   const { userData, setUserData } = userDetails;
   function saveRegistrationDetails(data: UserDataType) {
     setUserData(data);
-    const url = "/about/user/potflio/q";
+    const url = "/about/user/portfolio/";
     urlNavigator(url, { replace: false });
   }
   function ValidateInput(
@@ -138,7 +139,7 @@ function RegisterPage() {
         email: email.current.value,
         password: password.current.value,
       };
-      const serverUrl = "http://localhost:1000/user/register"; //!https://texashomes-backend-3.onrender.com
+      const serverUrl = `${ServerBaseUrl}/user/register`; //!https://texashomes-backend-3.onrender.com
       const sendData = await fetch(serverUrl, {
         method: "POST",
         headers: {

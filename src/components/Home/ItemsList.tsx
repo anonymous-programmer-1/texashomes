@@ -1,6 +1,7 @@
 import { useEffect, useState, lazy } from "react";
 const ItemCard = lazy(() => import("../Card/ItemCard"));
 import { userAppContext } from "../ContextApi/UserContext";
+const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 
 type ProductsData = {
   name: string;
@@ -28,7 +29,7 @@ function ItemsList(props: Pass) {
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com
-      const url = "http://localhost:1000/house/deals";
+      const url = `${ServerBaseUrl}/house/deals`;
       try {
         const data = await fetch(url, {
           headers: {

@@ -1,9 +1,9 @@
 import { useState, useEffect, lazy } from "react";
 const ItemCard = lazy(() => import("./ItemCard"));
-
 const LoadingAnimation = lazy(
   () => import("../../Loading animation/loadingRing"),
 );
+const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 //
 type ProductsData = {
   name: string;
@@ -24,7 +24,7 @@ function ItemCards() {
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com/house/deals
-      const url = "http://localhost:1000/house/deals";
+      const url = `${ServerBaseUrl}/house/deals`;
       try {
         const data = await fetch(url, {
           headers: {

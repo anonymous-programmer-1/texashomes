@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useRef, lazy, type RefObject } from "react";
 import { userAppContext } from "../ContextApi/UserContext";
 const LoadingRing = lazy(() => import("../Loading animation/loadingRing"));
+const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 function LoginPage() {
   const urlNavigator = useNavigate();
   const email = useRef<HTMLInputElement | null>(null);
@@ -24,7 +25,7 @@ function LoginPage() {
         email: email.current.value,
         password: password.current.value,
       }; //!https://texashomes-backend-3.onrender.com
-      const url = "http://localhost:1000/user/login";
+      const url = `${ServerBaseUrl}/user/login`;
       const validateUserSignin = await fetch(url, {
         method: "POST",
         headers: {
