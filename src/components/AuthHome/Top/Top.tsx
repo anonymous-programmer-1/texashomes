@@ -1,6 +1,7 @@
 import logodark from "/images/logo/logodark.png";
 import { userAppContext } from "../../ContextApi/UserContext";
 import { useState, lazy } from "react";
+import { useNavigate } from "react-router-dom";
 const Menu = lazy(() => import("./Menu"));
 const UserMenu = lazy(() => import("./UserMenu"));
 type UserDetailsProp = {
@@ -8,6 +9,7 @@ type UserDetailsProp = {
   lastName: string;
 };
 function Top() {
+  const urlNavigator = useNavigate();
   const userDetails = userAppContext();
   const [menuContrl, setMenuControl] = useState<boolean>(false);
   const [userMenuControl, setUserMenuControl] = useState<boolean>(false);
@@ -22,9 +24,17 @@ function Top() {
     firstName: userData.firstname,
     lastName: formatedLastName,
   };
+  function toPotfolio() {
+    const url = "/user/potfolio";
+    urlNavigator(url, { replace: false });
+  }
+  function toCompany() {
+    const url = "/company/potfolio";
+    urlNavigator(url, { replace: false });
+  }
   return (
     <>
-      <div className="bg-[#0d0d13] sticky top-0 z-10">
+      <div className="bg-[#0d0d13] sticky top-0 z-10 overflow-hidden">
         <div className="w-full flex lg:pl-10 pl-5 ">
           <span className="w-24 h-20 rounded-full ">
             <img className="w-full h-full " alt="logo" src={logodark}></img>
@@ -33,14 +43,14 @@ function Top() {
             <span className=" text-gray-400 font-semibold">
               <h5>DEALS</h5>
             </span>
-            <span className=" text-gray-400 font-semibold">
+            <span className=" text-gray-400 font-semibold" onClick={toPotfolio}>
               <h5>MANAGERS</h5>
             </span>
 
             <span className=" text-gray-400 font-semibold">
               <h5>PORTFOLIO</h5>
             </span>
-            <span className=" text-gray-400 font-semibold">
+            <span className=" text-gray-400 font-semibold" onClick={toCompany}>
               <h5>COMPANY</h5>
             </span>
           </div>

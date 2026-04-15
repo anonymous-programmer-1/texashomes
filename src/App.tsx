@@ -13,6 +13,9 @@ const AuthHome = lazy(() => import("./components/AuthHome/AuthHome"));
 const AboutItemCard = lazy(
   () => import("./components/AuthHome/ItemsCardList/AboutItem/AbouItemCard"),
 );
+const Potfolio = lazy(() => import("./components/Potfolio/Potfolio"));
+const Company = lazy(() => import("./components/Company/Company"));
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 //
@@ -47,6 +50,14 @@ function App() {
       {
         path: "/proparty/info",
         element: <AboutItemCard />,
+      },
+      {
+        path: "/company/potfolio",
+        element: <Company />,
+      },
+      {
+        path: "/user/potfolio",
+        element: <Potfolio />,
       },
     ],
     { basename: "/texashomes/" },
