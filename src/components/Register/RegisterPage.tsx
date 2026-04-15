@@ -35,7 +35,7 @@ function RegisterPage() {
   const { setUserData } = userDetails;
   function saveRegistrationDetails(data: UserDataType) {
     setUserData(data);
-    const url = "/about/user/portfolio/";
+    const url = "/about/user/portfolio/q";
     urlNavigator(url, { replace: false });
   }
   function login() {
