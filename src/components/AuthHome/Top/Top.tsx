@@ -1,6 +1,6 @@
 import logodark from "/images/logo/logodark.png";
 import { userAppContext } from "../../ContextApi/UserContext";
-import { useState, lazy } from "react";
+import { useState, lazy, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const Menu = lazy(() => import("./Menu"));
 const UserMenu = lazy(() => import("./UserMenu"));
@@ -16,19 +16,25 @@ function Top() {
   const [userMenuControl, setUserMenuControl] = useState<boolean>(false);
   if (!userDetails) return;
   const { userData } = userDetails;
+  if (!userData) return;
   const userName = {
     firstName: userData.firstname,
     lastName: userData.lastname,
   };
-  console.log(userName.lastName.split(""));
-  if (!userName.firstName || !userName.lastName) {
-    const url = "/auth/home";
-    urlNavigator(url, { replace: true });
-  }
+  // Put this right below your userName object declaration
+  useEffect(() => {
+    const test = userName.firstName === "" || userName.lastName === "";
+    if (test) {
+      urlNavigator("/", { replace: true });
+    }
+  }, [userName.firstName, userName.lastName, urlNavigator]);
+
+  // Cleaner approach using slice
   const formatedLastName =
-    userName.lastName.split("").length >= 1
-      ? `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`
+    userName.lastName.length >= 2
+      ? `${userName.lastName.slice(0, 2).split("").join("/")}`
       : "";
+
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
     lastName: formatedLastName,
