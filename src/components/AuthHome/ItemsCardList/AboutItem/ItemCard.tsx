@@ -29,20 +29,20 @@ function ItemCard() {
     });
   }
   return (
-    <div className="flex p-5 justify-center bg-[#171718]">
-      <div className="inline-flex flex-wrap rounded-lg gap-3 w-full h-fit border-[1px] border-gray-400 bg-[#0a0a14ee] p-5 ">
+    <div className="flex p-5 justify-center bg-[#171718] ">
+      <div className="inline-flex flex-wrap rounded-lg gap-3 w-full h-fit border-[1px] border-gray-400  bg-[#1e1e22ee] p-5 ">
         <span className="lg:w-[30%] min-h-full max-h-fit w-full flex relative">
-          <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] absolute top-[45%]  ml-4">
+          <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:h-10 hover:w-10 hover:transition-all hover:mt-[-3px] absolute top-[45%]  ml-4">
             <i
               className="fa fa-arrow-left text-[1rem] text-gray-100"
               onClick={decressImage}
             ></i>
           </span>
           <img
-            className="w-full h-full rounded-md"
+            className="min-w-52 min-h-40 w-full h-full rounded-md"
             src={singleProductData.imageUrl[imageIndex]}
           ></img>
-          <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] absolute top-[45%] right-0 mr-4 ">
+          <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:h-10 hover:w-10 hover:transition-all hover:mt-[-3px] absolute top-[45%] right-0 mr-4 ">
             <i
               className="fa fa-arrow-right text-[1rem] text-gray-100"
               onClick={incressImgae}

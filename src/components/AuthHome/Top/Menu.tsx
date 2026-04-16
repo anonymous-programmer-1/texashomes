@@ -14,14 +14,24 @@ function Menu(props: MenuControl) {
     const url = "/company/potfolio";
     urlNavigator(url, { replace: false });
   }
+  function toHome() {
+    const url = "/auth/home";
+    urlNavigator(url, { replace: false });
+  }
   return (
     <div className="">
-      <div className="flex gap-6 flex-col absolute bg-[#0d0d13] w-[80%] max-w-[350px] mt-9 z-10 left-0 p-4 h-screen">
+      <div className="flex gap-6 flex-col fixed bg-[#0d0d13] w-[80%] max-w-[350px] mt-9 z-50 left-0 p-4 h-screen">
         <span className="ml-auto mb-2">
           <i
             className="fa fa-xmark"
-            onClick={() => control((prevControl) => !prevControl)}
+            onClick={() => {
+              control((prevControl) => !prevControl);
+            }}
           ></i>
+        </span>
+        <span className="flex text-[1rem] items-center" onClick={toHome}>
+          <h5>DEALS</h5>
+          <i className="fas fa-angle-right ml-auto" onClick={toCompany}></i>
         </span>
         <span className="flex text-[1rem] items-center">
           <h5>MANAGERS</h5>

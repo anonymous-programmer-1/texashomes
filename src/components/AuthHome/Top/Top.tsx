@@ -4,6 +4,7 @@ import { useState, lazy } from "react";
 import { useNavigate } from "react-router-dom";
 const Menu = lazy(() => import("./Menu"));
 const UserMenu = lazy(() => import("./UserMenu"));
+
 type UserDetailsProp = {
   firstName: string;
   lastName: string;
@@ -32,6 +33,11 @@ function Top() {
     const url = "/company/potfolio";
     urlNavigator(url, { replace: false });
   }
+  function toHome() {
+    const url = "/auth/home";
+    urlNavigator(url, { replace: false });
+  }
+
   return (
     <>
       <div className="bg-[#0d0d13] sticky top-0 z-10 overflow-hidden">
@@ -40,17 +46,26 @@ function Top() {
             <img className="w-full h-full " alt="logo" src={logodark}></img>
           </span>
           <div className="items-center gap-7 ml-16 hidden lg:flex">
-            <span className=" text-gray-400 font-semibold">
-              <h5>DEALS</h5>
+            <span
+              className=" text-gray-400 font-semibold border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 "
+              onClick={toHome}
+            >
+              <h5 onClick={toHome}>DEALS</h5>
             </span>
-            <span className=" text-gray-400 font-semibold" onClick={toPotfolio}>
+            <span
+              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4"
+              onClick={toPotfolio}
+            >
               <h5>MANAGERS</h5>
             </span>
 
-            <span className=" text-gray-400 font-semibold">
+            <span className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4">
               <h5>PORTFOLIO</h5>
             </span>
-            <span className=" text-gray-400 font-semibold" onClick={toCompany}>
+            <span
+              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4"
+              onClick={toCompany}
+            >
               <h5>COMPANY</h5>
             </span>
           </div>
@@ -65,7 +80,7 @@ function Top() {
             {menuContrl && <Menu func={setMenuControl} />}
           </span>
           <span className="flex items-center ml-auto">
-            <span className="flex items-center w-fit h-fit p-1.5 pl-2.5 pr-2.5 rounded-full gap-1 bg-[#4b4bdd] ">
+            <span className="flex items-center w-fit h-fit p-1.5 pl-2.5 pr-2.5 rounded-full gap-1 bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:transition-all  ">
               <i className="fa fa-message font-light text-gray-100"></i>
               <h5 className="text-gray-100 font-bold text-[0.9rem]">CHAT</h5>
             </span>

@@ -1,16 +1,38 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 function MenuCategory() {
   const [sharesControl, setSharesControl] = useState<boolean>(false);
   const [statusControl, setStatusControl] = useState<boolean>(false);
   const [finacControl, setFinancControl] = useState<boolean>(false);
+  const sharesRef = useRef<HTMLSpanElement>(null);
+  const statusRef = useRef<HTMLSpanElement>(null);
+  const finacRef = useRef<HTMLSpanElement>(null);
+  useEffect(() => {
+    if (!sharesRef.current || !statusRef.current || !finacRef.current) return;
+    if (sharesControl) {
+      sharesRef.current.style.borderColor = "#060685";
+    } else {
+      sharesRef.current.style.borderColor = "rgb(200 213 219)";
+    }
+    if (statusControl) {
+      statusRef.current.style.borderColor = "#060685";
+    } else {
+      statusRef.current.style.borderColor = "rgb(200 213 219)";
+    }
+    if (finacControl) {
+      finacRef.current.style.borderColor = "#060685";
+    } else {
+      finacRef.current.style.borderColor = "rgb(200 213 219)";
+    }
+  }, [statusControl, sharesControl, finacControl]);
   return (
     <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
         <span className="flex flex-col gap-0.5">
-          <h5 className="text-gray-400">Shares/Minimum</h5>
+          <h5 className="text-gray-300">Shares/Minimum</h5>
           <span className="w-[10rem] h-fit max-w-fit">
             <span
               className="w-[9.5rem]  h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-400 font-semibold rounded-md"
+              ref={sharesRef}
               onClick={() => {
                 setSharesControl(!sharesControl);
                 setStatusControl(false);
@@ -51,6 +73,7 @@ function MenuCategory() {
           <h5 className="text-gray-400">Financing Type</h5>
           <span
             className="w-[8rem] h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-400 font-semibold rounded-md"
+            ref={finacRef}
             onClick={() => {
               setFinancControl(!finacControl);
               setSharesControl(false);
@@ -81,6 +104,7 @@ function MenuCategory() {
           <h5 className="text-gray-400">Statues</h5>
           <span
             className="w-[8rem] h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-200 font-semibold rounded-md"
+            ref={statusRef}
             onClick={() => {
               setStatusControl(!statusControl);
               setSharesControl(false);

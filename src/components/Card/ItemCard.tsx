@@ -36,29 +36,31 @@ function ItemCard(props: ProductsData) {
     <div className="w-[400px] h-fit flex flex-col bg-white  rounded-md items-stretch flex-grow hover:shadow-lg hover:-translate-y-1 transition-all">
       <span className="block w-full h-[22rem] relative">
         <div className="flex absolute w-full flex-col  mt-2">
-          <span className="block w-full h-4 bg-transparent rounded-lg pl-2 pr-2">
-            <span
-              className="block bg-[#060685]   transition-all h-full rounded-lg"
-              style={{
-                width: `${deals.fundingParcent}%`,
-              }}
-            ></span>
+          <span className="block w-full h-4  rounded-lg  pl-2 pr-2">
+            <span className="flex w-full h-full bg-[#4444495e] rounded-full">
+              <span
+                className=" bg-[#060685]  rounded-lg"
+                style={{
+                  width: `${deals.fundingParcent}%`,
+                }}
+              ></span>
+            </span>
           </span>
           <span className="block">
-            <h5 className="pl-4 text-[1rem] font-semibold text-[#060685]">
+            <h5 className="pl-4 text-[1rem] font-semibold text-[#060685] ">
               {deals.fundingParcent}%
             </h5>
           </span>
         </div>
 
-        <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] hover:bg-[#0e0edf]  transition-all absolute top-[40%]  ml-4">
+        <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] hover:w-10 hover:h-10 hover:mt-[-2px] hover:bg-[#0e0edf]  transition-all absolute top-[40%]  ml-4">
           <i
             className="fa fa-arrow-left text-[1rem]  transition-all text-gray-100"
             onClick={imageLeft}
           ></i>
         </span>
-        <span className="block w-fit p-0.5 pl-2 pr-2 absolute bottom-2 ml-4 border-[1px] border-[#060685]  blur-[0.5px] rounded-lg">
-          <h5 className="text-[1rem] font-sans text-[#060685]">
+        <span className="block w-fit p-0.5 pl-2 pr-2 absolute bottom-2 ml-4 border-[1px] border-[#060685]    blur-[0.5px] rounded-lg">
+          <h5 className="text-[1rem] font-sans text-[#060685] ">
             {deals.investors} investors
           </h5>
         </span>
@@ -66,7 +68,7 @@ function ItemCard(props: ProductsData) {
           className="w-full h-full rounded-tr-md rounded-tl-md"
           src={deals.imageUrl[imageCount]}
         ></img>
-        <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] hover:bg-[#0e0edf]  transition-all absolute top-[40%] right-0 mr-4">
+        <span className="flex justify-center items-center w-9 h-9 rounded-full bg-[#060685] hover:w-10 hover:h-10 hover:mt-[-2px] hover:bg-[#0e0edf]  transition-all absolute top-[40%] right-0 mr-4">
           <i
             className="fa fa-arrow-right text-[1rem]   transition-all text-gray-100"
             onClick={imageRight}

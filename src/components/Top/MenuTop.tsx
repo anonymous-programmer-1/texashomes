@@ -27,13 +27,13 @@ function MenuTop() {
           ></i>
         </span>
         <span className="ml-auto  hidden lg:flex">
-          <span>
-            <h5 className="text-[1rem] text-[#060685]">INVESTMENT PLAN</h5>
+          <span className="border-[#060685] hover:border-b-2 hover:border-[#060685]  hover:transition-all">
+            <h5 className="text-[1rem] text-[#060685] ">INVESTMENT PLAN</h5>
           </span>
-          <span>
-            <h5 className="text-[1rem] text-[#060685] ml-10 mr-10">ABOUT</h5>
+          <span className="ml-10 mr-10 border-[#060685] hover:border-b-2 hover:border-[#060685]  hover:transition-all">
+            <h5 className="text-[1rem] text-[#060685]  ">ABOUT</h5>
           </span>
-          <span className="text-[1rem] text-[#060685]">
+          <span className="text-[1rem] text-[#060685] border-[#060685] hover:border-b-2 hover:border-[#060685]  hover:transition-all">
             <h5>CONTACT US</h5>
           </span>
         </span>

@@ -1,7 +1,7 @@
 function Overview() {
   return (
     <div className="flex p-5 justify-center ">
-      <div className="w-full h-fit p-5 flex flex-col gap-4 border-[1px] border-gray-400 bg-[#0a0a14ee] rounded-md">
+      <div className="w-full h-fit p-5 flex flex-col gap-4 border-[1px] border-gray-400 bg-[#1e1e22ee] rounded-md">
         <span className="text-gray-300 lg:text-[1.3rem] text-[1.1rem]">
           <h5>Deal Summary</h5>
         </span>
