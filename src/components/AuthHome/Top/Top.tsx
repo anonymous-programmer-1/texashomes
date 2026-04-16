@@ -20,7 +20,9 @@ function Top() {
     firstName: userData.firstname,
     lastName: userData.lastname,
   };
-  const formatedLastName = `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
+  const formatedLastName =
+    userName.lastName &&
+    `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
     lastName: formatedLastName,
