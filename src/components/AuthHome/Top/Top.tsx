@@ -20,11 +20,15 @@ function Top() {
     firstName: userData.firstname,
     lastName: userData.lastname,
   };
+  console.log(userName.lastName.split(""));
   if (!userName.firstName || !userName.lastName) {
     const url = "/auth/home";
     urlNavigator(url, { replace: true });
   }
-  const formatedLastName = `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
+  const formatedLastName =
+    userName.lastName.split("").length >= 1
+      ? `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`
+      : "";
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
     lastName: formatedLastName,
