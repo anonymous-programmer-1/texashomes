@@ -14,9 +14,7 @@ const FeaturedIn = lazy(() => import("./FeaturedIn"));
 const WhyAbout = lazy(() => import("./WhyAbout"));
 const End = lazy(() => import("../End/End"));
 import { userAppContext } from "../ContextApi/UserContext";
-const LoadingRing = lazy(
-  () => import("../../../../Loading animation/loadingRing"),
-);
+const LoadingRing = lazy(() => import("../Loading animation/loadingRing"));
 function Home() {
   const useDeatails = userAppContext();
 

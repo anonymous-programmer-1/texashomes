@@ -24,5 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "../Loading animation"]
+  "include": ["src", "src/components/Loading animation"]
 }

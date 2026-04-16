@@ -1,7 +1,7 @@
 import { useState, useEffect, lazy } from "react";
 const ItemCard = lazy(() => import("./ItemCard"));
 const LoadingAnimation = lazy(
-  () => import("../../../../../Loading animation/loadingRing"),
+  () => import("../../Loading animation/loadingRing"),
 );
 const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 //
