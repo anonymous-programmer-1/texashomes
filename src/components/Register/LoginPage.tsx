@@ -74,9 +74,7 @@ function LoginPage() {
     }
     if (!loadingAnimation.current) return;
     loadingAnimation.current.style.display = "block";
-    setTimeout(() => {
-      sigIn(email, password);
-    }, 2000);
+    sigIn(email, password);
   }
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">

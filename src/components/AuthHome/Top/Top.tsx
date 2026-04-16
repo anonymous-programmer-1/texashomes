@@ -21,8 +21,9 @@ function Top() {
     lastName: userData.lastname,
   };
   const formatedLastName =
-    userName.lastName &&
-    `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
+    userName.lastName.length > 1
+      ? `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`
+      : "";
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
     lastName: formatedLastName,

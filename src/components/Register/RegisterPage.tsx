@@ -117,9 +117,7 @@ function RegisterPage() {
       }
       renderLoading(true, loadingAnimation);
       //!
-      setTimeout(() => {
-        callBack(firstName, lastName, email, password);
-      }, 1000);
+      callBack(firstName, lastName, email, password);
     }
   }
   async function registerUser(
