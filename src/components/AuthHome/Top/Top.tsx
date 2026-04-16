@@ -20,6 +20,10 @@ function Top() {
     firstName: userData.firstname,
     lastName: userData.lastname,
   };
+  if (!userName.firstName || !userName.lastName) {
+    const url = "/auth/home";
+    urlNavigator(url, { replace: true });
+  }
   const formatedLastName =
     userName.lastName.length > 1
       ? `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`
