@@ -30,10 +30,9 @@ function Top() {
   }, [userName.firstName, userName.lastName, urlNavigator]);
 
   // Cleaner approach using slice
-  const formatedLastName =
-    userName.lastName.length >= 2
-      ? `${userName.lastName.slice(0, 2).split("").join("/")}`
-      : "";
+  const formatedLastName = userName.lastName
+    ? `${userName.lastName.slice(0, 2).split("").join("/")}`
+    : "";
 
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
