@@ -24,10 +24,7 @@ function Top() {
     const url = "/auth/home";
     urlNavigator(url, { replace: true });
   }
-  const formatedLastName =
-    userName.lastName.length > 1
-      ? `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`
-      : "";
+  const formatedLastName = `${userName.lastName.split("")[0]}/${userName.lastName.split("")[1]}`;
   const userDetailsProp: UserDetailsProp = {
     firstName: userData.firstname,
     lastName: formatedLastName,
