@@ -1,7 +1,7 @@
 function Overview() {
   return (
     <div className="flex p-5 justify-center ">
-      <div className="w-full h-fit p-5 flex flex-col gap-4 border-[1px] border-gray-400 bg-[#1e1e22ee] rounded-md">
+      <div className="w-full h-fit p-5 flex flex-col gap-4 border-[1px] border-baseCard-borderColor bg-[#1e1e22ee] rounded-md">
         <span className="text-gray-300 lg:text-[1.3rem] text-[1.1rem]">
           <h5>Deal Summary</h5>
         </span>
@@ -20,7 +20,7 @@ function Overview() {
             information about the calculation of the expected return.
           </h5>
         </span>
-        <span className="text-gray-300 lg:text-[1.3rem] pb-2 border-b-[1px] border-gray-400 text-[1.1rem]">
+        <span className="text-gray-300 lg:text-[1.3rem] pb-2 border-b-[1px] border-baseCard-borderColor text-[1.1rem]">
           <h5>Frequently Asked Questions</h5>
         </span>
         <span className="text-gray-200 flex flex-col gap-3 mt-4">

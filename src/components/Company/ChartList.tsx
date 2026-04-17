@@ -54,7 +54,7 @@ const color = [
 function ChatList() {
   return (
     <div className="flex flex-wrap gap-4 justify-around p-4 overflow-hidden">
-      <span className="flex gap-3 flex-col border-[1px] border-gray-400 bg-[#1e1e22ee] flex-grow items-stretch p-4 rounded-md">
+      <span className="flex gap-3 flex-col border-[1px] border-baseCard-borderColor bg-baseCard-color flex-grow items-stretch p-4 rounded-md">
         <h5 className="text-[1rem] text-gray-300 font-semibold">
           INTERAST RATE
         </h5>
@@ -62,19 +62,19 @@ function ChatList() {
           <PiaChat data={data1} color={color} type={"%"} />
         </span>
       </span>
-      <span className="flex gap-3 flex-col border-[1px] border-gray-400 bg-[#1e1e22ee] flex-grow items-stretch p-4 rounded-md">
+      <span className="flex gap-3 flex-col border-[1px] border-baseCard-borderColor bg-baseCard-color flex-grow items-stretch p-4 rounded-md">
         <h5 className="text-[1rem] text-gray-300 font-semibold">TERMS</h5>
         <span className="flex justify-center">
           <PiaChat data={data2} color={color} type={" months"} />
         </span>
       </span>
-      <span className="flex gap-3 flex-col border-[1px] border-gray-400 bg-[#1e1e22ee] flex-grow items-stretch p-4 rounded-md">
+      <span className="flex gap-3 flex-col border-[1px] border-baseCard-borderColor bg-baseCard-color flex-grow items-stretch p-4 rounded-md">
         <h5 className="text-[1rem] text-gray-300 font-semibold">MANAGERS</h5>
         <span className="flex justify-center">
           <PiaChat data={data3} color={color} type={" homes"} />
         </span>
       </span>
-      <span className="flex gap-3 flex-col border-[1px] border-gray-400 bg-[#1e1e22ee] flex-grow items-stretch p-4 rounded-md">
+      <span className="flex gap-3 flex-col border-[1px] border-baseCard-borderColor bg-baseCard-color flex-grow items-stretch p-4 rounded-md">
         <h5 className="text-[1rem] text-gray-300 font-semibold">INVESTORS</h5>
         <span className="flex justify-center">
           <PiaChat data={data4} color={color} type={"%"} subData={subData} />

@@ -1,6 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base {
+  :root {
+    --baseCard-color: rgb(33, 33, 35);
+    --baseCard-borderColor: rgb(80, 80, 81);
+    --baseDark-blue: #3a3ac5;
+    --baseLight-blue: #4545dfe7;
+    --baseText-font: serif;
+  }
+}
 
 @keyframes appear-side {
   from {
@@ -45,7 +54,10 @@
 .appear-element-up {
   animation: appear-up linear forwards;
   animation-timeline: view();
-  animation-range: entry 0 cover 15%;
+  animation-range: entry 0 cover 25%;
+}
+.pointer {
+  cursor: pointer;
 }
 body {
   margin: 0;

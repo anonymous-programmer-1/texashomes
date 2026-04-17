@@ -21,6 +21,7 @@ type ProductsData = {
 function ItemCards() {
   const [deals, setDeals] = useState<ProductsData[]>();
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
+  const [noData, setNoData] = useState<boolean>(false);
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com/house/deals
@@ -38,29 +39,43 @@ function ItemCards() {
         setDeals(products);
         setIsLoaded(true);
       } catch (error) {
+        setNoData(true);
         console.log(error);
       }
     }
     getProducts();
   }, []);
-
-  return (
-    <>
-      {!isLoaded ? (
-        <div className="w-full flex h-[60vh] justify-center items-center">
-          <div>
-            <LoadingAnimation />
-          </div>
-        </div>
-      ) : (
-        <div className="flex flex-wrap gap-2 p-4 justify-around  bg-[#171718]">
-          {deals &&
-            deals.map((e, i) => {
-              return <ItemCard data={e} key={i} />;
-            })}
-        </div>
-      )}
-    </>
+  const noDeals = (
+    <div className="p-4">
+      <div className="transition-all w-full h-fit flex flex-col items-center  p-6 border-[1px] border-baseCard-borderColor bg-baseCard-color rounded-md">
+        <span className="fa fa-book text-[8rem] text-[#52515193]  rounded-lg "></span>
+        <h5 className="text-[1.2rem] text-gray-300 mt-3 font-semibold">
+          No Deals Found
+        </h5>
+        <h5 className="mt-2 text-gray-300">
+          There are currently no deals available
+        </h5>
+      </div>
+    </div>
   );
+  const display = !noData ? (
+    !isLoaded ? (
+      <div className="w-full flex h-[60vh] justify-center items-center">
+        <div>
+          <LoadingAnimation />
+        </div>
+      </div>
+    ) : (
+      <div className="flex flex-wrap gap-2 p-4 justify-around  bg-[#171718]">
+        {deals &&
+          deals.map((e, i) => {
+            return <ItemCard data={e} key={i} />;
+          })}
+      </div>
+    )
+  ) : (
+    noDeals
+  );
+  return <>{display}</>;
 }
 export default ItemCards;

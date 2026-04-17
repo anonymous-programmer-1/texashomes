@@ -21,7 +21,6 @@ function Top() {
     firstName: userData.firstname,
     lastName: userData.lastname,
   };
-  // Put this right below your userName object declaration
   useEffect(() => {
     const test = userName.firstName === "" || userName.lastName === "";
     if (test) {
@@ -60,29 +59,29 @@ function Top() {
           </span>
           <div className="items-center gap-7 ml-16 hidden lg:flex">
             <span
-              className=" text-gray-400 font-semibold border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 "
+              className=" text-gray-400 font-semibold border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer "
               onClick={toHome}
             >
               <h5 onClick={toHome}>DEALS</h5>
             </span>
-            <span
-              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4"
-              onClick={toPotfolio}
-            >
+            <span className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer">
               <h5>MANAGERS</h5>
             </span>
 
-            <span className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4">
+            <span
+              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
+              onClick={toPotfolio}
+            >
               <h5>PORTFOLIO</h5>
             </span>
             <span
-              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4"
+              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
               onClick={toCompany}
             >
               <h5>COMPANY</h5>
             </span>
           </div>
-          <span className="flex items-center  text-gray-400 text-[1rem] ml-4 lg:hidden">
+          <span className="flex items-center  text-gray-400 text-[1rem] ml-4 lg:hidden pointer">
             <i
               className="fa fa-bars text-[1.3rem]"
               onClick={() => {
@@ -93,7 +92,7 @@ function Top() {
             {menuContrl && <Menu func={setMenuControl} />}
           </span>
           <span className="flex items-center ml-auto">
-            <span className="flex items-center w-fit h-fit p-1.5 pl-2.5 pr-2.5 rounded-full gap-1 bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:transition-all  ">
+            <span className="flex items-center w-fit h-fit p-1.5 pl-2.5 pr-2.5 rounded-full gap-1 bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:transition-all  pointer">
               <i className="fa fa-message font-light text-gray-100"></i>
               <h5 className="text-gray-100 font-bold text-[0.9rem]">CHAT</h5>
             </span>
@@ -101,7 +100,7 @@ function Top() {
           <span className="flex items-center ml-[25px] pr-5">
             <span className="flex text-gray-400 gap-1.5">
               <i
-                className="fa fa-user font-light mt-[5px] text-[1.3rem]"
+                className="fa fa-user font-light mt-[5px] text-[1.3rem] pointer"
                 onClick={() => {
                   setUserMenuControl(!userMenuControl);
                   setMenuControl(false);
@@ -113,7 +112,7 @@ function Top() {
               <h5 className="font-bold lg:block hidden">{formatedLastName}</h5>
               {userMenuControl ? (
                 <i
-                  className="fas fa-angle-up mt-[5px] lg:block hidden"
+                  className="fas fa-angle-up mt-[5px] lg:block hidden pointer"
                   onClick={() => {
                     setUserMenuControl(!userMenuControl);
                     setMenuControl(false);
@@ -121,7 +120,7 @@ function Top() {
                 ></i>
               ) : (
                 <i
-                  className="fas fa-angle-down mt-[5px] lg:block hidden"
+                  className="fas fa-angle-down mt-[5px] lg:block hidden pointer"
                   onClick={() => {
                     setUserMenuControl(!userMenuControl);
                     setMenuControl(false);

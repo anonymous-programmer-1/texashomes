@@ -27,11 +27,11 @@ function MenuCategory() {
   return (
     <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
-        <span className="flex flex-col gap-0.5">
+        <span className="flex flex-col gap-0.5 pointer ">
           <h5 className="text-gray-300">Shares/Minimum</h5>
           <span className="w-[10rem] h-fit max-w-fit">
             <span
-              className="w-[9.5rem]  h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-400 font-semibold rounded-md"
+              className="w-[9.5rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-400 font-semibold rounded-md"
               ref={sharesRef}
               onClick={() => {
                 setSharesControl(!sharesControl);
@@ -48,7 +48,7 @@ function MenuCategory() {
             </span>
             {sharesControl && (
               <div className="pt-0.5">
-                <div className="flex flex-col gap-3 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all">
+                <div className="flex flex-col gap-3 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
                   <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
                     <h5>$200 - $1,000k</h5>
                   </span>
@@ -69,10 +69,10 @@ function MenuCategory() {
             )}
           </span>
         </span>
-        <span className="flex flex-col gap-0.5 ">
+        <span className="flex flex-col gap-0.5 pointer  ">
           <h5 className="text-gray-400">Financing Type</h5>
           <span
-            className="w-[8rem] h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-400 font-semibold rounded-md"
+            className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-400 font-semibold rounded-md"
             ref={finacRef}
             onClick={() => {
               setFinancControl(!finacControl);
@@ -100,10 +100,10 @@ function MenuCategory() {
             </div>
           )}
         </span>
-        <span className="flex flex-col gap-0.5">
+        <span className="flex flex-col gap-0.5 pointer ">
           <h5 className="text-gray-400">Statues</h5>
           <span
-            className="w-[8rem] h-fit flex pl-2 border-[0.5px] bg-transparent text-gray-200 font-semibold rounded-md"
+            className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-200 font-semibold rounded-md"
             ref={statusRef}
             onClick={() => {
               setStatusControl(!statusControl);
@@ -111,7 +111,7 @@ function MenuCategory() {
               setFinancControl(false);
             }}
           >
-            <h5>FUNDING</h5>
+            <h5 className="text-gray-400">FUNDING</h5>
             {statusControl ? (
               <i className="fas fa-angle-up mt-1 ml-auto mr-1"></i>
             ) : (
