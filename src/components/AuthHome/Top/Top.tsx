@@ -59,23 +59,23 @@ function Top() {
           </span>
           <div className="items-center gap-7 ml-16 hidden lg:flex">
             <span
-              className=" text-gray-400 font-semibold border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer "
+              className=" text-gray-400 font-semibold border-[#0e0e77] border-opacity-0 border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer "
               onClick={toHome}
             >
               <h5 onClick={toHome}>DEALS</h5>
             </span>
-            <span className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer">
+            <span className=" text-gray-400 font-semibold  border-[#0e0e77] border-opacity-0 border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer">
               <h5>MANAGERS</h5>
             </span>
 
             <span
-              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
+              className=" text-gray-400 font-semibold  border-[#0e0e77] border-opacity-0 border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
               onClick={toPotfolio}
             >
               <h5>PORTFOLIO</h5>
             </span>
             <span
-              className=" text-gray-400 font-semibold  border-[#0e0e77] hover:border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
+              className=" text-gray-400 font-semibold  border-[#0e0e77] border-opacity-0 border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer"
               onClick={toCompany}
             >
               <h5>COMPANY</h5>

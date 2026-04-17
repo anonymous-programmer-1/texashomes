@@ -28,7 +28,7 @@ function MenuCategory() {
     <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
         <span className="flex flex-col gap-0.5 pointer ">
-          <h5 className="text-gray-300">Shares/Minimum</h5>
+          <h5 className="text-gray-400">Shares/Minimum</h5>
           <span className="w-[10rem] h-fit max-w-fit">
             <span
               className="w-[9.5rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-400 font-semibold rounded-md"
