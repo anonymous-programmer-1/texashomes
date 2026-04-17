@@ -6,7 +6,7 @@ function OverviewTop() {
           <span className="flex flex-col gap-2">
             <i className="fa fa-ring text-[#060685] text-[1.3rem]"></i>
             <h5 className="text-gray-400 text-[1rem] font-semibold">
-              TOATL VALUE
+              TOTAL VALUE
             </h5>
             <h5 className="text-gray-200 text-[1.2rem] font-semibold">$0.00</h5>
           </span>

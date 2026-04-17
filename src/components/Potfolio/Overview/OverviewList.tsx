@@ -36,7 +36,7 @@ function OverviewList() {
         </h5>
         <div className="flex flex-col items-center mt-6">
           <span className="flex felx-col">
-            <i className="fa fa-copy text-[3rem] text-baseDark-blue"></i>
+            <i className="fa fa-copy lg:text-[3rem] text-[2.5rem] text-baseDark-blue"></i>
             <span className="w-fit h-fit border-[1px] border-baseCard-borderColor bg-[#52515193] p-2 rounded-md hover:bg-baseLight-blue transition-all pointer  text-gray-300">
               <h5 className="text-[1rem] font-bold ">COPY LINK</h5>
             </span>
