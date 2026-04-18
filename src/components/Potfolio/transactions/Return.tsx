@@ -9,9 +9,7 @@ function Returns() {
         <h5 className="text-[1.2rem] text-gray-300 mt-3 font-semibold">
           No Results
         </h5>
-        <h5 className="mt-2 text-gray-300">
-          Fund your account and invest in a deal to build your portfolio
-        </h5>
+        <h5 className="mt-2 text-gray-300">No interest payments found</h5>
       </div>
     </div>
   );

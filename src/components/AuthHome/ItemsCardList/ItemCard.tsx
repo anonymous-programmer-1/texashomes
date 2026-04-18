@@ -31,7 +31,7 @@ function ItemCard(prop: ProductsData) {
   }
   return (
     <span
-      className="mt-2 test-bg flex flex-col gap-2 p-4 border-[1px]  border-gray-400 bg-baseCard-color   w-fit max-w-[22rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow "
+      className="mt-2 test-bg flex flex-col gap-2 p-4 border-[1px]  border-gray-400 bg-baseCard-color   w-fit max-w-[22rem]  h-fit max-h-[45rem] rounded-md relative items-stretch flex-grow hover:border-baseDark-blue hover:-translate-y-1 transition-all"
       onClick={moreInfo}
     >
       <span className="flex absolute top-0 mt-[-0.5px] gap-2 ml-2">
