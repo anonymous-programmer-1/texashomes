@@ -109,7 +109,7 @@ function ItemCard() {
             </span>
             <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px] min-[691px]:border-r-[2px] border-gray-600">
               <h5 className="text-[1rem] font-semibold text-gray-400">
-                RETURN ON INVESTMENT
+                INVESTMENT OBJECTIVE/RETURN
               </h5>
               <h5 className="text-[1.1rem] mt-[-3px] font-bold text-gray-200">
                 ${singleProductData.returnPrice}
