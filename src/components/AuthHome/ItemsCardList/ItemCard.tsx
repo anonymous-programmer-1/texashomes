@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { userAppContext } from "../../ContextApi/UserContext";
 type ProductsData = {
   data: {
@@ -15,21 +14,14 @@ type ProductsData = {
     investmentTerm: string;
     imageUrl: string[];
   };
+  isMinimum: boolean;
 };
 
 function ItemCard(prop: ProductsData) {
   const urlNavigator = useNavigate();
   const userDetails = userAppContext();
   const deals = prop.data;
-  const [isMinimum, setIsMinimum] = useState(false);
-  useEffect(() => {
-    if (!deals) return;
-    (() => {
-      if (Number(deals.minimumOrder) <= 500) {
-        (() => setIsMinimum(true))();
-      }
-    })();
-  }, [deals]);
+  const isMinimum = prop.isMinimum;
   if (!userDetails) return;
   const { setSingleProductData } = userDetails;
   function moreInfo() {

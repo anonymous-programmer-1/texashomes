@@ -36,7 +36,7 @@ function ItemCards() {
         const responds = await data.json();
         const products: ProductsData[] = responds.data;
         //const shuffledData = shuffleArray(products);
-        setDeals(products);
+        setDeals([...products]);
         setIsLoaded(true);
       } catch (error) {
         setNoData(true);
@@ -69,7 +69,9 @@ function ItemCards() {
       <div className="flex flex-wrap gap-2 p-4 justify-around  bg-[#171718]">
         {deals &&
           deals.map((e, i) => {
-            return <ItemCard data={e} key={i} />;
+            const pass = Number(e.minimumOrder) <= 500 ? true : false;
+
+            return <ItemCard data={e} key={i} isMinimum={pass} />;
           })}
       </div>
     )
