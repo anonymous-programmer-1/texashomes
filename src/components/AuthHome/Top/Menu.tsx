@@ -6,15 +6,28 @@ type MenuControl = {
 function Menu(props: MenuControl) {
   const control = props.func;
   const urlNavigator = useNavigate();
+  function saveMenuBar(type: string) {
+    const MenuBar = "MENU_BAR";
+    const control = {
+      deals: type === "d" ? true : false,
+      manager: type === "m" ? true : false,
+      portfolio: type === "p" ? true : false,
+      company: type === "c" ? true : false,
+    };
+    localStorage.setItem(MenuBar, JSON.stringify(control));
+  }
   function toPotfolio() {
+    saveMenuBar("p");
     const url = "/user/potfolio";
     urlNavigator(url, { replace: false });
   }
   function toCompany() {
+    saveMenuBar("c");
     const url = "/company/potfolio";
     urlNavigator(url, { replace: false });
   }
   function toHome() {
+    saveMenuBar("d");
     const url = "/auth/home";
     urlNavigator(url, { replace: false });
   }
