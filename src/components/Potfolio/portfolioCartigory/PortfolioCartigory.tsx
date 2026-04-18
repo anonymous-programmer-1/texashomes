@@ -1,6 +1,7 @@
 import { useState, lazy, useEffect, type ReactElement } from "react";
 const Overview = lazy(() => import("../Overview/Overview"));
 const Return = lazy(() => import("../returns/Returns"));
+const Transactions = lazy(() => import("../transactions/Transactions"));
 type ViewControl = {
   overview: boolean;
   returns: boolean;
@@ -20,6 +21,10 @@ function PortfolioCartigory(props: ViewControl) {
     } else if (returns) {
       (() => {
         setDisplay(<Return />);
+      })();
+    } else if (transaction) {
+      (() => {
+        setDisplay(<Transactions />);
       })();
     }
   }, [overview, returns, transaction]);
