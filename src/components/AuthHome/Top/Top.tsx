@@ -73,7 +73,12 @@ function Top() {
   }, [deals, manager, portfolio, company]);
   useEffect(() => {
     const MenuBar = "MENU_BAR";
-    const data: MenuBarData | null = JSON.parse(localStorage.getItem(MenuBar));
+    const rawData = localStorage.getItem(MenuBar);
+    let data: MenuBarData | null = null;
+    if (rawData) {
+      data = JSON.parse(rawData);
+    }
+
     if (data) {
       setDeals(data.deals);
       setManager(data.manager);
