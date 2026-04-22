@@ -88,3 +88,13 @@ body {
   background-color: rgba(72, 65, 141, 0.863);
   background-color: rgba(105, 91, 226, 0.863);
 }
+@media (min-width: 300px) {
+  .videoHeight {
+    min-height: 19rem;
+  }
+  @media (min-width: 500px) {
+    .videoHeight {
+      min-height: 23rem;
+    }
+  }
+}

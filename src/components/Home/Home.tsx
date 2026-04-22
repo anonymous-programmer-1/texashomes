@@ -5,6 +5,7 @@ const ListAndPath = lazy(() => import("../Top/ListingAndPath"));
 const MenuCategory = lazy(() => import("../Top/MenuCategory"));
 const ItemsList = lazy(() => import("./ItemsList"));
 const SignUpAlert1 = lazy(() => import("../SignupAlert/SignupAlert1"));
+const WhatsAbout = lazy(() => import("./WhatsAbout"));
 const Comments = lazy(() => import("./Comment"));
 const DealsAndIncomeAlert = lazy(
   () => import("../SignupAlert/DealsAndIncomeAlert"),
@@ -12,6 +13,7 @@ const DealsAndIncomeAlert = lazy(
 const BultFor = lazy(() => import("./BultFor"));
 const FeaturedIn = lazy(() => import("./FeaturedIn"));
 const WhyAbout = lazy(() => import("./WhyAbout"));
+const TopInvestors = lazy(() => import("./TopInvestors"));
 const End = lazy(() => import("../End/End"));
 import { userAppContext } from "../ContextApi/UserContext";
 const LoadingRing = lazy(() => import("../Loading animation/loadingRing"));
@@ -32,6 +34,8 @@ function Home() {
           <BultFor />
           <FeaturedIn />
           <SignUpAlert1 />
+          <WhatsAbout />
+          <TopInvestors />
           <ItemsList pass={false} />
           <Comments />
           <DealsAndIncomeAlert />

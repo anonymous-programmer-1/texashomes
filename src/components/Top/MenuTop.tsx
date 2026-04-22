@@ -13,7 +13,7 @@ function MenuTop() {
     setMenuVisible(!menuVisible);
   }
   return (
-    <div className=" sticky top-0   z-10">
+    <div className=" sticky top-0   z-10 pointer">
       <div className="flex  w-full bg-[white] border-b-2 pt-1 pb-1 items-center shadow-lg ">
         <div className=" flex lg:pl-10 pl-5">
           <span className="w-20 h-16 rounded-full ">

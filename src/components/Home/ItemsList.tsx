@@ -22,10 +22,13 @@ type Pass = {
 function ItemsList(props: Pass) {
   const pass = props.pass;
   const [deals, setDeals] = useState<ProductsData[]>();
+  const [reConnect, setReConnect] = useState<boolean>(false);
   const userDetails = userAppContext();
   if (!userDetails) return null;
   const { setProductData, setIsLoading } = userDetails;
-
+  function retryConnection() {
+    setReConnect((prevConnect) => !prevConnect);
+  }
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com
@@ -60,11 +63,14 @@ function ItemsList(props: Pass) {
         setProductData(products);
         setIsLoading(true);
       } catch (error) {
+        setTimeout(() => {
+          retryConnection();
+        }, 1000);
         console.log(error);
       }
     }
     getProducts();
-  }, []);
+  }, [reConnect]);
   return (
     <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
       <span className="">
