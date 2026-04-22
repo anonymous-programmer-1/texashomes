@@ -7,7 +7,7 @@ function TopInvestors() {
         </h5>
         <span className="block w-1 bg-[#0c0cbe] h-6 ml-1"></span>
       </span>
-      <div className="w-full flex mt-4 pl-10 pr-10 gap-7 justify-evenly  track-slide">
+      <div className="w-full flex mt-4 pl-10 pr-10 justify-evenly  track-slide">
         <span className="flex  items-center gap-2  text-[1.2rem] font-semibold">
           <span className="w-16 h-16 bg-gray-400 rounded-full"></span>
           <h5>Kenny chesnny</h5>

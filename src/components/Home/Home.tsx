@@ -39,7 +39,9 @@ function Home() {
           <ItemsList pass={false} />
           <Comments />
           <DealsAndIncomeAlert />
+          <ItemsList pass={false} />
           <WhyAbout />
+
           <End />
         </>
       ) : (
