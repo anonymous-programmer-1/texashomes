@@ -8,6 +8,8 @@
     --baseDark-blue: #3a3ac5;
     --baseLight-blue: #4545dfe7;
     --baseText-font: serif;
+    --breakpoint-x3: 300px;
+    --brakpoint-x5: 500px;
   }
 }
 
@@ -37,12 +39,26 @@
   gap: 6rem;
   animation: track 15s linear infinite;
 }
+.track-slide-moblie {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 6rem;
+  animation: track-moblie 15s linear infinite;
+}
 @keyframes track {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-80%);
+  }
+}
+@keyframes track-moblie {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-400%);
   }
 }
 
@@ -94,7 +110,7 @@ body {
   }
   @media (min-width: 500px) {
     .videoHeight {
-      min-height: 23rem;
+      min-height: 24rem;
     }
   }
 }

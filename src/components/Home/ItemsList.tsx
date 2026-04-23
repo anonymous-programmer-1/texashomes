@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy } from "react";
+import { useEffect, useState, lazy, useRef } from "react";
 const ItemCard = lazy(() => import("../Card/ItemCard"));
 import { userAppContext } from "../ContextApi/UserContext";
 const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
@@ -18,11 +18,17 @@ type ProductsData = {
 };
 type Pass = {
   pass: boolean;
+  Icontrol?: boolean;
+  setIcontrol?: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 function ItemsList(props: Pass) {
   const pass = props.pass;
+  const Icontrol = props.Icontrol;
+  console.log(Icontrol);
   const [deals, setDeals] = useState<ProductsData[]>();
   const [reConnect, setReConnect] = useState<boolean>(false);
+  const investRef = useRef<HTMLDivElement | null>(null);
   const userDetails = userAppContext();
   if (!userDetails) return null;
   const { setProductData, setIsLoading } = userDetails;
@@ -71,8 +77,21 @@ function ItemsList(props: Pass) {
     }
     getProducts();
   }, [reConnect]);
+  useEffect(() => {
+    if (!investRef.current) return;
+    if (!Icontrol) return;
+    if (!props.setIcontrol) return;
+    investRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+    props.setIcontrol(false);
+  }, [Icontrol]);
   return (
-    <div className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 ">
+    <div
+      className="h-fit pt-6 pb-6 pl-8 w-full bg-[#f0eded] mt-7 "
+      ref={investRef}
+    >
       <span className="">
         <h5 className="text-[1.5rem] text-[#060685] font-bold">Top Deals</h5>
       </span>

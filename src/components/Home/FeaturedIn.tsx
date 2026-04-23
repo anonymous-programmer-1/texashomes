@@ -1,4 +1,17 @@
+import { useRef, useEffect } from "react";
 function FeaturedIn() {
+  const slideDiv = useRef<HTMLDivElement | null>(null);
+  const screenWidth = window.innerWidth;
+  useEffect(() => {
+    if (!slideDiv.current) return;
+    if (screenWidth <= 499) {
+      slideDiv.current.classList.remove("track-slide");
+      slideDiv.current.classList.add("track-slide-moblie");
+    } else {
+      slideDiv.current.classList.remove("track-slide-moblie");
+      slideDiv.current.classList.add("track-slide");
+    }
+  }, [screenWidth]);
   return (
     <div className="w-full mt-20 mb-20 pl-8 pr-8 appear-element overflow-hidden whitespace-nowrap">
       <span className="flex h-full  mt-4">
@@ -7,7 +20,10 @@ function FeaturedIn() {
         </h5>
         <span className="block w-1 bg-[#0c0cbe] h-6 ml-1"></span>
       </span>
-      <div className="w-full flex mt-4 pl-10 pr-10 gap-12 justify-evenly  track-slide">
+      <div
+        className="w-full flex mt-4 pl-10 pr-10 gap-12 justify-evenly "
+        ref={slideDiv}
+      >
         <span className="font-mono text-[1.7rem] font-semibold">
           <h5>FinTech</h5>
         </span>

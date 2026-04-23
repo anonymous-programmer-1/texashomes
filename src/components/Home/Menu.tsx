@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 type MenuProps = {
   control: () => void;
+  setControlA: React.Dispatch<React.SetStateAction<boolean>>;
+  setIcontrol: React.Dispatch<React.SetStateAction<boolean>>;
 };
 function Menu(props: MenuProps) {
   const control = props.control;
@@ -31,13 +33,25 @@ function Menu(props: MenuProps) {
               onClick={signIn}
             ></i>
           </span>
-          <span className="flex pt-2 pb-2 border-b-2 border-gray-200">
+          <span
+            className="flex pt-2 pb-2 border-b-2 border-gray-200"
+            onClick={() => props.setIcontrol(true)}
+          >
             <h5 className="text-[1rem] text-gray-200">INVESTMENT PLAN</h5>
-            <i className="fas fa-angle-right text-xl text-gray-200 ml-auto"></i>
+            <i
+              className="fas fa-angle-right text-xl text-gray-200 ml-auto"
+              onClick={() => props.setIcontrol(true)}
+            ></i>
           </span>
-          <span className="flex pt-2 pb-2 border-b-2 border-gray-200">
+          <span
+            className="flex pt-2 pb-2 border-b-2 border-gray-200"
+            onClick={() => props.setControlA(true)}
+          >
             <h5 className="text-[1rem] text-gray-200 ">ABOUT</h5>
-            <i className="fas fa-angle-right text-xl text-gray-200 ml-auto"></i>
+            <i
+              className="fas fa-angle-right text-xl text-gray-200 ml-auto"
+              onClick={() => props.setControlA(true)}
+            ></i>
           </span>
           <span className="flex pt-2 pb-2 border-b-2 border-gray-200">
             <h5 className="text-[1rem] text-gray-200">CONTACT US</h5>

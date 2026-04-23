@@ -137,10 +137,30 @@ function Top() {
   return (
     <>
       <div className="bg-[#0d0d13] sticky top-0 z-10 overflow-hidden">
-        <div className="w-full flex lg:pl-10 pl-5 ">
-          <span className="w-24 h-20 rounded-full ">
-            <img className="w-full h-full " alt="logo" src={logodark}></img>
+        <div className="w-full flex lg:pl-10  ">
+          <span className="flex items-center  text-gray-400 text-[1rem] ml-6 lg:hidden pointer">
+            <i
+              className="fa fa-bars text-[1.3rem]"
+              onClick={() => {
+                setMenuControl(!menuContrl);
+                setUserMenuControl(false);
+              }}
+            ></i>
+            {menuContrl && <Menu func={setMenuControl} />}
           </span>
+          <div className=" flex  items-center">
+            <span className="w-20 h-16 rounded-full ">
+              <img className="w-full h-full " alt="logo" src={logodark}></img>
+            </span>
+            <span className="flex flex-col ml-[-12px] text-baseDark-blue">
+              <h5 className="lg:text-[1.4rem] text-[1.2rem] font-bold">
+                Texas
+              </h5>
+              <h5 className="ml-[16px] mt-[-10px] lg:text-[1rem] text-[0.9rem] font-semibold">
+                Homes
+              </h5>
+            </span>
+          </div>
           <div className="items-center gap-7 ml-16 hidden lg:flex">
             <span
               className=" font-semibold border-[#0e0e77] border-opacity-0 border-b-2 hover:border-[#0e0e77]  hover:transition-all pt-4 pb-4 pointer "
@@ -167,16 +187,7 @@ function Top() {
               <h5 ref={companyRef}>COMPANY</h5>
             </span>
           </div>
-          <span className="flex items-center  text-gray-400 text-[1rem] ml-4 lg:hidden pointer">
-            <i
-              className="fa fa-bars text-[1.3rem]"
-              onClick={() => {
-                setMenuControl(!menuContrl);
-                setUserMenuControl(false);
-              }}
-            ></i>
-            {menuContrl && <Menu func={setMenuControl} />}
-          </span>
+
           <span className="flex items-center ml-auto">
             <span className="flex items-center w-fit h-fit p-1.5 pl-2.5 pr-2.5 rounded-full gap-1 bg-[#3a3ac5] hover:bg-[#0e0e77]  hover:transition-all  pointer">
               <i className="fa fa-message font-light text-gray-100"></i>

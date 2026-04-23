@@ -8,7 +8,7 @@ function WhatsAbout() {
         <span className="block w-1 bg-[#0c0cbe] h-6 ml-1"></span>
       </span>
       <div className="flex justify-center mt-7">
-        <span className="block w-full items-center max-w-[1280px] bg-black max-h-[450px] videoHeight "></span>
+        <video className="block w-full items-center max-w-[1280px] bg-black max-h-[450px] videoHeight "></video>
       </div>
     </div>
   );

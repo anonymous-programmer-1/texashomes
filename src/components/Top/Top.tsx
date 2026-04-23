@@ -1,6 +1,9 @@
 import MenuTop from "./MenuTop";
-
-function Top() {
+type Controls = {
+  setControlA: React.Dispatch<React.SetStateAction<boolean>>;
+  setIcontrol: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function Top(props: Controls) {
   return (
     <>
       <div className="flex w-full justify-center h-fit pb-0.5 bg-[#060685]">
@@ -17,7 +20,10 @@ function Top() {
           </span>
         </div>
       </div>
-      <MenuTop />
+      <MenuTop
+        setControlA={props.setControlA}
+        setIcontrol={props.setIcontrol}
+      />
     </>
   );
 }
