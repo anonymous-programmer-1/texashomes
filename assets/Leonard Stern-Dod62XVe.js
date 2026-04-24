@@ -1,0 +1,1 @@
+var e=`/texashomes/images/investors/Edward%20Roski%20Jr.jpg`,t=`/texashomes/images/investors/Igor%20Olenicoff.webp`,n=`/texashomes/images/investors/Jeff%20Greene.jpg`,r=`/texashomes/images/investors/Leonard%20Stern.webp`;export{e as i,n,t as r,r as t};
