@@ -1,7 +1,7 @@
-import { useState, lazy, useEffect, type ReactElement } from "react";
-const Overview = lazy(() => import("../Overview/Overview"));
-const Return = lazy(() => import("../returns/Returns"));
-const Transactions = lazy(() => import("../transactions/Transactions"));
+import { useState, useEffect, type ReactElement } from "react";
+import Overview from "../Overview/Overview";
+import Return from "../returns/Returns";
+import Transactions from "../transactions/Transactions";
 type ViewControl = {
   overview: boolean;
   returns: boolean;

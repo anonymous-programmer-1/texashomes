@@ -6,7 +6,7 @@ type ProductsData = {
     price: string;
     manager: string;
     minimumOrder: string;
-    fundingEnd: string;
+    returnType: string;
     investors: string;
     investmentRate: string;
     fundingParcent: string;
@@ -76,11 +76,6 @@ function ItemCard(props: ProductsData) {
         </span>
       </span>
       <div className="w-full pl-5 pr-5 mt-4 flex flex-col">
-        <span className="block ">
-          <h2 className="font-bold text-gray-700 text-[1.2rem]">
-            Trails at Smoky Hill
-          </h2>
-        </span>
         <span className="flex flex-col mt-2">
           <h5 className="text-[1rem] text-gray-600 font-semibold">
             Aurora, CO 8009

@@ -6,7 +6,7 @@ type ProductsData = {
     price: string;
     manager: string;
     minimumOrder: string;
-    fundingEnd: string;
+    returnType: string;
     investors: string;
     investmentRate: string;
     fundingParcent: string;
@@ -52,10 +52,7 @@ function ItemCard(prop: ProductsData) {
       <span className="text-gray-300 font-semibold text-[0.9rem]">
         <h5>FUND</h5>
       </span>
-      <span className="flex w-full">
-        <h5 className="text-[1rem] text-gray-400 font-semibold">
-          Aurora, CO 8009
-        </h5>
+      <span className="w-full">
         <h5 className="font-bold text-baseDark-blue ml-1">
           {deals.name.toLocaleUpperCase()}
         </h5>
@@ -77,7 +74,7 @@ function ItemCard(prop: ProductsData) {
           </span>
           <span className="font-semibold text-[0.9rem] flex gap-1 ml-auto">
             <h5 className="text-gray-100">
-              ENDS {deals.fundingEnd.toLocaleUpperCase()}
+              TYPE {deals.returnType.toLocaleUpperCase()}
             </h5>
           </span>
         </span>

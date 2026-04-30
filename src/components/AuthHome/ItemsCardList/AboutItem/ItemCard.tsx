@@ -72,10 +72,10 @@ function ItemCard() {
             </span>
             <span className="flex gap-2">
               <h5 className="text-[1rem] font-semibold text-gray-400">
-                FUNDING ENDS:
+                RETURN TYPE:
               </h5>
               <h5 className="text-[1rem] font-sans text-gray-200 max-[690px]:ml-auto">
-                {singleProductData.fundingEnd.toLocaleUpperCase()}
+                {singleProductData.returnType.toLocaleUpperCase()}
               </h5>
             </span>
             <span className="flex gap-2">

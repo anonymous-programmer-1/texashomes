@@ -8,7 +8,7 @@ type ProductsData = {
   price: string;
   manager: string;
   minimumOrder: string;
-  fundingEnd: string;
+  returnType: string;
   investors: string;
   investmentRate: string;
   fundingParcent: string;
@@ -25,7 +25,6 @@ type Pass = {
 function ItemsList(props: Pass) {
   const pass = props.pass;
   const Icontrol = props.Icontrol;
-  console.log(Icontrol);
   const [deals, setDeals] = useState<ProductsData[]>();
   const [reConnect, setReConnect] = useState<boolean>(false);
   const investRef = useRef<HTMLDivElement | null>(null);
@@ -47,7 +46,7 @@ function ItemsList(props: Pass) {
         });
 
         const responds = await data.json();
-        if (responds.status !== 200) return;
+        if (!responds.ok) return;
         const products: ProductsData[] = responds.data;
         //
         const shuffleArray = (array: ProductsData[]) => {

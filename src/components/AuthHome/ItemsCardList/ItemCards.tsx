@@ -10,7 +10,7 @@ type ProductsData = {
   price: string;
   manager: string;
   minimumOrder: string;
-  fundingEnd: string;
+  returnType: string;
   investors: string;
   investmentRate: string;
   fundingParcent: string;

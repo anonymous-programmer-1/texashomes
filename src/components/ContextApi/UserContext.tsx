@@ -25,7 +25,7 @@ type ProductsData = {
   price: string;
   manager: string;
   minimumOrder: string;
-  fundingEnd: string;
+  returnType: string;
   investors: string;
   investmentRate: string;
   fundingParcent: string;
@@ -78,7 +78,7 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
       price: "",
       manager: "",
       minimumOrder: "",
-      fundingEnd: "",
+      returnType: "",
       investors: "",
       investmentRate: "",
       fundingParcent: "",
@@ -92,7 +92,7 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     price: "",
     manager: "",
     minimumOrder: "",
-    fundingEnd: "",
+    returnType: "",
     investors: "",
     investmentRate: "",
     fundingParcent: "",
