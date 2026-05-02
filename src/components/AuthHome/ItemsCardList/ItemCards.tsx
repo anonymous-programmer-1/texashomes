@@ -46,7 +46,7 @@ function ItemCards() {
     getProducts();
   }, []);
   const noDeals = (
-    <div className="p-4">
+    <div className="p-4 w-full">
       <div className="transition-all w-full h-fit flex flex-col items-center  p-6 border-[1px] border-baseCard-borderColor bg-baseCard-color rounded-md">
         <span className="fa fa-book text-[8rem] text-[#52515193]  rounded-lg "></span>
         <h5 className="text-[1.2rem] text-gray-300 mt-3 font-semibold">
@@ -66,7 +66,7 @@ function ItemCards() {
         </div>
       </div>
     ) : (
-      <div className="flex flex-wrap gap-2 p-4 justify-around  bg-[#171718]">
+      <div className="flex flex-wrap gap-4 w-full sm:grid sm:grid-cols-2 ms:grid-cols-2 min-[900px]:grid-cols-3 min-[1400px]:grid-cols-4 min-[1800px]:grid-cols-5  p-4 justify-around  bg-[#171718]">
         {deals &&
           deals.map((e, i) => {
             const pass = Number(e.minimumOrder) <= 500 ? true : false;

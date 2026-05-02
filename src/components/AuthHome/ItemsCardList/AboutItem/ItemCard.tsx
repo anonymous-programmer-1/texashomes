@@ -51,31 +51,47 @@ function ItemCard() {
         </span>
         <span className="w-full lg:w-[68%]">
           <span className="flex border-b-[1px] pb-2 border-gray-500 lg:text-[1.5rem] text-[1.2rem] text-gray-200">
-            <h5>{singleProductData.name}</h5>
+            <h5>Austin 3BR Rental - Oak Street</h5>
           </span>
-          <div className="flex w-full flex-col mt-8 gap-4">
+          <div className="flex flex-wrap lg:gap-4 gap-2 items-center mt-2">
+            <div className="flex w-full  max-w-[500px] gap-2 items-center">
+              <span className="flex w-full h-4 bg-[#505052ea]">
+                <span
+                  className=" w-full h-4 bg-baseDark-blue "
+                  style={{
+                    width: `${singleProductData.fundingParcent}%`,
+                  }}
+                ></span>
+              </span>
+              <span className="font-semibold text-[0.9rem] flex gap-1">
+                <h5 className="text-baseDark-blue text-[1rem]">
+                  {singleProductData.fundingParcent}%
+                </h5>
+                <h5 className="text-gray-100">FUNDED</h5>
+              </span>
+            </div>
+            <span>
+              <h5 className="text-[1rem] font-sans font-bold text-gray-200 max-[690px]:ml-auto">
+                {"$160K of $250K raised".toLocaleUpperCase()}
+              </h5>
+            </span>
+          </div>
+
+          <div className="flex w-full flex-col mt-3 lg:gap-4 gap-3">
             <span className="flex gap-2">
               <h5 className="text-[1rem] font-semibold text-gray-400 ">
-                FINANCING TYPE:
+                ASSET TYPE:
               </h5>
-              <h5 className="text-[1rem] font-sans text-gray-200 max-[690px]:ml-auto">
-                Asset Based
+              <h5 className="text-[1rem] font-sans font-bold text-gray-200 max-[690px]:ml-auto">
+                RENTAL PROPERTY
               </h5>
             </span>
             <span className="flex gap-2">
               <h5 className="text-[1rem] font-semibold text-gray-400 ">
-                MANAGER:
+                INVESTORS:
               </h5>
-              <h5 className="text-[1rem] font-sans text-[#060685] max-[690px]:ml-auto">
-                {singleProductData.manager}
-              </h5>
-            </span>
-            <span className="flex gap-2">
-              <h5 className="text-[1rem] font-semibold text-gray-400">
-                RETURN TYPE:
-              </h5>
-              <h5 className="text-[1rem] font-sans text-gray-200 max-[690px]:ml-auto">
-                {singleProductData.returnType.toLocaleUpperCase()}
+              <h5 className="text-[1rem] font-sans font-bold text-gray-200 max-[690px]:ml-auto">
+                320/500
               </h5>
             </span>
             <span className="flex gap-2">
@@ -88,10 +104,26 @@ function ItemCard() {
             </span>
             <span className="flex gap-2">
               <h5 className="text-[1rem] font-semibold text-gray-400">
-                INVESTMENT RATE:
+                TARGET RETURN:
               </h5>
               <h5 className="text-[1.2rem] mt-[-3px] font-bold text-gray-200 max-[690px]:ml-auto">
                 {singleProductData.investmentRate}
+              </h5>
+            </span>
+            <span className="flex gap-2">
+              <h5 className="text-[1rem] font-semibold text-gray-400">
+                PROJECTED RETURN:
+              </h5>
+              <h5 className="text-[1.2rem] mt-[-3px] font-bold text-gray-200 max-[690px]:ml-auto">
+                ${Number(singleProductData.minimumOrder) * 1.5}
+              </h5>
+            </span>
+            <span className="flex gap-2">
+              <h5 className="text-[1rem] font-semibold text-gray-400">
+                RISK LEVEL:
+              </h5>
+              <h5 className="text-[1rem] mt-[-3px] font-semibold text-gray-200 max-[690px]:ml-auto">
+                LOW-MEDIUM
               </h5>
             </span>
           </div>
@@ -100,21 +132,39 @@ function ItemCard() {
               <h5 className="text-[1rem] font-semibold text-gray-400">
                 INVESTMENT TERM
               </h5>
-              <h5 className="text-[1.1rem] font-sans text-gray-200">
+              <h5 className="text-[1.1rem] font-sans font-semibold text-gray-200">
                 {singleProductData.investmentTerm.toLocaleUpperCase()}
               </h5>
               <h5 className=" font-sans text-gray-400 mt-[-12px]">
-                martures june 4th, 2026
+                ends june 4th, 2026
               </h5>
             </span>
             <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px] min-[691px]:border-r-[2px] border-gray-600">
               <h5 className="text-[1rem] font-semibold text-gray-400">
-                INVESTMENT OBJECTIVE/RETURN
+                PAYOUT
               </h5>
-              <h5 className="text-[1.1rem] mt-[-3px] font-bold text-gray-200">
-                ${singleProductData.returnPrice}
+              <h5 className="text-[1.1rem] mt-[-3px] font-semibold text-gray-200">
+                MONTHLY TO WALLET
               </h5>
             </span>
+            <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px] min-[691px]:border-r-[2px] border-gray-600">
+              <h5 className="text-[1rem] font-semibold text-gray-400">
+                EST. MONTHLY
+              </h5>
+              <h5 className="text-[1.1rem] mt-[-3px] font-semibold text-gray-200">
+                $18.12 starting Nov 30
+              </h5>
+            </span>
+            <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px] min-[691px]:border-r-[2px] border-gray-600">
+              <h5 className="text-[1rem] font-semibold text-gray-400">
+                LOCK-UP
+              </h5>
+              <h5 className="text-[1.1rem] mt-[-3px] font-semibold text-gray-200">
+                FUNDS LOCKED{" "}
+                {singleProductData.investmentTerm.toLocaleUpperCase()}
+              </h5>
+            </span>
+
             <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px]  border-gray-600">
               <h5 className="text-[1rem] font-semibold text-gray-400">
                 PROPERTY PRICE
@@ -124,8 +174,7 @@ function ItemCard() {
                   ${singleProductData.price}
                 </h5>
                 <span className="flex p-1 font-semibold text-gray-200 bg-[#4545dfe7] rounded-md gap-1 mt-[-3px]">
-                  <h5>{singleProductData.fundingParcent}%</h5>
-                  <h5>FUNDED</h5>
+                  <h5>Appraised</h5>
                 </span>
               </span>
             </span>

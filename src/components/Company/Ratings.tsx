@@ -9,7 +9,7 @@ function Rating() {
           </h5>
         </span>
         <h5 className="text-gray-300 font-semibold text-[1.4rem] mt-2">
-          $846,033,0
+          $3,000,846,000
         </h5>
       </div>
       <div className="min-w-[21rem] h-[10rem] ] border-[1px] p-4 border-baseCard-borderColor bg-baseCard-color rounded-md flex-grow ">
@@ -17,7 +17,7 @@ function Rating() {
           <i className="fa fa-signal text-[#060685] text-[1.3rem]"></i>
           <h5 className="text-gray-400 text-[1rem] font-semibold">Deals</h5>
         </span>
-        <h5 className="text-gray-300 font-semibold text-[1.4rem] mt-2">600</h5>
+        <h5 className="text-gray-300 font-semibold text-[1.4rem] mt-2">1200</h5>
       </div>
       <div className="min-w-[21rem] h-[10rem]  border-[1px] p-4 border-baseCard-borderColor bg-baseCard-color rounded-md flex-grow">
         <span className="flex flex-col gap-2">
@@ -31,7 +31,7 @@ function Rating() {
             Avg Deals size
           </h5>
           <h5 className="ml-auto text-gray-300 font-semibold text-[1.1rem] ">
-            $4,846,033,0
+            $4,750,000
           </h5>
         </span>
         <span className="flex mt-1">
@@ -39,7 +39,7 @@ function Rating() {
             Avg Intarest Rate
           </h5>
           <h5 className="ml-auto text-gray-300 font-semibold text-[1.1rem] ">
-            16.2%
+            5.2%
           </h5>
         </span>
       </div>

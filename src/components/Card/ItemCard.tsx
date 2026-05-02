@@ -35,7 +35,7 @@ function ItemCard(props: ProductsData) {
   return (
     <div className="w-[400px] h-fit flex flex-col bg-white  rounded-md items-stretch flex-grow hover:shadow-lg hover:-translate-y-1 transition-all">
       <span className="block w-full h-[22rem] relative">
-        <div className="flex absolute w-full flex-col  mt-2">
+        <div className="flex absolute w-full gap-2 flex-wrap  mt-2">
           <span className="block w-full h-4  rounded-lg  pl-2 pr-2">
             <span className="flex w-full h-full bg-[#4444495e] rounded-full">
               <span
@@ -46,9 +46,9 @@ function ItemCard(props: ProductsData) {
               ></span>
             </span>
           </span>
-          <span className="block">
+          <span className="">
             <h5 className="pl-4 text-[1rem] font-semibold text-[#060685] ">
-              {deals.fundingParcent}%
+              {deals.fundingParcent}% FUNDED
             </h5>
           </span>
         </div>
@@ -61,7 +61,7 @@ function ItemCard(props: ProductsData) {
         </span>
         <span className="block w-fit p-0.5 pl-2 pr-2 absolute bottom-2 ml-4 border-[1px] border-[#060685]    blur-[0.5px] rounded-lg">
           <h5 className="text-[1rem] font-sans text-[#060685] ">
-            {deals.investors} investors
+            {deals.investors}/500 investors
           </h5>
         </span>
         <img
@@ -78,7 +78,7 @@ function ItemCard(props: ProductsData) {
       <div className="w-full pl-5 pr-5 mt-4 flex flex-col">
         <span className="flex flex-col mt-2">
           <h5 className="text-[1rem] text-gray-600 font-semibold">
-            Aurora, CO 8009
+            Austin 3BR Rental - Oak Street
           </h5>
           <h5 className="font-bold text-[#060685]">{deals.name}</h5>
         </span>

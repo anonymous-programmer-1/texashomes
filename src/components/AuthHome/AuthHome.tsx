@@ -4,7 +4,7 @@ import ItemCards from "./ItemsCardList/ItemCards";
 import End from "./End";
 function AuthHome() {
   return (
-    <div className="bg-[#171718]">
+    <div className="bg-[#171718] w-full relative ">
       <Top />
       <DealsMenu />
       <ItemCards />

@@ -12,12 +12,7 @@ function Overview() {
             for use by, persons in the U.S. only, and is not intended for
             distribution to or use by any person in any other jurisdiction.
             Please review the Confidential Private Placement Memorandum for full
-            offering disclosures including Risk Factors which can be found in
-            the data room for this offering (see tab above).
-          </h5>
-          <h5>
-            *See 'How much can I expect to earn?' below for important
-            information about the calculation of the expected return.
+            offering disclosures including Risk Factors.
           </h5>
         </span>
         <span className="text-gray-300 lg:text-[1.3rem] pb-2 border-b-[1px] border-baseCard-borderColor text-[1.1rem]">

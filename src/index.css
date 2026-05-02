@@ -114,3 +114,9 @@ body {
     }
   }
 }
+@media (min-width: 200px) {
+  .cardResponsiveDisplay {
+    display: grid;
+    grid-column: 100%, 100%, 100%, 100%;
+  }
+}

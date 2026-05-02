@@ -19,7 +19,7 @@ function MenuTop(props: Controls) {
   return (
     <div className=" sticky top-0   z-10 pointer">
       <div className="flex  w-full bg-[white] border-b-2 pt-1 pb-1 items-center shadow-lg ">
-        <span className="block ml-8 lg:hidden">
+        <span className="block ml-8 sm:hidden">
           <i
             className="fa fa-bars text-[1.3rem] text-[#060685]"
             onClick={sideMenu}
@@ -37,7 +37,7 @@ function MenuTop(props: Controls) {
           </span>
         </div>
 
-        <span className="ml-auto hidden lg:flex ">
+        <span className="ml-auto hidden sm:flex ">
           <span
             className=" border-b-2 border-white hover:border-[#060685]  hover:transition-all"
             onClick={() => props.setIcontrol(true)}
