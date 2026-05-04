@@ -12,6 +12,9 @@ type ProductsData = {
     fundingParcent: string;
     returnPrice: string;
     investmentTerm: string;
+    monthlyPay: string;
+    riskLevel: string;
+    amontToRaise: string;
     imageUrl: string[];
   };
 };
@@ -78,7 +81,7 @@ function ItemCard(props: ProductsData) {
       <div className="w-full pl-5 pr-5 mt-4 flex flex-col">
         <span className="flex flex-col mt-2">
           <h5 className="text-[1rem] text-gray-600 font-semibold">
-            Austin 3BR Rental - Oak Street
+            Austin Rental - Oak Street
           </h5>
           <h5 className="font-bold text-[#060685]">{deals.name}</h5>
         </span>
@@ -88,7 +91,7 @@ function ItemCard(props: ProductsData) {
         </span>
         <span className="ml-auto mt-2">
           <h5 className="text-[1rem] text-gray-600 font-semibold text-center">
-            House Price
+            Proparty Price
           </h5>
           <h5 className="text-[1.4rem] font-bold text-[#060685]">
             ${deals.price}

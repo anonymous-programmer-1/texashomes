@@ -16,6 +16,9 @@ type ProductsData = {
   fundingParcent: string;
   returnPrice: string;
   investmentTerm: string;
+  monthlyPay: string;
+  riskLevel: string;
+  amontToRaise: string;
   imageUrl: string[];
 };
 function ItemCards() {

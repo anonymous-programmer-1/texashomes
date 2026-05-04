@@ -72,7 +72,8 @@ function ItemCard() {
             </div>
             <span>
               <h5 className="text-[1rem] font-sans font-bold text-gray-200 max-[690px]:ml-auto">
-                {"$160K of $250K raised".toLocaleUpperCase()}
+                ${(Number(singleProductData.investors) * 500).toLocaleString()}{" "}
+                OF ${singleProductData.amontToRaise.toLocaleUpperCase()} RAISED
               </h5>
             </span>
           </div>
@@ -91,7 +92,7 @@ function ItemCard() {
                 INVESTORS:
               </h5>
               <h5 className="text-[1rem] font-sans font-bold text-gray-200 max-[690px]:ml-auto">
-                320/500
+                {singleProductData.investors}/500
               </h5>
             </span>
             <span className="flex gap-2">
@@ -107,7 +108,7 @@ function ItemCard() {
                 TARGET RETURN:
               </h5>
               <h5 className="text-[1.2rem] mt-[-3px] font-bold text-gray-200 max-[690px]:ml-auto">
-                {singleProductData.investmentRate}
+                {singleProductData.investmentRate}%APY
               </h5>
             </span>
             <span className="flex gap-2">
@@ -115,7 +116,7 @@ function ItemCard() {
                 PROJECTED RETURN:
               </h5>
               <h5 className="text-[1.2rem] mt-[-3px] font-bold text-gray-200 max-[690px]:ml-auto">
-                ${Number(singleProductData.minimumOrder) * 1.5}
+                ${singleProductData.returnPrice}
               </h5>
             </span>
             <span className="flex gap-2">
@@ -123,7 +124,7 @@ function ItemCard() {
                 RISK LEVEL:
               </h5>
               <h5 className="text-[1rem] mt-[-3px] font-semibold text-gray-200 max-[690px]:ml-auto">
-                LOW-MEDIUM
+                {singleProductData.riskLevel.toLocaleUpperCase()}
               </h5>
             </span>
           </div>
@@ -152,7 +153,7 @@ function ItemCard() {
                 EST. MONTHLY
               </h5>
               <h5 className="text-[1.1rem] mt-[-3px] font-semibold text-gray-200">
-                $18.12 starting Nov 30
+                ${singleProductData.monthlyPay} starting Nov 30
               </h5>
             </span>
             <span className=" flex flex-col gap-2 pr-3 max-[690px]:pb-2 max-[690px]:w-full max-[690px]:border-b-[2px] min-[691px]:border-r-[2px] border-gray-600">

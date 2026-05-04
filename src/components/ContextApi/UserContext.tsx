@@ -31,6 +31,9 @@ type ProductsData = {
   fundingParcent: string;
   returnPrice: string;
   investmentTerm: string;
+  monthlyPay: string;
+  riskLevel: string;
+  amontToRaise: string;
   imageUrl: string[];
 };
 interface UserContextType {
@@ -84,6 +87,9 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
       fundingParcent: "",
       returnPrice: "",
       investmentTerm: "",
+      monthlyPay: "",
+      riskLevel: "",
+      amontToRaise: "",
       imageUrl: [],
     },
   ]);
@@ -98,6 +104,9 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     fundingParcent: "",
     returnPrice: "",
     investmentTerm: "",
+    monthlyPay: "",
+    riskLevel: "",
+    amontToRaise: "",
     imageUrl: [],
   });
   const [isLoading, setIsLoading] = useState(false);

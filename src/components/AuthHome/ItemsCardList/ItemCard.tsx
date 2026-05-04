@@ -12,6 +12,9 @@ type ProductsData = {
     fundingParcent: string;
     returnPrice: string;
     investmentTerm: string;
+    monthlyPay: string;
+    riskLevel: string;
+    amontToRaise: string;
     imageUrl: string[];
   };
   isMinimum: boolean;
@@ -47,7 +50,7 @@ function ItemCard(prop: ProductsData) {
         <img className="w-full h-full rounded-md" src={deals.imageUrl[0]}></img>
       </span>
       <span className="text-gray-300 font-semibold text-[0.9rem]">
-        <h5>Austin 3BR Rental - Oak Street</h5>
+        <h5>{deals.name}</h5>
       </span>
 
       <span className="flex flex-col">
@@ -83,7 +86,7 @@ function ItemCard(prop: ProductsData) {
         </span>
         <span className="flex p-2 text-gray-300 font-semibold  border-b-[1px] border-gray-400">
           <h5>RETURN RATE</h5>
-          <h5 className="ml-auto">{deals.investmentRate}APY</h5>
+          <h5 className="ml-auto">{deals.investmentRate}%APY</h5>
         </span>
         <span className="flex p-2 text-gray-300 border-b-[1px] border-gray-400 font-semibold ">
           <h5>INVESTMENT TERM</h5>
@@ -93,7 +96,7 @@ function ItemCard(prop: ProductsData) {
         </span>
         <span className="flex p-2 text-gray-300 font-semibold border-b-[1px] border-gray-400">
           <h5>PROJECTED RETURN</h5>
-          <h5 className="ml-auto">${Number(deals.minimumOrder) * 1.5}</h5>
+          <h5 className="ml-auto">${deals.returnPrice}</h5>
         </span>
         <span className="flex w-full  p-2 text-gray-300  font-semibold ">
           <h5>PAYOUT</h5>
