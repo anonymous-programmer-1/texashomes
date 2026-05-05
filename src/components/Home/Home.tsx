@@ -2,7 +2,6 @@
 import { lazy, useState } from "react";
 const Top = lazy(() => import("../Top/Top"));
 const ListAndPath = lazy(() => import("../Top/ListingAndPath"));
-const MenuCategory = lazy(() => import("../Top/MenuCategory"));
 const ItemsList = lazy(() => import("./ItemsList"));
 const SignUpAlert1 = lazy(() => import("../SignupAlert/SignupAlert1"));
 const WhatsAbout = lazy(() => import("./WhatsAbout"));
@@ -34,7 +33,6 @@ function Home() {
         <>
           <Top setControlA={setControl} setIcontrol={setIcontrol} />
           <ListAndPath />
-          <MenuCategory />
           <ItemsList pass={true} />
           <BultFor />
           <FeaturedIn />

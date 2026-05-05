@@ -21,22 +21,22 @@ type ProductsData = {
   amontToRaise: string;
   imageUrl: string[];
 };
-function ItemCards() {
+type DealsControl = {
+  isDataTrue: (boolean: boolean) => void;
+  isData: boolean;
+  loadInData: string[];
+  isLoaded: boolean;
+  setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function ItemCards(props: DealsControl) {
   const userDetails = userAppContext();
   if (!userDetails) return;
   const { productsFilterData, setProductsFilterData, setProductData } =
     userDetails;
   const [deals, setDeals] = useState<ProductsData[]>(productsFilterData);
-  const [isLoaded, setIsLoaded] = useState<boolean>(false);
-  const [noData, setNoData] = useState<boolean>(false);
-  const [loadingAnimation, setLoadingAnimation] = useState<any>();
-  useEffect(() => {
-    const cards = [];
-    for (let i = 0; i < 40; i++) {
-      cards.push("loadingData");
-    }
-    setLoadingAnimation([...cards]);
-  }, []);
+  const noData: boolean = props.isData;
+  const loadingAnimation: string[] = props.loadInData;
+  const isLoaded: boolean = props.isLoaded;
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com/house/deals
@@ -53,9 +53,9 @@ function ItemCards() {
         //const shuffledData = shuffleArray(products);
         setProductData([...products]);
         setProductsFilterData([...products]);
-        setIsLoaded(true);
+        props.setIsLoaded(true);
       } catch (error) {
-        setNoData(true);
+        props.isDataTrue(true);
         console.log(error);
       }
     }
@@ -66,7 +66,6 @@ function ItemCards() {
       setDeals([...productsFilterData]);
     })();
   }, [productsFilterData]);
-  console.log(deals, "deals");
   const noDeals = (
     <div className="p-4 w-full">
       <div className="transition-all w-full h-fit flex flex-col items-center  p-6 border-[1px] border-baseCard-borderColor bg-baseCard-color rounded-md">

@@ -19,13 +19,7 @@ function MenuTop(props: Controls) {
   return (
     <div className=" sticky top-0   z-10 pointer">
       <div className="flex  w-full bg-[white] border-b-2 pt-1 pb-1 items-center shadow-lg ">
-        <span className="block ml-8 sm:hidden">
-          <i
-            className="fa fa-bars text-[1.3rem] text-[#060685]"
-            onClick={sideMenu}
-          ></i>
-        </span>
-        <div className=" flex lg:pl-10  items-center mr-[-40px]">
+        <div className="pl-5 flex lg:pl-10  items-center mr-[-40px]">
           <span className="w-20 h-16 rounded-full ">
             <img className="w-full h-full " alt="logo" src={imageLogo}></img>
           </span>
@@ -54,10 +48,13 @@ function MenuTop(props: Controls) {
             <h5>CONTACT US</h5>
           </span>
         </span>
-        <span className=" ml-auto">
-          <i className="fa fa-search text-[1.2rem] text-[#060685]"></i>
+        <span className="block ml-auto sm:hidden">
+          <i
+            className="fa fa-bars text-[1.3rem] text-[#060685]"
+            onClick={sideMenu}
+          ></i>
         </span>
-        <span className="pr-8 ml-5">
+        <span className="pr-8 sm:ml-auto ml-5">
           <i
             className="fa fa-user font-normal text-[1.2rem] text-[#060685]"
             onClick={signIn}

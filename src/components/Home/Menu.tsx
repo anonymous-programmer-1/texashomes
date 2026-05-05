@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import imageLogo from "/images/logo/logo.png";
 type MenuProps = {
   control: () => void;
   setControlA: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,14 +14,28 @@ function Menu(props: MenuProps) {
   }
   return (
     <div className="w-full lg:hidden block">
-      <div className="absolute z-50 w-[80%] max-w-[350px] bg-[#171718] h-screen">
-        <span className="flex p-7 pb-2 justify-end">
+      <div className="absolute top-0 z-50 w-[80%] max-w-[350px] bg-[#171718] h-screen">
+        <span className="flex p-2 pl-7 pr-7 pb-2 items-center">
+          <div className="flex items-center">
+            <span className="w-20 h-16 rounded-full ">
+              <img className="w-full h-full " alt="logo" src={imageLogo}></img>
+            </span>
+            <span className="flex flex-col ml-[-12px] text-gray-300">
+              <h5 className="lg:text-[1.4rem] text-[1.2rem] font-bold">
+                Texas
+              </h5>
+              <h5 className="ml-[16px] mt-[-10px] lg:text-[1rem] text-[0.9rem] font-semibold">
+                Homes
+              </h5>
+            </span>
+          </div>
+
           <i
-            className="fa fa-xmark text-xl text-gray-200 "
+            className="fa fa-xmark ml-auto text-xl text-gray-200 "
             onClick={control}
           ></i>
         </span>
-        <span className="flex p-7 flex-col gap-7">
+        <span className="flex p-7 pt-10 flex-col gap-7">
           <span
             className="flex pt-2 pb-2 border-b-2 border-gray-200"
             onClick={signIn}

@@ -100,7 +100,7 @@ function ItemsList(props: Pass) {
         <h5 className="text-[1.5rem] text-[#060685] font-bold">Top Deals</h5>
       </span>
       <div className="ml-[-2rem] pl-[10%] pr-[10%] mt-7">
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap  gap-4">
           {deals &&
             deals.map((e, i) => {
               if (pass && i < 3) {

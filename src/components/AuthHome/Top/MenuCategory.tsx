@@ -1,10 +1,13 @@
 import { useState, useRef, useEffect } from "react";
 import { userAppContext } from "../../ContextApi/UserContext";
-function MenuCategory() {
+type DealsControl = {
+  isDataTrue: (boolean: boolean) => void;
+  setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function MenuCategory(props: DealsControl) {
   const userDetails = userAppContext();
   if (!userDetails) return;
-  const { setProductsFilterData, productsFilterData, productData } =
-    userDetails;
+  const { setProductsFilterData, productData } = userDetails;
   const [sharesControl, setSharesControl] = useState<boolean>(false);
   const [statusControl, setStatusControl] = useState<boolean>(false);
   const [finacControl, setFinancControl] = useState<boolean>(false);
@@ -31,6 +34,7 @@ function MenuCategory() {
     }
   }, [statusControl, sharesControl, finacControl]);
   function less600() {
+    props.setIsLoaded(false);
     const deals = [...productData];
     const newFilteredDeals = deals.filter((e) => {
       if (Number(e.minimumOrder) < 600) return e;
@@ -38,8 +42,15 @@ function MenuCategory() {
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$300 - $500");
     setSharesControl(false);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
   }
   function less1001() {
+    props.setIsLoaded(false);
     const deals = [...productData];
     const newFilteredDeals = deals.filter((e) => {
       if (Number(e.minimumOrder) >= 600 && Number(e.minimumOrder) < 1100)
@@ -48,8 +59,15 @@ function MenuCategory() {
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$600 - $1,000");
     setSharesControl(false);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
   }
   function more1000() {
+    props.setIsLoaded(false);
     const deals = [...productData];
     const newFilteredDeals = deals.filter((e) => {
       if (Number(e.minimumOrder) > 1000) return e;
@@ -57,21 +75,34 @@ function MenuCategory() {
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$1,000+");
     setSharesControl(false);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
   }
   function all() {
+    props.setIsLoaded(false);
     const deals = [...productData];
     setProductsFilterData(deals);
     setStatusControlText("ALL");
     setSharesControl(false);
+    props.setIsLoaded(true);
+    if (deals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
   }
   return (
     <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
         <span className="flex flex-col gap-0.5 pointer ">
-          <h5 className="text-gray-400">Shares/Minimum</h5>
+          <h5 className="text-gray-300">Shares/Minimum</h5>
           <span className="w-[10rem] h-fit max-w-fit">
             <span
-              className="w-[9.5rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-400 font-semibold rounded-md"
+              className="w-[9.5rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
               ref={sharesRef}
               onClick={() => {
                 setSharesControl(!sharesControl);
@@ -87,28 +118,28 @@ function MenuCategory() {
               )}
             </span>
             {sharesControl && (
-              <div className="pt-0.5">
-                <div className="flex flex-col gap-3 pl-7 pr-7 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
+              <div className="">
+                <div className="flex flex-col gap-3  pl-7 pr-7 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
                   <span
-                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
                     onClick={less600}
                   >
                     <h5>$300 - $500</h5>
                   </span>
                   <span
-                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
                     onClick={less1001}
                   >
                     <h5>$600 - $1,000</h5>
                   </span>
                   <span
-                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
                     onClick={more1000}
                   >
                     <h5>$1,000 + </h5>
                   </span>
                   <span
-                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
                     onClick={all}
                   >
                     <h5>ALL </h5>
@@ -119,9 +150,9 @@ function MenuCategory() {
           </span>
         </span>
         <span className="flex flex-col gap-0.5 pointer  ">
-          <h5 className="text-gray-400">Financing Type</h5>
+          <h5 className="text-gray-300">Financing Type</h5>
           <span
-            className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-400 font-semibold rounded-md"
+            className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
             ref={finacRef}
             onClick={() => {
               setFinancControl(!finacControl);
@@ -137,12 +168,12 @@ function MenuCategory() {
             )}
           </span>
           {finacControl && (
-            <div className="pt-0.5">
+            <div className="">
               <div className="flex flex-col gap-3  w-[8rem] absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all">
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
+                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
                   <h5>Loan</h5>
                 </span>
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
+                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
                   <h5>Asset Based</h5>
                 </span>
               </div>
@@ -150,7 +181,7 @@ function MenuCategory() {
           )}
         </span>
         <span className="flex flex-col gap-0.5 pointer ">
-          <h5 className="text-gray-400">Statues</h5>
+          <h5 className="text-gray-300">Statues</h5>
           <span
             className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-200 font-semibold rounded-md"
             ref={statusRef}
@@ -160,7 +191,7 @@ function MenuCategory() {
               setFinancControl(false);
             }}
           >
-            <h5 className="text-gray-400">FUNDING</h5>
+            <h5 className="text-gray-300">FUNDING</h5>
             {statusControl ? (
               <i className="fas fa-angle-up mt-1 ml-auto mr-1"></i>
             ) : (
@@ -168,12 +199,12 @@ function MenuCategory() {
             )}
           </span>
           {statusControl && (
-            <div className="pt-0.5">
+            <div className="">
               <div className="flex flex-col gap-3  w-[8rem] absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all ">
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
+                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
                   <h5>NEW</h5>
                 </span>
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
+                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
                   <h5>ENDED</h5>
                 </span>
               </div>

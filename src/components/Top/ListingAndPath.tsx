@@ -3,7 +3,7 @@ function ListAndPath() {
     <div className="mt-8">
       <span className="flex flex-col pl-8 pr-4">
         <h2 className="lg:text-[1.8rem] text-[1.3rem] font-bold text-[#060685]">
-          Texas Rental Properties. 5-14% APY.
+          Texas Rental Properties. 5-18% APY.
         </h2>
         <h5 className="lg:text-[1rem] text-[0.9rem] font-semibold text-[#060685] pt-1">
           Own a piece of Austin real estate from $300.

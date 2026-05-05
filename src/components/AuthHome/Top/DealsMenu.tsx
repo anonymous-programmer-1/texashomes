@@ -1,6 +1,10 @@
 import MenuCategory from "./MenuCategory";
 import { useState } from "react";
-function DealsMenu() {
+type DealsControl = {
+  isDataTrue: (boolean: boolean) => void;
+  setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
+};
+function DealsMenu(props: DealsControl) {
   const [withdrawAndDeposit, setWithdrawAndDeposit] = useState<boolean>(false);
   return (
     <>
@@ -35,7 +39,10 @@ function DealsMenu() {
           </div>
         </span>
       </div>
-      <MenuCategory />
+      <MenuCategory
+        isDataTrue={props.isDataTrue}
+        setIsLoaded={props.setIsLoaded}
+      />
     </>
   );
 }
