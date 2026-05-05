@@ -37,12 +37,6 @@ function Top() {
   };
   const locationPath = window.location.pathname;
   useEffect(() => {
-    const test = userName.firstName === "" || userName.lastName === "";
-    if (test) {
-      urlNavigator("/", { replace: true });
-    }
-  }, [userName.firstName, userName.lastName, urlNavigator]);
-  useEffect(() => {
     if (
       !dealsRef.current ||
       !managerRef.current ||
@@ -152,7 +146,7 @@ function Top() {
             <span className="w-20 h-16 rounded-full ">
               <img className="w-full h-full " alt="logo" src={logodark}></img>
             </span>
-            <span className="flex flex-col ml-[-12px] text-baseDark-blue">
+            <span className="flex flex-col ml-[-12px] text-gray-400">
               <h5 className="lg:text-[1.4rem] text-[1.2rem] font-bold">
                 Texas
               </h5>

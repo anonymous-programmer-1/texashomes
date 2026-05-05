@@ -40,7 +40,11 @@ function LoginPage() {
       const responds = await validateUserSignin.json();
       loadingAnimation.current.style.display = "none";
       if (responds.status !== 200) return alert(responds.massage);
+      console.log(responds.data);
+      const USER_DATA = "USER_DATA";
+      localStorage.setItem(USER_DATA, JSON.stringify(responds.data));
       setUserData(responds.data);
+
       const route = "/auth/home";
       urlNavigator(route, { replace: true });
     } catch (error) {
@@ -78,7 +82,7 @@ function LoginPage() {
   }
   return (
     <div className="full flex justify-center bg-[#101025e1] min-h-screen max-h-fit  items-center p-5 flex-shrink">
-      <div className="flex flex-wrap w-[180%] max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 gap-8">
+      <div className="flex flex-wrap w-[180%] max-h-fit max-w-[75rem] bg-[#1f1e1e] rounded-3xl border-[0.6px] border-[#4b4b4b]  p-10 ">
         <div className="inline-flex flex-col flex-grow ">
           <div className=" flex  items-center">
             <span className="w-20 h-16 rounded-full ">

@@ -30,7 +30,6 @@ function MenuTop(props: Controls) {
             </h5>
           </span>
         </div>
-
         <span className="ml-auto hidden sm:flex ">
           <span
             className=" border-b-2 border-white hover:border-[#060685]  hover:transition-all"

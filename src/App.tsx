@@ -1,4 +1,4 @@
-import { lazy } from "react";
+import { lazy, useEffect } from "react";
 const Home = lazy(() => import("./components/Home/Home"));
 const RegisterPage = lazy(() => import("./components/Register/RegisterPage"));
 const LoginPage = lazy(() => import("./components/Register/LoginPage"));
@@ -17,10 +17,38 @@ const Potfolio = lazy(() => import("./components/Potfolio/Potfolio"));
 const Company = lazy(() => import("./components/Company/Company"));
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { userAppContext } from "./components/ContextApi/UserContext";
 //
-
+type UserDataType = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  portfolio: {
+    amount: string;
+    friends: object[];
+    wallet: string;
+    transactions: object[];
+    totalReturnsPi: string;
+  };
+  chats: object[];
+};
 function App() {
+  const userDetails = userAppContext();
+  if (!userDetails) return;
+  const { userData, setUserData } = userDetails;
+  useEffect(() => {
+    if (window.location.pathname.split(" ")[0] === "/texashomes/") return;
+    if (userData.email.trim() === "") {
+      const USER_DATA = "USER_DATA";
+      const data: UserDataType | null = JSON.parse(
+        localStorage.getItem(USER_DATA),
+      );
+      console.log(data);
+      if (!data) return;
+      setUserData(data);
+    }
+  });
   const routers = createBrowserRouter(
     [
       {
