@@ -48,6 +48,8 @@ interface UserContextType {
   productData: ProductsData[];
   setProductData: React.Dispatch<React.SetStateAction<ProductsData[]>>;
   singleProductData: ProductsData;
+  productsFilterData: ProductsData[];
+  setProductsFilterData: React.Dispatch<React.SetStateAction<ProductsData[]>>;
   setSingleProductData: React.Dispatch<React.SetStateAction<ProductsData>>;
   isLoading: boolean;
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>;
@@ -76,6 +78,24 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
     chats: [],
   });
   const [productData, setProductData] = useState<ProductsData[]>([
+    {
+      name: "",
+      price: "",
+      manager: "",
+      minimumOrder: "",
+      returnType: "",
+      investors: "",
+      investmentRate: "",
+      fundingParcent: "",
+      returnPrice: "",
+      investmentTerm: "",
+      monthlyPay: "",
+      riskLevel: "",
+      amontToRaise: "",
+      imageUrl: [],
+    },
+  ]);
+  const [productsFilterData, setProductsFilterData] = useState<ProductsData[]>([
     {
       name: "",
       price: "",
@@ -122,6 +142,8 @@ export const UserContextProvider = ({ children }: { children: ReactNode }) => {
         setQuestionPage,
         productData,
         setProductData,
+        productsFilterData,
+        setProductsFilterData,
         singleProductData,
         setSingleProductData,
         isLoading,

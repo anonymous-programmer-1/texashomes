@@ -1,11 +1,17 @@
 import { useState, useRef, useEffect } from "react";
+import { userAppContext } from "../../ContextApi/UserContext";
 function MenuCategory() {
+  const userDetails = userAppContext();
+  if (!userDetails) return;
+  const { setProductsFilterData, productsFilterData, productData } =
+    userDetails;
   const [sharesControl, setSharesControl] = useState<boolean>(false);
   const [statusControl, setStatusControl] = useState<boolean>(false);
   const [finacControl, setFinancControl] = useState<boolean>(false);
   const sharesRef = useRef<HTMLSpanElement>(null);
   const statusRef = useRef<HTMLSpanElement>(null);
   const finacRef = useRef<HTMLSpanElement>(null);
+  const [statusControlText, setStatusControlText] = useState<string>("ALL");
   useEffect(() => {
     if (!sharesRef.current || !statusRef.current || !finacRef.current) return;
     if (sharesControl) {
@@ -24,6 +30,40 @@ function MenuCategory() {
       finacRef.current.style.borderColor = "rgb(200 213 219)";
     }
   }, [statusControl, sharesControl, finacControl]);
+  function less600() {
+    const deals = [...productData];
+    const newFilteredDeals = deals.filter((e) => {
+      if (Number(e.minimumOrder) < 600) return e;
+    });
+    setProductsFilterData([...newFilteredDeals]);
+    setStatusControlText("$300 - $500");
+    setSharesControl(false);
+  }
+  function less1001() {
+    const deals = [...productData];
+    const newFilteredDeals = deals.filter((e) => {
+      if (Number(e.minimumOrder) >= 600 && Number(e.minimumOrder) < 1100)
+        return e;
+    });
+    setProductsFilterData([...newFilteredDeals]);
+    setStatusControlText("$600 - $1,000");
+    setSharesControl(false);
+  }
+  function more1000() {
+    const deals = [...productData];
+    const newFilteredDeals = deals.filter((e) => {
+      if (Number(e.minimumOrder) > 1000) return e;
+    });
+    setProductsFilterData([...newFilteredDeals]);
+    setStatusControlText("$1,000+");
+    setSharesControl(false);
+  }
+  function all() {
+    const deals = [...productData];
+    setProductsFilterData(deals);
+    setStatusControlText("ALL");
+    setSharesControl(false);
+  }
   return (
     <div className="w-full min-h-14 max-h-fit pb-4 bg-[#171718]  ">
       <div className="flex flex-wrap w-full h-full items-center lg:pl-10 pl-5 gap-2.5 ">
@@ -39,7 +79,7 @@ function MenuCategory() {
                 setFinancControl(false);
               }}
             >
-              <h5>ALL</h5>
+              <h5>{statusControlText}</h5>
               {sharesControl ? (
                 <i className="fas fa-angle-up mt-1 ml-auto mr-1"></i>
               ) : (
@@ -48,21 +88,30 @@ function MenuCategory() {
             </span>
             {sharesControl && (
               <div className="pt-0.5">
-                <div className="flex flex-col gap-3 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
-                  <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
-                    <h5>$200 - $1,000k</h5>
+                <div className="flex flex-col gap-3 pl-7 pr-7 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
+                  <span
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    onClick={less600}
+                  >
+                    <h5>$300 - $500</h5>
                   </span>
-                  <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
-                    <h5>$1,000k - $3,000k</h5>
+                  <span
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    onClick={less1001}
+                  >
+                    <h5>$600 - $1,000</h5>
                   </span>
-                  <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
-                    <h5>$3,000k - $5,000k</h5>
+                  <span
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    onClick={more1000}
+                  >
+                    <h5>$1,000 + </h5>
                   </span>
-                  <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
-                    <h5>$5,000k - $10,000k</h5>
-                  </span>
-                  <span className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md">
-                    <h5>$10,000k +</h5>
+                  <span
+                    className=" max-w-fit  h-fit flex   bg-transparent text-gray-400 font-semibold rounded-md"
+                    onClick={all}
+                  >
+                    <h5>ALL </h5>
                   </span>
                 </div>
               </div>

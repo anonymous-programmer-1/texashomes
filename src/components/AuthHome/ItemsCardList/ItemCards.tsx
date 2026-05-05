@@ -1,8 +1,8 @@
 import { useState, useEffect, lazy } from "react";
+import { userAppContext } from "../../ContextApi/UserContext";
+import CardLoadingSeclecton from "../../Loading animation/CardLoadingSeclecton";
 const ItemCard = lazy(() => import("./ItemCard"));
-const LoadingAnimation = lazy(
-  () => import("../../Loading animation/loadingRing"),
-);
+
 const ServerBaseUrl = import.meta.env.VITE_SERVER_BASE_URL;
 //
 type ProductsData = {
@@ -22,9 +22,21 @@ type ProductsData = {
   imageUrl: string[];
 };
 function ItemCards() {
-  const [deals, setDeals] = useState<ProductsData[]>();
+  const userDetails = userAppContext();
+  if (!userDetails) return;
+  const { productsFilterData, setProductsFilterData, setProductData } =
+    userDetails;
+  const [deals, setDeals] = useState<ProductsData[]>(productsFilterData);
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [noData, setNoData] = useState<boolean>(false);
+  const [loadingAnimation, setLoadingAnimation] = useState<any>();
+  useEffect(() => {
+    const cards = [];
+    for (let i = 0; i < 40; i++) {
+      cards.push("loadingData");
+    }
+    setLoadingAnimation([...cards]);
+  }, []);
   useEffect(() => {
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com/house/deals
@@ -39,7 +51,8 @@ function ItemCards() {
         const responds = await data.json();
         const products: ProductsData[] = responds.data;
         //const shuffledData = shuffleArray(products);
-        setDeals([...products]);
+        setProductData([...products]);
+        setProductsFilterData([...products]);
         setIsLoaded(true);
       } catch (error) {
         setNoData(true);
@@ -48,6 +61,12 @@ function ItemCards() {
     }
     getProducts();
   }, []);
+  useEffect(() => {
+    (() => {
+      setDeals([...productsFilterData]);
+    })();
+  }, [productsFilterData]);
+  console.log(deals, "deals");
   const noDeals = (
     <div className="p-4 w-full">
       <div className="transition-all w-full h-fit flex flex-col items-center  p-6 border-[1px] border-baseCard-borderColor bg-baseCard-color rounded-md">
@@ -63,18 +82,18 @@ function ItemCards() {
   );
   const display = !noData ? (
     !isLoaded ? (
-      <div className="w-full flex h-[60vh] justify-center items-center">
-        <div>
-          <LoadingAnimation />
-        </div>
+      <div className="flex flex-wrap gap-4 w-full sm:grid sm:grid-cols-2 ms:grid-cols-2 min-[900px]:grid-cols-3 min-[1400px]:grid-cols-4 min-[1800px]:grid-cols-5  p-4 justify-around  bg-[#171718]">
+        {loadingAnimation &&
+          loadingAnimation.map((_, i: number) => (
+            <CardLoadingSeclecton key={`animation-key/${i}`} />
+          ))}
       </div>
     ) : (
       <div className="flex flex-wrap gap-4 w-full sm:grid sm:grid-cols-2 ms:grid-cols-2 min-[900px]:grid-cols-3 min-[1400px]:grid-cols-4 min-[1800px]:grid-cols-5  p-4 justify-around  bg-[#171718]">
         {deals &&
           deals.map((e, i) => {
             const pass = Number(e.minimumOrder) <= 500 ? true : false;
-
-            return <ItemCard data={e} key={i} isMinimum={pass} />;
+            return <ItemCard data={e} key={`card-key/${i}`} isMinimum={pass} />;
           })}
       </div>
     )

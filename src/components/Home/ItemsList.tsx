@@ -26,18 +26,20 @@ type Pass = {
 };
 
 function ItemsList(props: Pass) {
-  const pass = props.pass;
-  const Icontrol = props.Icontrol;
-  const [deals, setDeals] = useState<ProductsData[]>();
-  const [reConnect, setReConnect] = useState<boolean>(false);
-  const investRef = useRef<HTMLDivElement | null>(null);
   const userDetails = userAppContext();
   if (!userDetails) return null;
-  const { setProductData, setIsLoading } = userDetails;
+  const { productData, setProductData, setIsLoading, isLoading } = userDetails;
+  const pass = props.pass;
+  const Icontrol = props.Icontrol;
+  const [deals, setDeals] = useState<ProductsData[]>(productData);
+  const [reConnect, setReConnect] = useState<boolean>(false);
+  const investRef = useRef<HTMLDivElement | null>(null);
+
   function retryConnection() {
     setReConnect((prevConnect) => !prevConnect);
   }
   useEffect(() => {
+    if (isLoading) return;
     async function getProducts() {
       //!https://texashomes-backend-3.onrender.com
       const url = `${ServerBaseUrl}/house/deals`;
@@ -78,7 +80,7 @@ function ItemsList(props: Pass) {
       }
     }
     getProducts();
-  }, [reConnect]);
+  }, [reConnect, isLoading]);
   useEffect(() => {
     if (!investRef.current) return;
     if (!Icontrol) return;

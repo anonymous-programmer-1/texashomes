@@ -51,7 +51,7 @@ function ItemCard() {
         </span>
         <span className="w-full lg:w-[68%]">
           <span className="flex border-b-[1px] pb-2 border-gray-500 lg:text-[1.5rem] text-[1.2rem] text-gray-200">
-            <h5>Austin 3BR Rental - Oak Street</h5>
+            <h5>Austin Rental - Oak Street</h5>
           </span>
           <div className="flex flex-wrap lg:gap-4 gap-2 items-center mt-2">
             <div className="flex w-full  max-w-[500px] gap-2 items-center">
