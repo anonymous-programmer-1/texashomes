@@ -4,6 +4,28 @@ type DealsControl = {
   isDataTrue: (boolean: boolean) => void;
   setIsLoaded: React.Dispatch<React.SetStateAction<boolean>>;
 };
+type ProductsData = {
+  name: string;
+  price: string;
+  manager: string;
+  minimumOrder: string;
+  returnType: string;
+  investors: string;
+  investmentRate: string;
+  fundingParcent: string;
+  returnPrice: string;
+  investmentTerm: string;
+  monthlyPay: string;
+  riskLevel: string;
+  amontToRaise: string;
+  imageUrl: string[];
+};
+type StatusFilterFunc = {
+  sharesFilter: (data: ProductsData[]) => ProductsData[];
+};
+type InvestmentTermFilterFunc = {
+  investmentFilter: (data: ProductsData[]) => ProductsData[];
+};
 function MenuCategory(props: DealsControl) {
   const userDetails = userAppContext();
   if (!userDetails) return;
@@ -14,7 +36,15 @@ function MenuCategory(props: DealsControl) {
   const sharesRef = useRef<HTMLSpanElement>(null);
   const statusRef = useRef<HTMLSpanElement>(null);
   const finacRef = useRef<HTMLSpanElement>(null);
+  const [isStatusFiltered, setIsStatusFiltered] = useState<boolean>(false);
+  const [isInvestmentTermFiltered, setIsInvestmentTermFiltered] =
+    useState<boolean>(false);
+  const sharesFilteredFunc = useRef<StatusFilterFunc | null>(null);
+  const investmentTermFilteredFunc = useRef<InvestmentTermFilterFunc | null>(
+    null,
+  );
   const [statusControlText, setStatusControlText] = useState<string>("ALL");
+  const [investmentTermText, setInvestmentTermText] = useState<string>("ALL");
   useEffect(() => {
     if (!sharesRef.current || !statusRef.current || !finacRef.current) return;
     if (sharesControl) {
@@ -35,13 +65,33 @@ function MenuCategory(props: DealsControl) {
   }, [statusControl, sharesControl, finacControl]);
   function less600() {
     props.setIsLoaded(false);
+    let newFilteredDeals;
     const deals = [...productData];
-    const newFilteredDeals = deals.filter((e) => {
-      if (Number(e.minimumOrder) < 600) return e;
-    });
+    if (!isInvestmentTermFiltered) {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) < 600) return e;
+        });
+      };
+      newFilteredDeals = sharesFilter(deals);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    } else {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) < 600) return e;
+        });
+      };
+      if (!investmentTermFilteredFunc.current)
+        return (newFilteredDeals = sharesFilter(deals));
+      const prevsFilter =
+        investmentTermFilteredFunc.current.investmentFilter(deals);
+      newFilteredDeals = sharesFilter(prevsFilter);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    }
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$300 - $500");
     setSharesControl(false);
+    setIsStatusFiltered(true);
     props.setIsLoaded(true);
     if (newFilteredDeals.length === 0) {
       return props.isDataTrue(true);
@@ -49,16 +99,39 @@ function MenuCategory(props: DealsControl) {
       return props.isDataTrue(false);
     }
   }
+  console.log(sharesFilteredFunc.current);
+  console.log(investmentTermFilteredFunc.current);
   function less1001() {
     props.setIsLoaded(false);
+    let newFilteredDeals;
     const deals = [...productData];
-    const newFilteredDeals = deals.filter((e) => {
-      if (Number(e.minimumOrder) >= 600 && Number(e.minimumOrder) < 1100)
-        return e;
-    });
+    if (!isInvestmentTermFiltered) {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) >= 600 && Number(e.minimumOrder) < 1100)
+            return e;
+        });
+      };
+      newFilteredDeals = sharesFilter(deals);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    } else {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) >= 600 && Number(e.minimumOrder) < 1100)
+            return e;
+        });
+      };
+      if (!investmentTermFilteredFunc.current)
+        return (newFilteredDeals = sharesFilter(deals));
+      const prevsFilter =
+        investmentTermFilteredFunc.current.investmentFilter(deals);
+      newFilteredDeals = sharesFilter(prevsFilter);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    }
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$600 - $1,000");
     setSharesControl(false);
+    setIsStatusFiltered(true);
     props.setIsLoaded(true);
     if (newFilteredDeals.length === 0) {
       return props.isDataTrue(true);
@@ -68,13 +141,33 @@ function MenuCategory(props: DealsControl) {
   }
   function more1000() {
     props.setIsLoaded(false);
+    let newFilteredDeals;
     const deals = [...productData];
-    const newFilteredDeals = deals.filter((e) => {
-      if (Number(e.minimumOrder) > 1000) return e;
-    });
+    if (!isInvestmentTermFiltered) {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) > 1000) return e;
+        });
+      };
+      newFilteredDeals = sharesFilter(deals);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    } else {
+      const sharesFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (Number(e.minimumOrder) > 1000) return e;
+        });
+      };
+      if (!investmentTermFilteredFunc.current)
+        return (newFilteredDeals = sharesFilter(deals));
+      const prevsFilter =
+        investmentTermFilteredFunc.current.investmentFilter(deals);
+      newFilteredDeals = sharesFilter(prevsFilter);
+      sharesFilteredFunc.current = { sharesFilter: sharesFilter };
+    }
     setProductsFilterData([...newFilteredDeals]);
     setStatusControlText("$1,000+");
     setSharesControl(false);
+    setIsStatusFiltered(true);
     props.setIsLoaded(true);
     if (newFilteredDeals.length === 0) {
       return props.isDataTrue(true);
@@ -84,10 +177,234 @@ function MenuCategory(props: DealsControl) {
   }
   function all() {
     props.setIsLoaded(false);
+    let newFilteredDeals;
     const deals = [...productData];
-    setProductsFilterData(deals);
+    if (!isInvestmentTermFiltered) {
+      newFilteredDeals = [...deals];
+    } else {
+      if (!investmentTermFilteredFunc.current)
+        return (newFilteredDeals = [...deals]);
+      const prevsFilter =
+        investmentTermFilteredFunc.current.investmentFilter(deals);
+      newFilteredDeals = [...prevsFilter];
+    }
+    setProductsFilterData(newFilteredDeals);
     setStatusControlText("ALL");
     setSharesControl(false);
+    setIsStatusFiltered(false);
+    props.setIsLoaded(true);
+    if (deals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
+  }
+  function threeToSixM() {
+    props.setIsLoaded(false);
+    let newFilteredDeals;
+    const deals = [...productData];
+    if (!isStatusFiltered) {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 3 &&
+            Number(e.investmentTerm.split(" ")[0]) <= 6
+          )
+            return e;
+        });
+      };
+      newFilteredDeals = investmentFilter(deals);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    } else {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 3 &&
+            Number(e.investmentTerm.split(" ")[0]) <= 6
+          )
+            return e;
+        });
+      };
+      if (!sharesFilteredFunc.current)
+        return (newFilteredDeals = investmentFilter(deals));
+      const prevsFilter = sharesFilteredFunc.current.sharesFilter(deals);
+      newFilteredDeals = investmentFilter(prevsFilter);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    }
+    setProductsFilterData([...newFilteredDeals]);
+    setInvestmentTermText("3 - 6 Months");
+    setFinancControl(false);
+    setIsInvestmentTermFiltered(true);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
+  }
+  function sixToEightM() {
+    props.setIsLoaded(false);
+    let newFilteredDeals;
+    const deals = [...productData];
+    if (!isStatusFiltered) {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 6 &&
+            Number(e.investmentTerm.split(" ")[0]) <= 8
+          )
+            return e;
+        });
+      };
+      newFilteredDeals = investmentFilter(deals);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    } else {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 6 &&
+            Number(e.investmentTerm.split(" ")[0]) <= 8
+          )
+            return e;
+        });
+      };
+      if (!sharesFilteredFunc.current)
+        return (newFilteredDeals = investmentFilter(deals));
+      const prevsFilter = sharesFilteredFunc.current.sharesFilter(deals);
+      newFilteredDeals = investmentFilter(prevsFilter);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    }
+
+    setProductsFilterData([...newFilteredDeals]);
+    setInvestmentTermText("6 - 8 Months");
+    setFinancControl(false);
+    setIsInvestmentTermFiltered(true);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
+  }
+  function eightToOneYear() {
+    props.setIsLoaded(false);
+    let newFilteredDeals;
+    const deals = [...productData];
+    if (!isStatusFiltered) {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 8 ||
+            Number(e.investmentTerm.split(" ")[0]) === 1
+          )
+            return e;
+        });
+      };
+      newFilteredDeals = investmentFilter(deals);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    } else {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 8 ||
+            Number(e.investmentTerm.split(" ")[0]) === 1
+          )
+            return e;
+        });
+      };
+      if (!sharesFilteredFunc.current)
+        return (newFilteredDeals = investmentFilter(deals));
+      const prevsFilter = sharesFilteredFunc.current.sharesFilter(deals);
+      newFilteredDeals = investmentFilter(prevsFilter);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    }
+    setProductsFilterData([...newFilteredDeals]);
+    setInvestmentTermText("8 - 12 Months");
+    setFinancControl(false);
+    setIsInvestmentTermFiltered(true);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
+  }
+  function oneYearPlus() {
+    props.setIsLoaded(false);
+    let newFilteredDeals;
+    const deals = [...productData];
+    if (!isStatusFiltered) {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 12 ||
+            Number(e.investmentTerm.split(" ")[0]) === 1 ||
+            Number(e.investmentTerm.split(" ")[0]) === 2
+          )
+            return e;
+        });
+      };
+      newFilteredDeals = investmentFilter(deals);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    } else {
+      const investmentFilter = (data: ProductsData[]): ProductsData[] => {
+        return data.filter((e) => {
+          if (
+            Number(e.investmentTerm.split(" ")[0]) >= 12 ||
+            Number(e.investmentTerm.split(" ")[0]) === 1 ||
+            Number(e.investmentTerm.split(" ")[0]) === 2
+          )
+            return e;
+        });
+      };
+      if (!sharesFilteredFunc.current)
+        return (newFilteredDeals = investmentFilter(deals));
+      const prevsFilter = sharesFilteredFunc.current.sharesFilter(deals);
+      newFilteredDeals = investmentFilter(prevsFilter);
+      investmentTermFilteredFunc.current = {
+        investmentFilter: investmentFilter,
+      };
+    }
+    setProductsFilterData([...newFilteredDeals]);
+    setInvestmentTermText("12 Months +");
+    setFinancControl(false);
+    setIsInvestmentTermFiltered(true);
+    props.setIsLoaded(true);
+    if (newFilteredDeals.length === 0) {
+      return props.isDataTrue(true);
+    } else {
+      return props.isDataTrue(false);
+    }
+  }
+  function allInvestmentTerm() {
+    props.setIsLoaded(false);
+    let newFilteredDeals;
+    const deals = [...productData];
+    if (!isStatusFiltered) {
+      newFilteredDeals = [...deals];
+    } else {
+      if (!sharesFilteredFunc.current) return (newFilteredDeals = [...deals]);
+      const prevsFilter = sharesFilteredFunc.current.sharesFilter(deals);
+      newFilteredDeals = [...prevsFilter];
+    }
+    setProductsFilterData(newFilteredDeals);
+    setInvestmentTermText("ALL");
+    setFinancControl(false);
+    setIsInvestmentTermFiltered(false);
     props.setIsLoaded(true);
     if (deals.length === 0) {
       return props.isDataTrue(true);
@@ -102,7 +419,7 @@ function MenuCategory(props: DealsControl) {
           <h5 className="text-gray-300">Shares/Minimum</h5>
           <span className="w-[10rem] h-fit max-w-fit">
             <span
-              className="w-[9.5rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
+              className="w-[10rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
               ref={sharesRef}
               onClick={() => {
                 setSharesControl(!sharesControl);
@@ -119,7 +436,7 @@ function MenuCategory(props: DealsControl) {
             </span>
             {sharesControl && (
               <div className="">
-                <div className="flex flex-col gap-3  pl-7 pr-7 max-w-fit absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all pointer">
+                <div className="flex flex-col gap-3  pl-7 pr-7 max-w-fit absolute z-[5] bg-[#262627] text-[1rem] p-2 pt-4 pb-4 rounded-b-md menuBoxShadow transition-all pointer">
                   <span
                     className=" max-w-fit  h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
                     onClick={less600}
@@ -150,9 +467,9 @@ function MenuCategory(props: DealsControl) {
           </span>
         </span>
         <span className="flex flex-col gap-0.5 pointer  ">
-          <h5 className="text-gray-300">Financing Type</h5>
+          <h5 className="text-gray-300">Investment/Term</h5>
           <span
-            className="w-[8rem] h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
+            className="w-[10rem]  h-fit flex pl-2 border-[1px] border-baseCard-borderColor bg-transparent text-gray-300 font-semibold rounded-md"
             ref={finacRef}
             onClick={() => {
               setFinancControl(!finacControl);
@@ -160,7 +477,7 @@ function MenuCategory(props: DealsControl) {
               setStatusControl(false);
             }}
           >
-            <h5>ALL</h5>
+            <h5>{investmentTermText}</h5>
             {finacControl ? (
               <i className="fas fa-angle-up mt-1 ml-auto mr-1"></i>
             ) : (
@@ -169,12 +486,36 @@ function MenuCategory(props: DealsControl) {
           </span>
           {finacControl && (
             <div className="">
-              <div className="flex flex-col gap-3  w-[8rem] absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all">
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
-                  <h5>Loan</h5>
+              <div className="flex flex-col gap-3 pl-7 pr-7 w-[9.8rem]  absolute z-[5] bg-[#262627] text-[1rem] p-2 pt-4 pb-4 transition-all rounded-b-md menuBoxShadow">
+                <span
+                  className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
+                  onClick={threeToSixM}
+                >
+                  <h5>3 - 6 Months</h5>
                 </span>
-                <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
-                  <h5>Asset Based</h5>
+                <span
+                  className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
+                  onClick={sixToEightM}
+                >
+                  <h5>6 - 8 Months</h5>
+                </span>
+                <span
+                  className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
+                  onClick={eightToOneYear}
+                >
+                  <h5>8 - 12 Months</h5>
+                </span>
+                <span
+                  className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
+                  onClick={oneYearPlus}
+                >
+                  <h5>12 Months +</h5>
+                </span>
+                <span
+                  className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md"
+                  onClick={allInvestmentTerm}
+                >
+                  <h5>ALL</h5>
                 </span>
               </div>
             </div>
@@ -200,7 +541,7 @@ function MenuCategory(props: DealsControl) {
           </span>
           {statusControl && (
             <div className="">
-              <div className="flex flex-col gap-3  w-[8rem] absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-sm transition-all ">
+              <div className="flex flex-col gap-3  w-[8rem] absolute z-[5] bg-[#0d0d13] text-[1rem] p-2 pt-4 pb-4 rounded-b-md menuBoxShadow transition-all ">
                 <span className="  w-[8rem] h-fit flex   bg-transparent text-gray-300 font-semibold rounded-md">
                   <h5>NEW</h5>
                 </span>

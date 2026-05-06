@@ -131,3 +131,6 @@ body {
     background-color: hsl(180, 1%, 27%);
   }
 }
+.menuBoxShadow {
+  box-shadow: 3px 3px 2px gray;
+}

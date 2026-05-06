@@ -11,7 +11,7 @@ function Funding(props: CloseControl) {
   }, []);
   return (
     <div
-      className="max-w-[500px] text-gray-200 w-full h-screen max-h-fit  bg-[#3a3a3a] right-0 absolute top-0 z-50"
+      className="max-w-[500px] sm:max-w-[400px] text-gray-200 w-full h-screen max-h-fit  bg-[#3a3a3a] right-0 absolute top-0 z-50"
       ref={elementDiv}
     >
       <span className="flex items-center p-5  border-b-[0.7px] border-gray-500">

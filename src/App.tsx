@@ -41,12 +41,10 @@ function App() {
     if (window.location.pathname.split(" ")[0] === "/texashomes/") return;
     if (userData.email.trim() === "") {
       const USER_DATA = "USER_DATA";
-      const data: UserDataType | null = JSON.parse(
-        localStorage.getItem(USER_DATA),
-      );
-      console.log(data);
+      const data: string | null = localStorage.getItem(USER_DATA);
       if (!data) return;
-      setUserData(data);
+      const parseData: UserDataType = JSON.parse(data);
+      setUserData(parseData);
     }
   });
   const routers = createBrowserRouter(
