@@ -1,0 +1,1 @@
+var e=`/texashomes/images/logo/logo.png`;export{e as t};
